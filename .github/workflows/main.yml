@@ -1,0 +1,36 @@
+name: Build and upload web build
+
+on: [push, pull_request, workflow_dispatch]
+
+jobs:
+    build-and-upload:
+        runs-on: ubuntu-latest
+        permissions:
+            contents: write
+
+        steps:
+            - uses: actions/checkout@v4
+            - uses: krdlab/setup-haxe@master
+              with:
+                haxe-version: 4.3.6
+
+            - name: Setup libraries
+              run: |
+                haxelib --global install hmm
+
+            - name: Install dependencies
+              run: |
+                haxelib --global run hmm install
+
+            - name: Build game
+              run: |
+                haxelib run lime build html5 -debug
+
+            - name: Deploy game
+              uses: peaceiris/actions-gh-pages@v4
+              if: github.ref == 'refs/heads/main'
+              with:
+                github_token: ${{ secrets.GITHUB_TOKEN }}
+                publish_dir: ./export/html5/bin
+
+

@@ -1,0 +1,94 @@
+package states;
+
+import flixel.util.typeLimit.NextState;
+import flixel.text.FlxText;
+import flixel.FlxG;
+import flixel.FlxState;
+
+#if ACT_SPLASH
+import ant.openfl.HTML5Video;
+#end
+
+class InitState extends FlxState
+{
+    var next:NextState;
+
+    #if web
+    #if ACT_SPLASH
+    var video:HTML5Video;
+    #end
+    var text:FlxText;
+    var needsInput:Bool = true;
+    #end
+
+    public function new(next:NextState)
+    {
+        super();
+        this.next = next;
+    }
+
+    override function create():Void
+    {
+        #if ACT_COCONUTJPG
+        acrazytown.CoconutHandler.checkIfCoconutValid();
+        #end
+
+        init();
+
+        #if web
+        needsInput = true;
+        text = new FlxText(0, 0, 0, "Click to begin", 32);
+        text.screenCenter();
+        add(text);
+
+        #if ACT_SPLASH
+		video = new HTML5Video(() ->
+        {
+            FlxG.sound.onVolumeChange.remove(onVolumeChange);
+            initComplete();
+        });
+        video.smoothing = true;
+		FlxG.addChildBelowMouse(video);
+		FlxG.sound.onVolumeChange.add(onVolumeChange);
+        #end
+
+        #else
+        initComplete();
+        #end
+    }
+
+    override function update(elapsed:Float):Void
+    {
+        super.update(elapsed);
+
+        #if web
+        if (needsInput && FlxG.mouse.justPressed)
+        {
+            needsInput = false;
+
+            #if ACT_SPLASH
+            video.play("assets/preload/splash.mp4");
+            #else
+            initComplete();
+            #end
+        }
+        #end
+    }
+
+    function init():Void
+    {
+        
+    }
+
+    function initComplete():Void
+    {
+        FlxG.switchState(next);
+    }
+
+    #if ACT_SPLASH
+	function onVolumeChange(volume:Float):Void
+    {
+        video.volume = volume;
+    }
+    #end
+}

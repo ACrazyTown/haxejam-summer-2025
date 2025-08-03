@@ -1,0 +1,33 @@
+{
+  "dependencies": [
+    {
+      "name": "ant",
+      "type": "git",
+      "dir": null,
+      "ref": "e109325",
+      "url": "https://github.com/ACrazyTown/ant"
+    },
+    {
+      "name": "flixel",
+      "type": "haxelib",
+      "version": "6.1.0"
+    },
+    {
+      "name": "hscript",
+      "type": "haxelib",
+      "version": "2.6.0"
+    },
+    {
+      "name": "lime",
+      "type": "haxelib",
+      "version": "8.2.2"
+    },
+    {
+      "name": "openfl",
+      "type": "git",
+      "dir": null,
+      "ref": "1bd953372",
+      "url": "https://github.com/ACrazyTown/openfl"
+    }
+  ]
+}
