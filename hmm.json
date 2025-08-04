@@ -8,14 +8,47 @@
       "url": "https://github.com/ACrazyTown/ant"
     },
     {
+      "name": "deepnightLibs",
+      "type": "git",
+      "dir": null,
+      "ref": "4428a03",
+      "url": "https://github.com/deepnight/deepnightLibs"
+    },
+    {
+      "name": "echo",
+      "type": "git",
+      "dir": null,
+      "ref": "d889af5",
+      "url": "https://github.com/AustinEast/echo"
+    },
+    {
+      "name": "echo-flixel",
+      "type": "git",
+      "dir": null,
+      "ref": "c364e51",
+      "url": "https://github.com/ACrazyTown/echo-flixel"
+    },
+    {
       "name": "flixel",
       "type": "haxelib",
       "version": "6.1.0"
     },
     {
+      "name": "flixel-addons",
+      "type": "haxelib",
+      "version": "3.3.2"
+    },
+    {
       "name": "hscript",
       "type": "haxelib",
       "version": "2.6.0"
+    },
+    {
+      "name": "ldtk-haxe-api",
+      "type": "git",
+      "dir": null,
+      "ref": "22d7ee2",
+      "url": "https://github.com/deepnight/ldtk-haxe-api"
     },
     {
       "name": "lime",

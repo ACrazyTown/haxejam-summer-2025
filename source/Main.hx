@@ -16,7 +16,7 @@ class Main extends Sprite
         super();
         Main.instance = this;
 
-        game = new FlxGame(0, 0, InitState.new.bind(PlayState.new), 60, 60, true, false);
+        game = new FlxGame(0, 0, InitState.new.bind(PlayState.new.bind("Level_0")), 60, 60, true, false);
         addChild(game);
     }
 }
