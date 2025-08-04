@@ -42,14 +42,14 @@ class InitState extends FlxState
         add(text);
 
         #if ACT_SPLASH
-		video = new HTML5Video(() ->
+        video = new HTML5Video(() ->
         {
             FlxG.sound.onVolumeChange.remove(onVolumeChange);
             initComplete();
         });
         video.smoothing = true;
-		FlxG.addChildBelowMouse(video);
-		FlxG.sound.onVolumeChange.add(onVolumeChange);
+        FlxG.addChildBelowMouse(video);
+        FlxG.sound.onVolumeChange.add(onVolumeChange);
         #end
 
         #else
@@ -86,7 +86,7 @@ class InitState extends FlxState
     }
 
     #if ACT_SPLASH
-	function onVolumeChange(volume:Float):Void
+    function onVolumeChange(volume:Float):Void
     {
         video.volume = volume;
     }

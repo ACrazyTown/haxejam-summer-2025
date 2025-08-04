@@ -22,8 +22,8 @@ class ScanlineBitmapData extends BitmapData {}
 
 class ACTPreloader extends FlxBasePreloader
 {
-	var glow:Bitmap;
-	var bar:Bitmap;
+    var glow:Bitmap;
+    var bar:Bitmap;
     var scanline:Bitmap;
 
     var _centerX:Float;
@@ -40,28 +40,28 @@ class ACTPreloader extends FlxBasePreloader
 
         glow = createBitmap(GlowBitmapData, (glow) ->
         {
-			glow.filters = [new BlurFilter(24, 24, BitmapFilterQuality.HIGH)];
-			glow.y = (_height - glow.height) / 2;
-			glow.scaleX = 0;
+            glow.filters = [new BlurFilter(24, 24, BitmapFilterQuality.HIGH)];
+            glow.y = (_height - glow.height) / 2;
+            glow.scaleX = 0;
             glow.smoothing = true;
         });
         addChild(glow);
 
         bar = createBitmap(BarBitmapData, (bar) ->
         {
-			bar.filters = [new BlurFilter(3, 3, BitmapFilterQuality.HIGH)];
-			bar.y = (_height - bar.height) / 2;
-			bar.scaleX = 0;
+            bar.filters = [new BlurFilter(3, 3, BitmapFilterQuality.HIGH)];
+            bar.y = (_height - bar.height) / 2;
+            bar.scaleX = 0;
             bar.smoothing = true;
-			bar.blendMode = ADD;
+            bar.blendMode = ADD;
         });
         addChild(bar);
 
-		loadBitmapData(ScanlineBitmapData, (scanline) ->
+        loadBitmapData(ScanlineBitmapData, (scanline) ->
         {
-			glow.shader = new OverlayBlend(scanline);
-			bar.shader = new OverlayBlend(scanline);
-		});
+            glow.shader = new OverlayBlend(scanline);
+            bar.shader = new OverlayBlend(scanline);
+        });
     }
 
     override function update(percent:Float) 
@@ -69,43 +69,43 @@ class ACTPreloader extends FlxBasePreloader
         super.update(percent);
 
         var barPadding = (bar.bitmapData.width - (percent * bar.bitmapData.width)) / 2;
-		bar.scaleX = percent;
-		bar.x = 20 + barPadding;
+        bar.scaleX = percent;
+        bar.x = 20 + barPadding;
 
-		var glowPadding = (glow.bitmapData.width - (percent * glow.bitmapData.width)) / 2;
-		glow.scaleX = percent;
-		glow.x = 10 + glowPadding;
+        var glowPadding = (glow.bitmapData.width - (percent * glow.bitmapData.width)) / 2;
+        glow.scaleX = percent;
+        glow.x = 10 + glowPadding;
 
-		if (percent >= 0.9)
-		{
-			var diff = 1 - ((percent - 0.9) / 0.1);
+        if (percent >= 0.9)
+        {
+            var diff = 1 - ((percent - 0.9) / 0.1);
 
-			bar.alpha = diff;
-			glow.alpha = diff;
+            bar.alpha = diff;
+            glow.alpha = diff;
 
-			var barPadY = (bar.bitmapData.height - (diff * bar.bitmapData.height)) / 2;
-			bar.scaleY = diff;
-			bar.y = _centerY - 10 + barPadY;
+            var barPadY = (bar.bitmapData.height - (diff * bar.bitmapData.height)) / 2;
+            bar.scaleY = diff;
+            bar.y = _centerY - 10 + barPadY;
 
-			var glowPadY = (glow.bitmapData.height - (diff * glow.bitmapData.height)) / 2;
-			glow.scaleY = diff;
-			glow.y = _centerY - 20 + glowPadY;
-		}
-		// else
-		// {
-		// 	glow.alpha = random(0.7, 1);
-		// }
+            var glowPadY = (glow.bitmapData.height - (diff * glow.bitmapData.height)) / 2;
+            glow.scaleY = diff;
+            glow.y = _centerY - 20 + glowPadY;
+        }
+        // else
+        // {
+        // 	glow.alpha = random(0.7, 1);
+        // }
     }
 
-	// inline function random(min:Float, max:Float):Float
-	// {
-	// 	return Math.random() * (max - min) + min;
-	// }
+    // inline function random(min:Float, max:Float):Float
+    // {
+    // 	return Math.random() * (max - min) + min;
+    // }
 
-	#if ACT_PRELOADERTEST
+    #if ACT_PRELOADERTEST
     override function onEnterFrame(E:openfl.events.Event):Void
-	{
-		update(Math.abs(Math.sin(openfl.Lib.getTimer() / 1000)));
-	}
-	#end
+    {
+        update(Math.abs(Math.sin(openfl.Lib.getTimer() / 1000)));
+    }
+    #end
 }

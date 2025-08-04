@@ -26,7 +26,7 @@ class Player extends FlxSprite
 
     override function update(elapsed:Float)
     {
-		acceleration.x = 0;
+        acceleration.x = 0;
 
         if (updateMovement)
         {
@@ -41,6 +41,6 @@ class Player extends FlxSprite
         }
 
         // why does movement need to be above super.update?
-		super.update(elapsed);
+        super.update(elapsed);
     }
 }

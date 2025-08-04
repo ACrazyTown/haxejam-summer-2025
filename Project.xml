@@ -51,7 +51,7 @@
     <haxelib name="ant" />
     <haxelib name="echo-flixel" />
     <haxelib name="deepnightLibs" />
-	<haxelib name="ldtk-haxe-api" />
+    <haxelib name="ldtk-haxe-api" />
 
     <!--In case you want to use the addons package-->
     <haxelib name="flixel-addons" />
@@ -65,14 +65,14 @@
     <!-- ______________________________ Haxedefines _____________________________ -->
 
     <!--Allows you to use sound paths with no extension, and the default sound type for that
-		target will be used. If enabled it will use ogg on all targets except flash, which uses mp3.
-		If value is set to any string, that is used for the file extension-->
-	<!--<haxedef name="FLX_DEFAULT_SOUND_EXT" />-->
+        target will be used. If enabled it will use ogg on all targets except flash, which uses mp3.
+        If value is set to any string, that is used for the file extension-->
+    <!--<haxedef name="FLX_DEFAULT_SOUND_EXT" />-->
 
-	<!--Loads from the specified relative or absolute directory. Unlike other boolean flags, this flag should contain a string value.
-		When using assets entirely from outside the build directory, it is wise to disable any 
-		<assets> tags in your project.xml, to reduce your total memory-->
-	<!--<haxedef name="FLX_CUSTOM_ASSETS_DIRECTORY" value="assets" />-->
+    <!--Loads from the specified relative or absolute directory. Unlike other boolean flags, this flag should contain a string value.
+        When using assets entirely from outside the build directory, it is wise to disable any 
+        <assets> tags in your project.xml, to reduce your total memory-->
+    <!--<haxedef name="FLX_CUSTOM_ASSETS_DIRECTORY" value="assets" />-->
 
     <!--Enable the Flixel core recording system-->
     <!--<haxedef name="FLX_RECORD" />-->
@@ -102,7 +102,7 @@
     <haxedef name="FLX_NO_DEBUG" unless="debug" />
 
     <!--Disable the Flixel save system-->
-	<!--<haxedef name="FLX_NO_SAVE" />-->
+    <!--<haxedef name="FLX_NO_SAVE" />-->
 
     <!--Enable this for Nape release builds for a serious peformance improvement-->
     <haxedef name="NAPE_RELEASE_BUILD" unless="debug" />
