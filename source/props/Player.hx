@@ -2,6 +2,7 @@ package props;
 
 // import echo.shape.Rect;
 // import echo.Body;
+import data.Controls;
 import flixel.FlxG;
 import flixel.FlxSprite;
 
@@ -31,9 +32,9 @@ class Player extends FlxSprite
 
 		// offset.x = 5;
 		// offset.y = PLAYER_HEIGHT / 2 - 10;
-		drag.x = 1000;
+		// drag.x = 1600;
 		acceleration.y = 900;
-		maxVelocity.set(240, 600);
+		maxVelocity.set(200, 600);
 
 		width /= 2;
 		offset.x = width / 2;
@@ -41,15 +42,18 @@ class Player extends FlxSprite
 
     override function update(elapsed:Float)
     {
-		acceleration.x = 0;
+		// acceleration.x = 0;
+        velocity.x = 0;
 
         if (updateMovement)
         {
-            if (FlxG.keys.pressed.LEFT)
-				acceleration.x = -drag.x * 2;
-            if (FlxG.keys.pressed.RIGHT)
-				acceleration.x = drag.x * 2;
-            if (FlxG.keys.pressed.UP && isTouching(FLOOR))
+			if (FlxG.keys.anyPressed(Controls.LEFT))
+				velocity.x = -200;
+			    // acceleration.x = -800;
+			if (FlxG.keys.anyPressed(Controls.RIGHT))
+				velocity.x = 200;
+			    // acceleration.x = 800;
+			if (FlxG.keys.anyPressed(Controls.UP) && isTouching(FLOOR))
 				velocity.y = -350;
         }
 

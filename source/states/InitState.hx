@@ -1,5 +1,6 @@
 package states;
 
+import flixel.FlxSprite;
 import lime.system.System;
 import flixel.util.typeLimit.NextState;
 import flixel.text.FlxText;
@@ -90,6 +91,12 @@ class InitState extends FlxState
 
 		FlxG.updateFramerate = highestRefreshRate;
         FlxG.drawFramerate = highestRefreshRate;
+
+        FlxSprite.defaultAntialiasing = false;
+
+        #if web
+        FlxG.stage.window.element.style.imageRendering = "pixelated";
+        #end
     }
 
     function initComplete():Void

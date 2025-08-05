@@ -1,5 +1,6 @@
 package states;
 
+import props.MainFlower;
 import props.Mushroom;
 import props.Entity;
 import flixel.addons.tile.FlxTilemapExt;
@@ -170,8 +171,8 @@ class PlayState extends FlxState
 		{
 			switch (ldtkEntity.identifier.toLowerCase())
 			{
-				case "mushroom":
-					entities.add(new Mushroom(ldtkEntity.pixelX, ldtkEntity.pixelY));
+				case "mushroom": entities.add(new Mushroom(ldtkEntity.pixelX, ldtkEntity.pixelY));
+                case "mainflower": entities.add(new MainFlower(ldtkEntity.pixelX, ldtkEntity.pixelY));
 			}
 		}
 	}
