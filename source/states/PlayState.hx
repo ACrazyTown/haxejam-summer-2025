@@ -1,7 +1,9 @@
 package states;
 
+import props.Mushroom;
+import props.Entity;
+import flixel.addons.tile.FlxTilemapExt;
 import util.LdtkUtil;
-import echo.util.TileMap;
 import flixel.FlxObject;
 import flixel.FlxSprite;
 import flixel.FlxCamera;
@@ -13,7 +15,7 @@ import flixel.tile.FlxTilemap;
 import props.Player;
 import flixel.FlxState;
 
-using echo.FlxEcho;
+// using echo.FlxEcho;
 
 class PlayState extends FlxState
 {
@@ -26,8 +28,8 @@ class PlayState extends FlxState
 
     var uiGroup:FlxGroup;
 
-	var tilemap:FlxGroup;
-    var collisionMap:FlxTilemap;
+	var tilemap:FlxTilemapExt;
+	var entities:FlxTypedGroup<Entity>;
 
     var player:Player;
 
@@ -50,14 +52,14 @@ class PlayState extends FlxState
 		final levelWidth:Int = level.pxWid;
 		final levelHeight:Int = level.pxHei;
 
-		FlxEcho.init({
-			x: 0,
-			y: 0,
-			width: levelWidth,
-			height: levelHeight,
-			gravity_y: 800
-		});
-		FlxEcho.draw_debug = true;
+		// FlxEcho.init({
+		// 	x: 0,
+		// 	y: 0,
+		// 	width: levelWidth,
+		// 	height: levelHeight,
+		// 	gravity_y: 800
+		// });
+		// FlxEcho.draw_debug = true;
 
         camGame = new FlxCamera();
         camGame.bgColor = 0;
@@ -70,13 +72,13 @@ class PlayState extends FlxState
         uiGroup = new FlxGroup();
         add(uiGroup);
 
-		initTilemap();
+		var spawnPos = level.l_Entities.all_PlayerSpawnPos[0];
+		player = new Player(spawnPos.pixelX, spawnPos.pixelY);
+		// player.body.x = spawnPos.pixelX;
+		// player.body.y = spawnPos.pixelY;
+		add(player);
 
-        var spawnPos = level.l_Entities.all_PlayerSpawnPos[0];
-		player = new Player();
-		player.body.x = spawnPos.pixelX;
-		player.body.y = spawnPos.pixelY;
-        add(player);
+		initTilemap();
 
         FlxG.camera.follow(player, PLATFORMER, 1);
 		FlxG.worldBounds.set(0, 0, levelWidth, levelHeight);
@@ -114,7 +116,7 @@ class PlayState extends FlxState
         arrowU.screenCenter(X);
         arrowU.y = 10;
         cameraViewGroup.add(arrowU);
-		player.listen(tilemap);
+		// player.listen(tilemap);
     }
 
     override public function update(elapsed:Float)
@@ -122,6 +124,11 @@ class PlayState extends FlxState
         // FlxG.collide(player, collisionMap);
         super.update(elapsed);
 		// FlxG.collide(player, collisionMap);
+		FlxG.collide(player, tilemap);
+		FlxG.overlap(player, entities, (a:Player, b:Entity) ->
+		{
+			b.onOverlap(a);
+		});
 
         if (FlxG.keys.justPressed.ENTER)
         {
@@ -148,25 +155,23 @@ class PlayState extends FlxState
     }
 	function initTilemap():Void
 	{
-		tilemap = new FlxGroup();
+		tilemap = new FlxTilemapExt();
+		tilemap.setDownwardsGlue(true);
 		add(tilemap);
 
 		final tiles = level.l_Tiles;
-		for (cx in 0...tiles.cWid)
-		{
-			for (cy in 0...tiles.cHei)
-			{
-				if (tiles.hasAnyTileAt(cx, cy))
-				{
-					var tile = tiles.getTileStackAt(cx, cy)[0];
-					var tileSprite = new FlxSprite(cx * tiles.gridSize + tiles.pxTotalOffsetX, cy * tiles.gridSize + tiles.pxTotalOffsetY);
-					tileSprite.frame = tiles.tileset.getFrame(tile.tileId);
-					tileSprite.updateHitbox();
-					tileSprite.add_body({mass: STATIC});
-					tileSprite.add_to_group(tilemap);
+		final tileArray = LdtkUtil.createTileArray(tiles);
+		tilemap.loadMapFromArray(tileArray, tiles.cWid, tiles.cHei, "assets/images/tilestest.png", tiles.gridSize, tiles.gridSize, null, 0, 0);
 
-					trace(tileSprite.x, tileSprite.y);
-				}
+		entities = new FlxTypedGroup<Entity>();
+		add(entities);
+
+		for (ldtkEntity in level.l_Entities.getAllUntyped())
+		{
+			switch (ldtkEntity.identifier.toLowerCase())
+			{
+				case "mushroom":
+					entities.add(new Mushroom(ldtkEntity.pixelX, ldtkEntity.pixelY));
 			}
 		}
 	}
