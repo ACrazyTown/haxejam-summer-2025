@@ -1,5 +1,7 @@
 package states;
 
+import util.LdtkUtil;
+import echo.util.TileMap;
 import flixel.FlxObject;
 import flixel.FlxSprite;
 import flixel.FlxCamera;
@@ -11,22 +13,25 @@ import flixel.tile.FlxTilemap;
 import props.Player;
 import flixel.FlxState;
 
+using echo.FlxEcho;
+
 class PlayState extends FlxState
 {
     var levelID:String;
     var project:LdtkProject;
+	var level:LdtkProject_Level;
 
     var camGame:FlxCamera;
     var camUI:FlxCamera;
 
     var uiGroup:FlxGroup;
 
-    var tilemap:FlxSpriteGroup;
+	var tilemap:FlxGroup;
     var collisionMap:FlxTilemap;
 
     var player:Player;
 
-    var cameraViewMoveSpeed:Int = 300;
+	var cameraViewMoveSpeed:Int = 400;
     var cameraViewMode:Bool;
     var cameraViewObject:FlxObject;
     var cameraViewGroup:FlxGroup;
@@ -40,7 +45,20 @@ class PlayState extends FlxState
     override public function create()
     {
         super.create();
-        // camGame = new ControllableCamera();
+		project = new LdtkProject();
+		level = project.all_worlds.Default.getLevel(levelID);
+		final levelWidth:Int = level.pxWid;
+		final levelHeight:Int = level.pxHei;
+
+		FlxEcho.init({
+			x: 0,
+			y: 0,
+			width: levelWidth,
+			height: levelHeight,
+			gravity_y: 800
+		});
+		FlxEcho.draw_debug = true;
+
         camGame = new FlxCamera();
         camGame.bgColor = 0;
         FlxG.cameras.reset(camGame);
@@ -52,25 +70,17 @@ class PlayState extends FlxState
         uiGroup = new FlxGroup();
         add(uiGroup);
 
-        project = new LdtkProject();
-        var level = project.all_worlds.Default.getLevel(levelID);
-
-        tilemap = new FlxSpriteGroup();
-        add(tilemap);
-        level.l_Tiles.render(tilemap);
-
-        collisionMap = new FlxTilemap();
-        collisionMap.loadMapFromArray(level.l_IntGrid.json.intGridCsv, level.l_IntGrid.cWid, level.l_IntGrid.cHei, "assets/images/tilestest.png", 60, 60);
-        collisionMap.alpha = 0.3;
-        add(collisionMap);
+		initTilemap();
 
         var spawnPos = level.l_Entities.all_PlayerSpawnPos[0];
-        player = new Player(spawnPos.pixelX, spawnPos.pixelY);
+		player = new Player();
+		player.body.x = spawnPos.pixelX;
+		player.body.y = spawnPos.pixelY;
         add(player);
 
         FlxG.camera.follow(player, PLATFORMER, 1);
-        FlxG.worldBounds.set(0, 0, level.l_Tiles.pxWid, level.l_Tiles.pxHei);
-        FlxG.camera.setScrollBounds(0, level.l_Tiles.pxWid, 0, level.l_Tiles.pxHei);
+		FlxG.worldBounds.set(0, 0, levelWidth, levelHeight);
+		FlxG.camera.setScrollBounds(0, levelWidth, 0, levelHeight);
 
         // camera view mode
         cameraViewGroup = new FlxGroup();
@@ -81,6 +91,7 @@ class PlayState extends FlxState
         cameraViewObject = new FlxObject();
         add(cameraViewObject);
 
+		// TODO: up and down arrows are misaligned because their hitbox doesn't change
         var arrowL:FlxSprite = new FlxSprite(0, 0, "assets/images/camviewarrow.png");
         arrowL.screenCenter(Y);
         arrowL.x = 10;
@@ -103,13 +114,14 @@ class PlayState extends FlxState
         arrowU.screenCenter(X);
         arrowU.y = 10;
         cameraViewGroup.add(arrowU);
+		player.listen(tilemap);
     }
 
     override public function update(elapsed:Float)
     {
         // FlxG.collide(player, collisionMap);
         super.update(elapsed);
-        FlxG.collide(player, collisionMap);
+		// FlxG.collide(player, collisionMap);
 
         if (FlxG.keys.justPressed.ENTER)
         {
@@ -134,4 +146,28 @@ class PlayState extends FlxState
                 camera.scroll.y += cameraViewMoveSpeed * elapsed;
         }
     }
+	function initTilemap():Void
+	{
+		tilemap = new FlxGroup();
+		add(tilemap);
+
+		final tiles = level.l_Tiles;
+		for (cx in 0...tiles.cWid)
+		{
+			for (cy in 0...tiles.cHei)
+			{
+				if (tiles.hasAnyTileAt(cx, cy))
+				{
+					var tile = tiles.getTileStackAt(cx, cy)[0];
+					var tileSprite = new FlxSprite(cx * tiles.gridSize + tiles.pxTotalOffsetX, cy * tiles.gridSize + tiles.pxTotalOffsetY);
+					tileSprite.frame = tiles.tileset.getFrame(tile.tileId);
+					tileSprite.updateHitbox();
+					tileSprite.add_body({mass: STATIC});
+					tileSprite.add_to_group(tilemap);
+
+					trace(tileSprite.x, tileSprite.y);
+				}
+			}
+		}
+	}
 }

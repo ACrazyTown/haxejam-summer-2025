@@ -1,5 +1,6 @@
 package states;
 
+import lime.system.System;
 import flixel.util.typeLimit.NextState;
 import flixel.text.FlxText;
 import flixel.FlxG;
@@ -77,7 +78,18 @@ class InitState extends FlxState
 
     function init():Void
     {
-        
+        var highestRefreshRate:Int = 0;
+        for (i in 0...System.numDisplays)
+        {
+            var display = System.getDisplay(i);
+            highestRefreshRate = Std.int(Math.max(highestRefreshRate, display.currentMode.refreshRate));
+        }
+
+        if (highestRefreshRate == 0)
+            highestRefreshRate = 60;
+
+		FlxG.updateFramerate = highestRefreshRate;
+        FlxG.drawFramerate = highestRefreshRate;
     }
 
     function initComplete():Void

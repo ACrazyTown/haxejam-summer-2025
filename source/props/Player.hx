@@ -1,46 +1,59 @@
 package props;
 
+import echo.shape.Rect;
+import echo.Body;
 import flixel.FlxG;
 import flixel.FlxSprite;
+
+using echo.FlxEcho;
 
 class Player extends FlxSprite
 {
     final PLAYER_WIDTH:Int = 90;
     final PLAYER_HEIGHT:Int = 200;
     
+	public var body(default, null):Body;
+
     public var updateMovement:Bool = true;
 
     public function new(x:Float = 0, y:Float = 0)
     {
         super(x, y, "assets/images/Player.png");
 
-        maxVelocity.set(240, 300);
-        drag.x = maxVelocity.x * 8;
-        acceleration.y = maxVelocity.y * 4;
+		body = this.add_body({
+			shape: {
+				type: RECT,
+				width: PLAYER_WIDTH / 2,
+				height: PLAYER_HEIGHT,
+				// offset_y: PLAYER_HEIGHT / 2 - 10, // crack mathemathics
+			}
+		});
 
-        width /= 2;
-        offset.x = width / 2;
-        height = 20;
-        offset.y = PLAYER_HEIGHT - height;
+		offset.x = 5;
+		// offset.y = PLAYER_HEIGHT / 2 - 10;
     }
 
     override function update(elapsed:Float)
     {
-        acceleration.x = 0;
+		body.velocity.x = 0;
 
         if (updateMovement)
         {
             if (FlxG.keys.pressed.LEFT)
-                acceleration.x = -maxVelocity.x * 4;
+				body.velocity.x -= 240;
             if (FlxG.keys.pressed.RIGHT)
-                acceleration.x = maxVelocity.x * 4;
+				body.velocity.x += 240;
             if (FlxG.keys.pressed.UP && isTouching(FLOOR))
-            {
-                velocity.y = -maxVelocity.y * 4;
-            }
+				body.velocity.y -= 330;
         }
 
         // why does movement need to be above super.update?
         super.update(elapsed);
     }
+	// public function setPositionReal(x:Float = 0, y:Float = 0)
+	// {
+	//     var rect:Rect = cast body.shape;
+	//     body.y = height - rect.height;
+	//     body.x = width / 2 - rect.width; // gfmlksvcncxyv
+	// }
 }
