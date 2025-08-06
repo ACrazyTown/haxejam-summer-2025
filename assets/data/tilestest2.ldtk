@@ -69,11 +69,7 @@
 			"useAsyncRender": false,
 			"intGridValues": [
 				{ "value": 1, "identifier": "Solid", "color": "#124E89", "tile": null, "groupUid": 0 },
-				{ "value": 2, "identifier": "Spikes", "color": "#BE4A2F", "tile": null, "groupUid": 0 },
-				{ "value": 3, "identifier": "KeyA", "color": "#68386C", "tile": null, "groupUid": 0 },
-				{ "value": 4, "identifier": "KeyARev", "color": "#B47CB8", "tile": null, "groupUid": 0 },
-				{ "value": 5, "identifier": "KeyB", "color": "#00DB76", "tile": null, "groupUid": 0 },
-				{ "value": 6, "identifier": "KeyBRev", "color": "#397369", "tile": null, "groupUid": 0 }
+				{ "value": 2, "identifier": "Spikes", "color": "#BE4A2F", "tile": null, "groupUid": 0 }
 			],
 			"intGridValuesGroups": [],
 			"autoRuleGroups": [],
