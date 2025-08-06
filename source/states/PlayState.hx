@@ -20,6 +20,8 @@ import flixel.FlxState;
 
 class PlayState extends FlxState
 {
+    public static var instance:PlayState;
+
     var levelID:String;
     var project:LdtkProject;
 	var level:LdtkProject_Level;
@@ -29,7 +31,7 @@ class PlayState extends FlxState
 
     var uiGroup:FlxGroup;
 
-	var tilemap:FlxTilemapExt;
+	public var tilemap:FlxTilemapExt;
 	var entities:FlxTypedGroup<Entity>;
 
     var player:Player;
@@ -42,6 +44,8 @@ class PlayState extends FlxState
     public function new(level:String)
     {
         super();
+        instance = this;
+
         this.levelID = level;
     }
 
@@ -109,15 +113,14 @@ class PlayState extends FlxState
         var arrowD:FlxSprite = arrowR.clone();
         arrowD.angle = 270;
         arrowD.screenCenter(X);
-        arrowD.y = FlxG.height - arrowD.height - 10;
+		arrowD.y = FlxG.height - arrowD.height;
         cameraViewGroup.add(arrowD);
 
         var arrowU:FlxSprite = arrowD.clone();
         arrowU.angle = 90;
         arrowU.screenCenter(X);
-        arrowU.y = 10;
+		// arrowU.y = 10;
         cameraViewGroup.add(arrowU);
-		// player.listen(tilemap);
     }
 
     override public function update(elapsed:Float)
@@ -125,11 +128,14 @@ class PlayState extends FlxState
         // FlxG.collide(player, collisionMap);
         super.update(elapsed);
 		// FlxG.collide(player, collisionMap);
+		FlxG.collide(entities, tilemap, (a:Entity, b:FlxTilemapExt) -> a.onCollision(b));
 		FlxG.collide(player, tilemap);
-		FlxG.overlap(player, entities, (a:Player, b:Entity) ->
+		FlxG.overlap(player, entities, (a:Player, b:Entity) -> b.onOverlap(a));
+
+		if (FlxG.keys.justPressed.R)
 		{
-			b.onOverlap(a);
-		});
+			FlxG.resetState();
+		}
 
         if (FlxG.keys.justPressed.ENTER)
         {
@@ -163,6 +169,7 @@ class PlayState extends FlxState
 		final tiles = level.l_Tiles;
 		final tileArray = LdtkUtil.createTileArray(tiles);
 		tilemap.loadMapFromArray(tileArray, tiles.cWid, tiles.cHei, "assets/images/tilestest.png", tiles.gridSize, tiles.gridSize, null, 0, 0);
+        // tilemap.setTileProperties(0, NONE);
 
 		entities = new FlxTypedGroup<Entity>();
 		add(entities);

@@ -1,16 +1,34 @@
 package props;
 
 import flixel.FlxSprite;
+import flixel.FlxObject;
 
-class Mushroom extends Entity
+class Mushroom extends Plant
 {
     public function new(x:Float = 0, y:Float = 0)
     {
-		super(x, y, "assets/images/mushroom.png");
+		super(x, y);
+
+		loadGraphic("assets/images/mushroom.png");
+
+        // offset.x = width / 1.5;
+        // offset.y = height / 1.5;
     }
 
-	override public function onOverlap(player:Player):Void
+    override function update(elapsed:Float):Void
     {
-        player.velocity.y -= 600;
+        super.update(elapsed);
+    }
+
+	override function onOverlap(object:FlxObject)
+	{
+        super.onOverlap(object);
+
+		var player:Player = cast object;
+
+        if (rooted)
+        {
+			player.velocity.y -= 600;
+        }
     }
 }

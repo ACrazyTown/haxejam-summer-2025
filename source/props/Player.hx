@@ -2,6 +2,7 @@ package props;
 
 // import echo.shape.Rect;
 // import echo.Body;
+import util.Constants;
 import data.Controls;
 import flixel.FlxG;
 import flixel.FlxSprite;
@@ -33,8 +34,8 @@ class Player extends FlxSprite
 		// offset.x = 5;
 		// offset.y = PLAYER_HEIGHT / 2 - 10;
 		// drag.x = 1600;
-		acceleration.y = 900;
-		maxVelocity.set(200, 600);
+		acceleration.y = Constants.GRAVITY;
+		maxVelocity.set(200, Constants.GRAVITY);
 
 		width /= 2;
 		offset.x = width / 2;
