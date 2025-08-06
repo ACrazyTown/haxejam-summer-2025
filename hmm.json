@@ -15,20 +15,6 @@
       "url": "https://github.com/deepnight/deepnightLibs"
     },
     {
-      "name": "echo",
-      "type": "git",
-      "dir": null,
-      "ref": "8dc2cf0",
-      "url": "https://github.com/ACrazyTown/echo"
-    },
-    {
-      "name": "echo-flixel",
-      "type": "git",
-      "dir": null,
-      "ref": "c364e51",
-      "url": "https://github.com/ACrazyTown/echo-flixel"
-    },
-    {
       "name": "flixel",
       "type": "haxelib",
       "version": "6.1.0"
