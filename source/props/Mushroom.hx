@@ -1,5 +1,7 @@
 package props;
 
+import flixel.sound.FlxSound;
+import ant.sound.SoundUtil;
 import flixel.FlxSprite;
 import flixel.FlxObject;
 

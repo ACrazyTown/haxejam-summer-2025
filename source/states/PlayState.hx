@@ -37,7 +37,7 @@ class PlayState extends FlxState
     var player:Player;
 
 	var cameraViewMoveSpeed:Int = 400;
-    var cameraViewMode:Bool;
+    public var cameraViewMode:Bool;
     var cameraViewObject:FlxObject;
     var cameraViewGroup:FlxGroup;
 
@@ -169,7 +169,14 @@ class PlayState extends FlxState
 		final tiles = level.l_Tiles;
 		final tileArray = LdtkUtil.createTileArray(tiles);
 		tilemap.loadMapFromArray(tileArray, tiles.cWid, tiles.cHei, "assets/images/tilestest.png", tiles.gridSize, tiles.gridSize, null, 0, 0);
-        // tilemap.setTileProperties(0, NONE);
+
+        // air tiles are literally empty so no need to draw them
+		var airTilePos = tilemap.getAllTilePos(0);
+        for (pos in airTilePos)
+        {
+            var tile = tilemap.getTileData(pos);
+            tile.ignoreDrawDebug = true;
+        }
 
 		entities = new FlxTypedGroup<Entity>();
 		add(entities);
