@@ -1,5 +1,6 @@
 package states;
 
+import flixel.system.scaleModes.PixelPerfectScaleMode;
 import flixel.FlxSprite;
 import lime.system.System;
 import flixel.util.typeLimit.NextState;
@@ -93,6 +94,8 @@ class InitState extends FlxState
         FlxG.drawFramerate = highestRefreshRate;
 
         FlxSprite.defaultAntialiasing = false;
+        FlxG.stage.quality = LOW;
+        FlxG.scaleMode = new PixelPerfectScaleMode();
 
         #if web
         FlxG.stage.window.element.style.imageRendering = "pixelated";
