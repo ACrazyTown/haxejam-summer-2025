@@ -28,7 +28,7 @@ class Player extends Entity
 		super(x, y);
 		loadGraphic("assets/images/Player.png");
 
-		// drag.x = 1600;
+		drag.x = 1600;
 		acceleration.y = Constants.GRAVITY;
 		maxVelocity.set(200, Constants.GRAVITY);
 
@@ -49,15 +49,15 @@ class Player extends Entity
 
 	function updateMovement():Void
 	{
-		// acceleration.x = 0;
-		velocity.x = 0;
+		acceleration.x = 0;
+		// velocity.x = 0;
 
 		if (FlxG.keys.anyPressed(Controls.LEFT))
-			velocity.x = -200;
-		// acceleration.x = -800;
+			// velocity.x = -200;
+		    acceleration.x = -800;
 		if (FlxG.keys.anyPressed(Controls.RIGHT))
-			velocity.x = 200;
-		// acceleration.x = 800;
+			// velocity.x = 200;
+		    acceleration.x = 800;
 		if (FlxG.keys.anyPressed(Controls.UP) && isTouching(FLOOR))
 			velocity.y = -350;
 	}
@@ -82,7 +82,7 @@ class Player extends Entity
 					throwVelocity.negate();
 
 					var center = carried.getMidpoint();
-					PlayState.instance.trajectory.updateTrajectory(center, throwVelocity, acceleration, drag, maxVelocity);
+					PlayState.instance.trajectory.updateTrajectory(center, throwVelocity, carried.acceleration, carried.drag, carried.maxVelocity);
 					center.put();
 				}
 
@@ -109,6 +109,16 @@ class Player extends Entity
 	override function onCollision(object:FlxObject)
 	{
 		super.onCollision(object);
+
+        if (carried != null)
+        {
+            if (velocity.y > 300)
+            {
+                // lie so it breaks
+                carried.thrown = true;
+                stopCarrying();
+            }
+        }
 	}
 
 	override function onOverlap(object:FlxObject)

@@ -1,5 +1,8 @@
 package states;
 
+import props.Pot;
+import flixel.tweens.FlxEase;
+import flixel.util.FlxColor;
 import flixel.tweens.FlxTween;
 import flixel.util.FlxTimer;
 import props.ExitArea;
@@ -37,6 +40,7 @@ class PlayState extends FlxState
 
 	public var tilemap:FlxTilemapExt;
 	var entities:FlxTypedGroup<Entity>;
+	var walls:FlxTypedGroup<FlxObject>;
 
     var player:Player;
 
@@ -48,6 +52,10 @@ class PlayState extends FlxState
     var cameraViewGroup:FlxGroup;
 
 	final CAMERA_PADDING:Int = 200;
+
+	var runningCutscene:Bool = false;
+
+	var overlay:FlxSprite;
 
     public function new(level:String)
     {
@@ -82,11 +90,16 @@ class PlayState extends FlxState
         camUI.bgColor = 0;
         FlxG.cameras.add(camUI, false);
 
+		FlxG.worldBounds.set(0, 0, levelWidth, levelHeight);
+		FlxG.camera.setScrollBounds(0, levelWidth, -CAMERA_PADDING, levelHeight + CAMERA_PADDING);
+
         uiGroup = new FlxGroup();
         add(uiGroup);
 
 		player = new Player();
 		add(player);
+
+		FlxG.camera.follow(player, PLATFORMER, 1);
 
 		initTilemap();
 
@@ -94,9 +107,7 @@ class PlayState extends FlxState
 		trajectory.exists = false;
 		add(trajectory);
 
-        FlxG.camera.follow(player, PLATFORMER, 1);
-		FlxG.worldBounds.set(0, 0, levelWidth, levelHeight);
-		FlxG.camera.setScrollBounds(0, levelWidth, -CAMERA_PADDING, levelHeight + CAMERA_PADDING);
+		createWalls();
 
         // camera view mode
         cameraViewGroup = new FlxGroup();
@@ -130,12 +141,20 @@ class PlayState extends FlxState
         arrowU.screenCenter(X);
 		arrowU.y = -20;
         cameraViewGroup.add(arrowU);
+		overlay = new FlxSprite(0, 0).makeGraphic(1, 1, FlxColor.BLACK);
+		overlay.scale.set(FlxG.width * 2, FlxG.height * 2);
+		overlay.scrollFactor.set(0, 0);
+		add(overlay);
+
+		FlxTween.tween(overlay, {alpha: 0});
     }
 
     override public function update(elapsed:Float)
 	{
 		super.update(elapsed);
 
+		FlxG.collide(player, walls);
+		FlxG.collide(entities, walls);
 		FlxG.collide(entities, tilemap, (a:Entity, b:FlxTilemapExt) -> a.onCollision(b));
 		FlxG.collide(player, tilemap);
 		FlxG.overlap(player, entities, (a:Player, b:Entity) ->
@@ -149,7 +168,7 @@ class PlayState extends FlxState
 			FlxG.resetState();
 		}
 
-        if (FlxG.keys.justPressed.ENTER)
+		if (FlxG.keys.justPressed.ENTER && !runningCutscene)
         {
             // camGame.updateMovement = !camGame.updateMovement;
             // player.updateMovement = !camGame.updateMovement;
@@ -198,19 +217,37 @@ class PlayState extends FlxState
 		{
 			switch (ldtkEntity.identifier.toLowerCase())
 			{
-				case "playerspawnpos":
-					player.setPosition(ldtkEntity.pixelX, ldtkEntity.pixelY);
+				case "playerspawnpos": player.setPosition(ldtkEntity.pixelX, ldtkEntity.pixelY);
 				case "mushroom": entities.add(new Mushroom(ldtkEntity.pixelX, ldtkEntity.pixelY));
                 case "mainflower": entities.add(new MainFlower(ldtkEntity.pixelX, ldtkEntity.pixelY));
-				case "exitarea":
-					entities.add(new ExitArea(ldtkEntity.pixelX, ldtkEntity.pixelY));
-				default:
-					FlxG.log.warn('Unhandled entity ${ldtkEntity.identifier}');
+				case "exitarea": entities.add(new ExitArea(ldtkEntity.pixelX, ldtkEntity.pixelY));
+                case "pot": entities.add(new Pot(ldtkEntity.pixelX, ldtkEntity.pixelY));
+				default: FlxG.log.warn('Unhandled entity ${ldtkEntity.identifier}');
 			}
 		}
 	}
 
-    var runningCutscene:Bool = false;
+	function createWalls():Void
+	{
+		walls = new FlxTypedGroup<FlxObject>();
+		add(walls);
+
+		var wallL:FlxObject = new FlxObject(-1, 0, 1, level.pxHei);
+		wallL.active = false;
+		wallL.immovable = true;
+		walls.add(wallL);
+
+		var wallU:FlxObject = new FlxObject(0, -1, level.pxWid, 1);
+		wallU.active = false;
+		wallU.immovable = true;
+		walls.add(wallU);
+
+		var wallD:FlxObject = new FlxObject(0, level.pxHei + 1, level.pxWid, 1);
+		wallD.active = false;
+		wallD.immovable = true;
+		walls.add(wallD);
+	}
+
 	public function runExitCutscene():Void
 	{
         if (runningCutscene)
@@ -219,6 +256,7 @@ class PlayState extends FlxState
         runningCutscene = true;
 		player.canMove = false;
         player.velocity.x = 0;
+        player.acceleration.x = 0;
 		// player.acceleration.y = 0;
 		FlxTimer.wait(2, () ->
 		{
@@ -226,13 +264,12 @@ class PlayState extends FlxState
 			for (pos in vinesPos)
 				var t = tilemap.setTileIndex(pos, 0);
 
-			camUI.fade();
-			camGame.fade();
-			player.velocity.x = 200;
+			player.acceleration.x = 200;
+			FlxTween.tween(overlay, {alpha: 1}, 1);
             FlxTimer.wait(2, () -> FlxG.switchState(PlayState.new.bind(getNextLevel())));
 		});
 	}
-    
+
 	function getNextLevel():String
 	{
 		return "Level_0";

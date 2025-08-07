@@ -1,5 +1,6 @@
 package props;
 
+import util.Constants;
 import flixel.sound.FlxSound;
 import ant.sound.SoundUtil;
 import flixel.FlxSprite;
@@ -29,7 +30,7 @@ class Mushroom extends Plant
 			var player:Player = cast object;
 			if (rooted)
 			{
-				player.velocity.y -= 600;
+				player.velocity.y = Constants.MUSHROOM_JUMP_VELOCITY;
 			}
         }
     }
