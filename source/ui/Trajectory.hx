@@ -17,7 +17,6 @@ class Trajectory extends FlxTypedContainer<TrajectoryPoint>
         for (i in 0...numPoints)
         {
             var point:TrajectoryPoint = new TrajectoryPoint(0, 0, pointRadius);
-            // point.visible = false;
             add(point);
         }
     }
@@ -45,17 +44,4 @@ class Trajectory extends FlxTypedContainer<TrajectoryPoint>
         drag.putWeak();
         max.putWeak();
     }
-
-	// https://github.com/HaxeFlixel/flixel/blob/master/flixel/math/FlxVelocity.hx#L232
-    // function applyDrag(v:Float, d:Float)
-    // {
-	// 	if (v - d > 0)
-	// 		v -= d;
-	// 	else if (v + d < 0)
-	// 		v += d;
-	// 	else
-	// 		v = 0;
-
-    //     return v;
-    // }
 }

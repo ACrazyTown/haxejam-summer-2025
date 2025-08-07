@@ -12,6 +12,7 @@ import util.Constants;
 import flixel.FlxObject;
 import flixel.FlxG;
 
+// This probably should've been a group
 class Plant extends Entity
 {
     var carrier:Player;
@@ -30,17 +31,18 @@ class Plant extends Entity
     public function new(x:Float = 0, y:Float = 0)
     {
         super(x, y);
-		drag.set(400, 400);
+		// drag.set(400, 400);
         acceleration.y = Constants.GRAVITY;
         // maxVelocity.y = 600;
 
-        trajectory = new Trajectory(10, 2.5);
+		trajectory = new Trajectory(15, 2.5);
     }
 
     override function update(elapsed:Float)
     {
         super.update(elapsed);
-        trajectory.update(elapsed);
+		if (trajectory.active && trajectory.exists)
+			trajectory.update(elapsed);
 
         if (carried)
         {
@@ -49,9 +51,11 @@ class Plant extends Entity
 
 			if (FlxG.mouse.pressed)
 			{
+				trajectory.exists = true;
+
 				throwPoint.set(FlxG.mouse.x, FlxG.mouse.y);
 
-				var distance = throwPoint.distanceTo(this.getMidpoint()) * 3;
+				var distance = throwPoint.distanceTo(this.getMidpoint()) * 2;
 				FlxVelocityEx.velocityFromAngle(throwVelocity, FlxAngle.degreesBetweenPoint(this, throwPoint), distance);
 				throwVelocity.negate();
 
@@ -66,6 +70,7 @@ class Plant extends Entity
 
 				velocity.copyFrom(throwVelocity);
                 thrown = true;
+				trajectory.exists = false;
 			}
 
 			if (FlxG.keys.justPressed.SPACE) 
@@ -78,7 +83,8 @@ class Plant extends Entity
     override function draw():Void
     {
         super.draw();
-        trajectory.draw();
+		if (trajectory.visible && trajectory.exists)
+			trajectory.draw();
     }
 
     override function onOverlap(object:FlxObject) 
