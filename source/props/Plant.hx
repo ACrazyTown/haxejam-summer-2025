@@ -1,109 +1,27 @@
 package props;
 
-import ui.Trajectory;
-import util.FlxVelocityEx;
-import flixel.group.FlxSpriteContainer;
-import flixel.FlxSprite;
 import ant.sound.SoundUtil;
-import flixel.math.FlxAngle;
-import flixel.math.FlxVelocity;
 import flixel.math.FlxPoint;
 import util.Constants;
 import flixel.FlxObject;
 import flixel.FlxG;
 
-// This probably should've been a group
 class Plant extends Entity
 {
-    var carrier:Player;
+	public var carriable:Bool;
+	public var throwable:Bool;
+	public var thrown:Bool = false;
+	public var carried(default, set):Bool = false;
+	public var carrier:Player;
+	public var canPickup:Bool = false;
+	public var rooted:Bool = false;
 
-    var carried:Bool = false;
-    var canPickup:Bool = false;
-	var rooting:Bool = false;
-    var rooted:Bool = false;
 	var broken:Bool = false;
-	var throwPoint:FlxPoint = FlxPoint.get();
-    var throwVelocity:FlxPoint = FlxPoint.get();
-    var thrown:Bool = false;
-
-    var trajectory:Trajectory;
 
     public function new(x:Float = 0, y:Float = 0)
     {
-        super(x, y);
-		// drag.set(400, 400);
-        acceleration.y = Constants.GRAVITY;
-        // maxVelocity.y = 600;
-
-		trajectory = new Trajectory(15, 2.5);
-    }
-
-    override function update(elapsed:Float)
-    {
-        super.update(elapsed);
-		if (trajectory.active && trajectory.exists)
-			trajectory.update(elapsed);
-
-        if (carried)
-        {
-			x = carrier.x + ((carrier.width - width) / 2);
-			y = carrier.y + ((carrier.height - height) / 2);
-
-			if (FlxG.mouse.pressed)
-			{
-				trajectory.exists = true;
-
-				throwPoint.set(FlxG.mouse.x, FlxG.mouse.y);
-
-				var distance = throwPoint.distanceTo(this.getMidpoint()) * 2;
-				FlxVelocityEx.velocityFromAngle(throwVelocity, FlxAngle.degreesBetweenPoint(this, throwPoint), distance);
-				throwVelocity.negate();
-
-                var center = getMidpoint();
-                trajectory.updateTrajectory(center, throwVelocity, acceleration, drag, maxVelocity);
-                center.put();
-			}
-
-			if (FlxG.mouse.justReleased)
-			{
-				stopCarrying();
-
-				velocity.copyFrom(throwVelocity);
-                thrown = true;
-				trajectory.exists = false;
-			}
-
-			if (FlxG.keys.justPressed.SPACE) 
-            {
-				stopCarrying();
-            }
-        }
-    }
-
-    override function draw():Void
-    {
-        super.draw();
-		if (trajectory.visible && trajectory.exists)
-			trajectory.draw();
-    }
-
-    override function onOverlap(object:FlxObject) 
-    {
-        var player:Player = cast object;
-
-        if (FlxG.keys.justPressed.SPACE && !carried && canPickup && !rooted)
-        {
-            carrier = player;
-            carried = !carried;
-
-            trace("im caryieng");
-
-            if (carried)
-            {
-                moves = false;
-                allowCollisions = NONE;
-            }
-        }
+		super(x, y);
+		acceleration.y = Constants.GRAVITY;
     }
 
     override function onCollision(object:FlxObject)
@@ -115,7 +33,8 @@ class Plant extends Entity
 			if (!broken)
 			{
 				var sound = SoundUtil.playSFXWithPitchRange("assets/sounds/potbreak", 0.6, 0.9, 1.1);
-				sound.proximity(this.x, this.y, carrier, FlxG.width);
+				sound.proximity(x, y, carrier, FlxG.width);
+				carrier = null;
 				broken = true;
 			}
 
@@ -130,12 +49,19 @@ class Plant extends Entity
         velocity.set(0, 0);
 	}
 
-	function stopCarrying():Void
+	@:noCompletion function set_carried(value:Bool):Bool
 	{
-		carried = false;
-		canPickup = false;
+		if (value)
+		{
+			allowCollisions = NONE;
+			moves = false;
+		}
+		else
+		{
+			allowCollisions = ANY;
+			moves = true;
+		}
 
-		moves = true;
-		allowCollisions = ANY;
+		return carried = value;
     }
 }

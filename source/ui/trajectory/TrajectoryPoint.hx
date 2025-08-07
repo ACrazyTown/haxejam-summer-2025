@@ -1,4 +1,4 @@
-package ui;
+package ui.trajectory;
 
 import openfl.display.BitmapData;
 import flixel.graphics.FlxGraphic;

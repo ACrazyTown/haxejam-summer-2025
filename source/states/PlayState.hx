@@ -1,5 +1,6 @@
 package states;
 
+import ui.trajectory.Trajectory;
 import props.MainFlower;
 import props.Mushroom;
 import props.Entity;
@@ -35,6 +36,8 @@ class PlayState extends FlxState
 	var entities:FlxTypedGroup<Entity>;
 
     var player:Player;
+
+	public var trajectory:Trajectory;
 
 	var cameraViewMoveSpeed:Int = 400;
     public var cameraViewMode:Bool;
@@ -85,6 +88,10 @@ class PlayState extends FlxState
 
 		initTilemap();
 
+		trajectory = new Trajectory(15, 2.5);
+		trajectory.exists = false;
+		add(trajectory);
+
         FlxG.camera.follow(player, PLATFORMER, 1);
 		FlxG.worldBounds.set(0, 0, levelWidth, levelHeight);
 		FlxG.camera.setScrollBounds(0, levelWidth, 0, levelHeight);
@@ -113,24 +120,27 @@ class PlayState extends FlxState
         var arrowD:FlxSprite = arrowR.clone();
         arrowD.angle = 270;
         arrowD.screenCenter(X);
-		arrowD.y = FlxG.height - arrowD.height;
+		arrowD.y = FlxG.height - arrowD.height + 20;
         cameraViewGroup.add(arrowD);
 
         var arrowU:FlxSprite = arrowD.clone();
         arrowU.angle = 90;
         arrowU.screenCenter(X);
-		// arrowU.y = 10;
+		arrowU.y = -20;
         cameraViewGroup.add(arrowU);
     }
 
     override public function update(elapsed:Float)
-    {
-        // FlxG.collide(player, collisionMap);
-        super.update(elapsed);
-		// FlxG.collide(player, collisionMap);
+	{
+		super.update(elapsed);
+
 		FlxG.collide(entities, tilemap, (a:Entity, b:FlxTilemapExt) -> a.onCollision(b));
 		FlxG.collide(player, tilemap);
-		FlxG.overlap(player, entities, (a:Player, b:Entity) -> b.onOverlap(a));
+		FlxG.overlap(player, entities, (a:Player, b:Entity) ->
+		{
+			a.onOverlap(b);
+			b.onOverlap(a);
+		});
 
 		if (FlxG.keys.justPressed.R)
 		{
@@ -142,7 +152,7 @@ class PlayState extends FlxState
             // camGame.updateMovement = !camGame.updateMovement;
             // player.updateMovement = !camGame.updateMovement;
             cameraViewMode = !cameraViewMode;
-            player.updateMovement = !cameraViewMode;
+			player.canMove = !cameraViewMode;
             cameraViewGroup.visible = cameraViewMode;
 
             FlxG.camera.target = cameraViewMode ? null : player;
@@ -160,6 +170,7 @@ class PlayState extends FlxState
                 camera.scroll.y += cameraViewMoveSpeed * elapsed;
         }
     }
+
 	function initTilemap():Void
 	{
 		tilemap = new FlxTilemapExt();

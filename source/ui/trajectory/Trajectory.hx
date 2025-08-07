@@ -1,4 +1,4 @@
-package ui;
+package ui.trajectory;
 
 import flixel.math.FlxVelocity;
 import flixel.FlxObject;

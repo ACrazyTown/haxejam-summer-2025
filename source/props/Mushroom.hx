@@ -12,9 +12,7 @@ class Mushroom extends Plant
 		super(x, y);
 
 		loadGraphic("assets/images/mushroom.png");
-
-        // offset.x = width / 1.5;
-        // offset.y = height / 1.5;
+		throwable = true;
     }
 
     override function update(elapsed:Float):Void
@@ -26,11 +24,15 @@ class Mushroom extends Plant
 	{
         super.onOverlap(object);
 
-		var player:Player = cast object;
+		trace(rooted);
 
-        if (rooted)
-        {
-			player.velocity.y -= 600;
+		if (Std.isOfType(object, Player))
+		{
+			var player:Player = cast object;
+			if (rooted)
+			{
+				player.velocity.y -= 600;
+			}
         }
     }
 }

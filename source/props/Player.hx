@@ -1,38 +1,33 @@
 package props;
 
-// import echo.shape.Rect;
-// import echo.Body;
+import flixel.math.FlxAngle;
+import util.FlxVelocityEx;
+import flixel.math.FlxPoint;
+import states.PlayState;
+import flixel.FlxObject;
 import util.Constants;
 import data.Controls;
 import flixel.FlxG;
-import flixel.FlxSprite;
 
-// using echo.FlxEcho;
-
-class Player extends FlxSprite
+class Player extends Entity
 {
     final PLAYER_WIDTH:Int = 90;
     final PLAYER_HEIGHT:Int = 200;
     
-	// public var body(default, null):Body;
+	public var canMove:Bool = true;
 
-    public var updateMovement:Bool = true;
+	// carrying
+	var carried:Plant = null;
+
+	// throwing
+	var throwPoint:FlxPoint = FlxPoint.get();
+	var throwVelocity:FlxPoint = FlxPoint.get();
 
     public function new(x:Float = 0, y:Float = 0)
     {
-        super(x, y, "assets/images/Player.png");
+		super(x, y);
+		loadGraphic("assets/images/Player.png");
 
-		// body = this.add_body({
-		// 	shape: {
-		// 		type: RECT,
-		// 		width: PLAYER_WIDTH / 2,
-		// 		height: PLAYER_HEIGHT,
-		// 		// offset_y: PLAYER_HEIGHT / 2 - 10, // crack mathemathics
-		// 	}
-		// });
-
-		// offset.x = 5;
-		// offset.y = PLAYER_HEIGHT / 2 - 10;
 		// drag.x = 1600;
 		acceleration.y = Constants.GRAVITY;
 		maxVelocity.set(200, Constants.GRAVITY);
@@ -43,22 +38,97 @@ class Player extends FlxSprite
 
     override function update(elapsed:Float)
     {
+		// why does movement need to be above super.update?
+		if (canMove)
+			updateMovement();
+
+		updateCarrying();
+
+		super.update(elapsed);
+	}
+
+	function updateMovement():Void
+	{
 		// acceleration.x = 0;
-        velocity.x = 0;
+		velocity.x = 0;
 
-        if (updateMovement)
-        {
-			if (FlxG.keys.anyPressed(Controls.LEFT))
-				velocity.x = -200;
-			    // acceleration.x = -800;
-			if (FlxG.keys.anyPressed(Controls.RIGHT))
-				velocity.x = 200;
-			    // acceleration.x = 800;
-			if (FlxG.keys.anyPressed(Controls.UP) && isTouching(FLOOR))
-				velocity.y = -350;
-        }
+		if (FlxG.keys.anyPressed(Controls.LEFT))
+			velocity.x = -200;
+		// acceleration.x = -800;
+		if (FlxG.keys.anyPressed(Controls.RIGHT))
+			velocity.x = 200;
+		// acceleration.x = 800;
+		if (FlxG.keys.anyPressed(Controls.UP) && isTouching(FLOOR))
+			velocity.y = -350;
+	}
 
-        // why does movement need to be above super.update?
-        super.update(elapsed);
+	function updateCarrying():Void
+	{
+		if (carried != null)
+		{
+			carried.x = x + ((width - carried.width) / 2);
+			carried.y = y + ((height - carried.height) / 2);
+
+			if (carried.throwable)
+			{
+				if (FlxG.mouse.pressed)
+				{
+					PlayState.instance.trajectory.exists = true;
+
+					throwPoint.set(FlxG.mouse.x, FlxG.mouse.y);
+
+					var distance = throwPoint.distanceTo(carried.getMidpoint()) * 2;
+					FlxVelocityEx.velocityFromAngle(throwVelocity, FlxAngle.degreesBetweenPoint(carried, throwPoint), distance);
+					throwVelocity.negate();
+
+					var center = carried.getMidpoint();
+					PlayState.instance.trajectory.updateTrajectory(center, throwVelocity, acceleration, drag, maxVelocity);
+					center.put();
+				}
+
+				if (FlxG.mouse.justReleased)
+				{
+					carried.thrown = true;
+					carried.velocity.copyFrom(throwVelocity);
+					stopCarrying();
+
+					PlayState.instance.trajectory.exists = false;
+				}
+			}
+
+			// don't feel like adding another bool so just check if we're throwing
+			// by checking if the trajectory is being drawn
+			if (FlxG.keys.justPressed.SPACE && !PlayState.instance.trajectory.exists)
+			{
+				stopCarrying();
+				carried.canPickup = false;
+			}
+		}
+	}
+
+	override function onCollision(object:FlxObject)
+	{
+		super.onCollision(object);
+	}
+
+	override function onOverlap(object:FlxObject)
+	{
+		if (Std.isOfType(object, Plant))
+		{
+			var plant:Plant = cast object;
+
+			if (FlxG.keys.justPressed.SPACE && carried == null && plant.canPickup && !plant.rooted)
+			{
+				carried = plant;
+				carried.carried = true;
+                carried.carrier = this;
+			}
+		}
+	}
+
+	function stopCarrying():Void
+	{
+		carried.carried = false;
+		carried = null;
 	}
 }
