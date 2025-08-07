@@ -24,8 +24,6 @@ class Mushroom extends Plant
 	{
         super.onOverlap(object);
 
-		trace(rooted);
-
 		if (Std.isOfType(object, Player))
 		{
 			var player:Player = cast object;
