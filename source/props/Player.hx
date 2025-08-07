@@ -17,7 +17,7 @@ class Player extends Entity
 	public var canMove:Bool = true;
 
 	// carrying
-	var carried:Plant = null;
+	public var carried:Plant = null;
 
 	// throwing
 	var throwPoint:FlxPoint = FlxPoint.get();
@@ -100,8 +100,8 @@ class Player extends Entity
 			// by checking if the trajectory is being drawn
 			if (FlxG.keys.justPressed.SPACE && !PlayState.instance.trajectory.exists)
 			{
-				stopCarrying();
 				carried.canPickup = false;
+				stopCarrying();
 			}
 		}
 	}

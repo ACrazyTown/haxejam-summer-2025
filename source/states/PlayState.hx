@@ -1,5 +1,8 @@
 package states;
 
+import flixel.tweens.FlxTween;
+import flixel.util.FlxTimer;
+import props.ExitArea;
 import ui.trajectory.Trajectory;
 import props.MainFlower;
 import props.Mushroom;
@@ -44,6 +47,8 @@ class PlayState extends FlxState
     var cameraViewObject:FlxObject;
     var cameraViewGroup:FlxGroup;
 
+	final CAMERA_PADDING:Int = 200;
+
     public function new(level:String)
     {
         super();
@@ -80,10 +85,7 @@ class PlayState extends FlxState
         uiGroup = new FlxGroup();
         add(uiGroup);
 
-		var spawnPos = level.l_Entities.all_PlayerSpawnPos[0];
-		player = new Player(spawnPos.pixelX, spawnPos.pixelY);
-		// player.body.x = spawnPos.pixelX;
-		// player.body.y = spawnPos.pixelY;
+		player = new Player();
 		add(player);
 
 		initTilemap();
@@ -94,7 +96,7 @@ class PlayState extends FlxState
 
         FlxG.camera.follow(player, PLATFORMER, 1);
 		FlxG.worldBounds.set(0, 0, levelWidth, levelHeight);
-		FlxG.camera.setScrollBounds(0, levelWidth, 0, levelHeight);
+		FlxG.camera.setScrollBounds(0, levelWidth, -CAMERA_PADDING, levelHeight + CAMERA_PADDING);
 
         // camera view mode
         cameraViewGroup = new FlxGroup();
@@ -196,9 +198,43 @@ class PlayState extends FlxState
 		{
 			switch (ldtkEntity.identifier.toLowerCase())
 			{
+				case "playerspawnpos":
+					player.setPosition(ldtkEntity.pixelX, ldtkEntity.pixelY);
 				case "mushroom": entities.add(new Mushroom(ldtkEntity.pixelX, ldtkEntity.pixelY));
                 case "mainflower": entities.add(new MainFlower(ldtkEntity.pixelX, ldtkEntity.pixelY));
+				case "exitarea":
+					entities.add(new ExitArea(ldtkEntity.pixelX, ldtkEntity.pixelY));
+				default:
+					FlxG.log.warn('Unhandled entity ${ldtkEntity.identifier}');
 			}
 		}
+	}
+
+    var runningCutscene:Bool = false;
+	public function runExitCutscene():Void
+	{
+        if (runningCutscene)
+            return;
+
+        runningCutscene = true;
+		player.canMove = false;
+        player.velocity.x = 0;
+		// player.acceleration.y = 0;
+		FlxTimer.wait(2, () ->
+		{
+			var vinesPos = tilemap.getAllTilePos(8);
+			for (pos in vinesPos)
+				var t = tilemap.setTileIndex(pos, 0);
+
+			camUI.fade();
+			camGame.fade();
+			player.velocity.x = 200;
+            FlxTimer.wait(2, () -> FlxG.switchState(PlayState.new.bind(getNextLevel())));
+		});
+	}
+    
+	function getNextLevel():String
+	{
+		return "Level_0";
 	}
 }
