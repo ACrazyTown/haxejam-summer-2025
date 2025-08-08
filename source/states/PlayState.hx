@@ -253,17 +253,24 @@ class PlayState extends FlxState
         if (runningCutscene)
             return;
 
-        runningCutscene = true;
+		runningCutscene = true;
+
+
+		var vinesPos = tilemap.getAllTilePos(8);
+		for (pos in vinesPos)
+			tilemap.setTileIndex(pos, 0);
+
+		cameraViewMode = false;
+		cameraViewGroup.visible = false;
+        FlxG.camera.target = player;
+
 		player.canMove = false;
+
         player.velocity.x = 0;
         player.acceleration.x = 0;
 		// player.acceleration.y = 0;
 		FlxTimer.wait(2, () ->
 		{
-			var vinesPos = tilemap.getAllTilePos(8);
-			for (pos in vinesPos)
-				var t = tilemap.setTileIndex(pos, 0);
-
 			player.acceleration.x = 200;
 			FlxTween.tween(overlay, {alpha: 1}, 1);
             FlxTimer.wait(2, () -> FlxG.switchState(PlayState.new.bind(getNextLevel())));
