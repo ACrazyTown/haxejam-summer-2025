@@ -21,7 +21,7 @@
     <!-- ____________________________ Window Settings ___________________________ -->
 
     <!--These window settings apply to all targets-->
-    <window width="1280" height="720" fps="60" background="#000000" hardware="true" vsync="false" />
+    <window width="1280" height="720" fps="60" background="#000000" hardware="true" vsync="true" />
 
     <!--HTML5-specific-->
     <window if="html5" resizable="true" />
@@ -49,7 +49,7 @@
 
     <haxelib name="flixel" />
     <haxelib name="ant" />
-    <haxelib name="echo-flixel" />
+    <!-- <haxelib name="echo-flixel" /> -->
     <haxelib name="deepnightLibs" />
     <haxelib name="ldtk-haxe-api" />
 
@@ -60,14 +60,15 @@
     <!--<haxelib name="flixel-ui" />-->
 
     <!--In case you want to use nape with flixel-->
-    <!--<haxelib name="nape-haxe4" />-->
+    <!-- <haxelib name="nape-haxe4" /> -->
 
     <!-- ______________________________ Haxedefines _____________________________ -->
 
     <!--Allows you to use sound paths with no extension, and the default sound type for that
         target will be used. If enabled it will use ogg on all targets except flash, which uses mp3.
         If value is set to any string, that is used for the file extension-->
-    <!--<haxedef name="FLX_DEFAULT_SOUND_EXT" />-->
+    <haxedef name="FLX_DEFAULT_SOUND_EXT" value="mp3" if="web" />
+    <haxedef name="FLX_DEFAULT_SOUND_EXT" value="ogg" if="desktop" unless="web" />
 
     <!--Loads from the specified relative or absolute directory. Unlike other boolean flags, this flag should contain a string value.
         When using assets entirely from outside the build directory, it is wise to disable any 

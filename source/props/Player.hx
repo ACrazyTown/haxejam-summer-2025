@@ -1,46 +1,170 @@
 package props;
 
+import flixel.graphics.frames.FlxAtlasFrames;
+import flixel.math.FlxAngle;
+import util.FlxVelocityEx;
+import flixel.math.FlxPoint;
+import states.PlayState;
+import flixel.FlxObject;
+import util.Constants;
+import data.Controls;
 import flixel.FlxG;
-import flixel.FlxSprite;
 
-class Player extends FlxSprite
+class Player extends Entity
 {
     final PLAYER_WIDTH:Int = 90;
     final PLAYER_HEIGHT:Int = 200;
     
-    public var updateMovement:Bool = true;
+	public var canMove:Bool = true;
+
+	// carrying
+	public var carried:Plant = null;
+
+	// throwing
+	var throwPoint:FlxPoint = FlxPoint.get();
+	var throwVelocity:FlxPoint = FlxPoint.get();
 
     public function new(x:Float = 0, y:Float = 0)
     {
-        super(x, y, "assets/images/Player.png");
+		super(x, y);
+		frames = FlxAtlasFrames.fromSparrow("assets/images/playeranim.png", "assets/images/playeranim.xml");
 
-        maxVelocity.set(240, 300);
-        drag.x = maxVelocity.x * 8;
-        acceleration.y = maxVelocity.y * 4;
+		animation.addByPrefix("idleL", "idle", 6);
+		animation.addByPrefix("idleR", "idle", 6, false, true);
+		animation.addByPrefix("walkL", "walk", 6, false);
+		animation.addByPrefix("walkR", "walk", 6, false, true);
 
-        width /= 2;
-        offset.x = width / 2;
-        height = 20;
-        offset.y = PLAYER_HEIGHT - height;
+		// drag.x = 400;
+		acceleration.y = Constants.GRAVITY;
+		maxVelocity.set(Constants.PLAYER_WALK_VELOCITY, Constants.GRAVITY);
+
+		width /= 2;
+		offset.x = width / 2;
     }
 
     override function update(elapsed:Float)
     {
-        acceleration.x = 0;
+		// why does movement need to be above super.update?
+		updateMovement();
+		updateCarrying();
 
-        if (updateMovement)
+		super.update(elapsed);
+	}
+
+	var flipIdle:Bool = false;
+	function updateMovement():Void
+	{
+		velocity.x = 0;
+
+		if (canMove)
+		{
+			var leftP = FlxG.keys.anyPressed(Controls.LEFT);
+			var rightP = FlxG.keys.anyPressed(Controls.RIGHT);
+			var upP = FlxG.keys.anyPressed(Controls.UP);
+
+			if (leftP)
+			{
+				velocity.x = -Constants.PLAYER_WALK_VELOCITY;
+				animation.play("walkL");
+				flipIdle = false;
+			}
+
+			if (rightP)
+			{
+				velocity.x = Constants.PLAYER_WALK_VELOCITY;
+				animation.play("walkR");
+				flipIdle = true;
+			}
+
+			if (upP && isTouching(FLOOR))
+			{
+				velocity.y = Constants.PLAYER_JUMP_VELOCITY;
+			}
+
+			if (!leftP && !rightP && !upP)
+			{
+				animation.play('idle${flipIdle ? "R" : "L"}');
+			}
+		}
+	}
+
+	function updateCarrying():Void
+	{
+		if (carried != null)
+		{
+			carried.x = x + ((width - carried.width) / 2);
+			carried.y = y + ((height - carried.height) / 2);
+
+			if (carried.throwable)
+			{
+				if (FlxG.mouse.pressed)
+				{
+					PlayState.instance.trajectory.exists = true;
+
+					throwPoint.set(FlxG.mouse.x, FlxG.mouse.y);
+
+					var distance = throwPoint.distanceTo(carried.getMidpoint()) * 2;
+					FlxVelocityEx.velocityFromAngle(throwVelocity, FlxAngle.degreesBetweenPoint(carried, throwPoint), distance);
+					throwVelocity.negate();
+
+					var center = carried.getMidpoint();
+					PlayState.instance.trajectory.updateTrajectory(center, throwVelocity, carried.acceleration, carried.drag, carried.maxVelocity);
+					center.put();
+				}
+
+				if (FlxG.mouse.justReleased)
+				{
+					carried.thrown = true;
+					carried.velocity.copyFrom(throwVelocity);
+					stopCarrying();
+
+					PlayState.instance.trajectory.exists = false;
+				}
+			}
+
+			// don't feel like adding another bool so just check if we're throwing
+			// by checking if the trajectory is being drawn
+			if (FlxG.keys.justPressed.SPACE && !PlayState.instance.trajectory.exists)
+			{
+				carried.canPickup = false;
+				stopCarrying();
+			}
+		}
+	}
+
+	override function onCollision(object:FlxObject)
+	{
+		super.onCollision(object);
+
+        if (carried != null)
         {
-            if (FlxG.keys.pressed.LEFT)
-                acceleration.x = -maxVelocity.x * 4;
-            if (FlxG.keys.pressed.RIGHT)
-                acceleration.x = maxVelocity.x * 4;
-            if (FlxG.keys.pressed.UP && isTouching(FLOOR))
+            if (velocity.y > 300)
             {
-                velocity.y = -maxVelocity.y * 4;
+                // lie so it breaks
+                carried.thrown = true;
+                stopCarrying();
             }
         }
+	}
 
-        // why does movement need to be above super.update?
-        super.update(elapsed);
-    }
+	override function onOverlap(object:FlxObject)
+	{
+		if (Std.isOfType(object, Plant))
+		{
+			var plant:Plant = cast object;
+
+			if (FlxG.keys.justPressed.SPACE && carried == null && plant.canPickup && !plant.rooted)
+			{
+				carried = plant;
+				carried.carried = true;
+                carried.carrier = this;
+			}
+		}
+	}
+
+	function stopCarrying():Void
+	{
+		carried.carried = false;
+		carried = null;
+	}
 }

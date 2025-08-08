@@ -1,0 +1,37 @@
+package props;
+
+import util.Constants;
+import flixel.sound.FlxSound;
+import ant.sound.SoundUtil;
+import flixel.FlxSprite;
+import flixel.FlxObject;
+
+class Mushroom extends Plant
+{
+    public function new(x:Float = 0, y:Float = 0)
+    {
+		super(x, y);
+
+		loadGraphic("assets/images/mushroom.png");
+		throwable = true;
+    }
+
+    override function update(elapsed:Float):Void
+    {
+        super.update(elapsed);
+    }
+
+	override function onOverlap(object:FlxObject)
+	{
+        super.onOverlap(object);
+
+		if (Std.isOfType(object, Player))
+		{
+			var player:Player = cast object;
+			if (rooted)
+			{
+				player.velocity.y = Constants.MUSHROOM_JUMP_VELOCITY;
+			}
+        }
+    }
+}

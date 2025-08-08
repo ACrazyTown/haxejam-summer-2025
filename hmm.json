@@ -4,7 +4,7 @@
       "name": "ant",
       "type": "git",
       "dir": null,
-      "ref": "e109325",
+      "ref": "1c96771",
       "url": "https://github.com/ACrazyTown/ant"
     },
     {
@@ -13,20 +13,6 @@
       "dir": null,
       "ref": "4428a03",
       "url": "https://github.com/deepnight/deepnightLibs"
-    },
-    {
-      "name": "echo",
-      "type": "git",
-      "dir": null,
-      "ref": "8dc2cf0",
-      "url": "https://github.com/ACrazyTown/echo"
-    },
-    {
-      "name": "echo-flixel",
-      "type": "git",
-      "dir": null,
-      "ref": "c364e51",
-      "url": "https://github.com/ACrazyTown/echo-flixel"
     },
     {
       "name": "flixel",

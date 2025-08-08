@@ -1,5 +1,17 @@
 package states;
 
+import props.Pot;
+import flixel.tweens.FlxEase;
+import flixel.util.FlxColor;
+import flixel.tweens.FlxTween;
+import flixel.util.FlxTimer;
+import props.ExitArea;
+import ui.trajectory.Trajectory;
+import props.MainFlower;
+import props.Mushroom;
+import props.Entity;
+import flixel.addons.tile.FlxTilemapExt;
+import util.LdtkUtil;
 import flixel.FlxObject;
 import flixel.FlxSprite;
 import flixel.FlxCamera;
@@ -11,36 +23,65 @@ import flixel.tile.FlxTilemap;
 import props.Player;
 import flixel.FlxState;
 
+// using echo.FlxEcho;
+
 class PlayState extends FlxState
 {
+    public static var instance:PlayState;
+
     var levelID:String;
     var project:LdtkProject;
+	var level:LdtkProject_Level;
 
     var camGame:FlxCamera;
     var camUI:FlxCamera;
 
     var uiGroup:FlxGroup;
 
-    var tilemap:FlxSpriteGroup;
-    var collisionMap:FlxTilemap;
+	public var tilemap:FlxTilemapExt;
+	var entities:FlxTypedGroup<Entity>;
+	var walls:FlxTypedGroup<FlxObject>;
 
     var player:Player;
 
-    var cameraViewMoveSpeed:Int = 300;
-    var cameraViewMode:Bool;
+	public var trajectory:Trajectory;
+
+	var cameraViewMoveSpeed:Int = 400;
+    public var cameraViewMode:Bool;
     var cameraViewObject:FlxObject;
     var cameraViewGroup:FlxGroup;
+
+	final CAMERA_PADDING:Int = 200;
+
+	var runningCutscene:Bool = false;
+
+	var overlay:FlxSprite;
 
     public function new(level:String)
     {
         super();
+        instance = this;
+
         this.levelID = level;
     }
 
     override public function create()
     {
         super.create();
-        // camGame = new ControllableCamera();
+		project = new LdtkProject();
+		level = project.all_worlds.Default.getLevel(levelID);
+		final levelWidth:Int = level.pxWid;
+		final levelHeight:Int = level.pxHei;
+
+		// FlxEcho.init({
+		// 	x: 0,
+		// 	y: 0,
+		// 	width: levelWidth,
+		// 	height: levelHeight,
+		// 	gravity_y: 800
+		// });
+		// FlxEcho.draw_debug = true;
+
         camGame = new FlxCamera();
         camGame.bgColor = 0;
         FlxG.cameras.reset(camGame);
@@ -49,28 +90,24 @@ class PlayState extends FlxState
         camUI.bgColor = 0;
         FlxG.cameras.add(camUI, false);
 
+		FlxG.worldBounds.set(0, 0, levelWidth, levelHeight);
+		FlxG.camera.setScrollBounds(0, levelWidth, -CAMERA_PADDING, levelHeight + CAMERA_PADDING);
+
         uiGroup = new FlxGroup();
         add(uiGroup);
 
-        project = new LdtkProject();
-        var level = project.all_worlds.Default.getLevel(levelID);
+		player = new Player();
+		add(player);
 
-        tilemap = new FlxSpriteGroup();
-        add(tilemap);
-        level.l_Tiles.render(tilemap);
+		FlxG.camera.follow(player, PLATFORMER, 1);
 
-        collisionMap = new FlxTilemap();
-        collisionMap.loadMapFromArray(level.l_IntGrid.json.intGridCsv, level.l_IntGrid.cWid, level.l_IntGrid.cHei, "assets/images/tilestest.png", 60, 60);
-        collisionMap.alpha = 0.3;
-        add(collisionMap);
+		initTilemap();
 
-        var spawnPos = level.l_Entities.all_PlayerSpawnPos[0];
-        player = new Player(spawnPos.pixelX, spawnPos.pixelY);
-        add(player);
+		trajectory = new Trajectory(15, 2.5);
+		trajectory.exists = false;
+		add(trajectory);
 
-        FlxG.camera.follow(player, PLATFORMER, 1);
-        FlxG.worldBounds.set(0, 0, level.l_Tiles.pxWid, level.l_Tiles.pxHei);
-        FlxG.camera.setScrollBounds(0, level.l_Tiles.pxWid, 0, level.l_Tiles.pxHei);
+		createWalls();
 
         // camera view mode
         cameraViewGroup = new FlxGroup();
@@ -81,6 +118,7 @@ class PlayState extends FlxState
         cameraViewObject = new FlxObject();
         add(cameraViewObject);
 
+		// TODO: up and down arrows are misaligned because their hitbox doesn't change
         var arrowL:FlxSprite = new FlxSprite(0, 0, "assets/images/camviewarrow.png");
         arrowL.screenCenter(Y);
         arrowL.x = 10;
@@ -95,28 +133,47 @@ class PlayState extends FlxState
         var arrowD:FlxSprite = arrowR.clone();
         arrowD.angle = 270;
         arrowD.screenCenter(X);
-        arrowD.y = FlxG.height - arrowD.height - 10;
+		arrowD.y = FlxG.height - arrowD.height + 20;
         cameraViewGroup.add(arrowD);
 
         var arrowU:FlxSprite = arrowD.clone();
         arrowU.angle = 90;
         arrowU.screenCenter(X);
-        arrowU.y = 10;
+		arrowU.y = -20;
         cameraViewGroup.add(arrowU);
+		overlay = new FlxSprite(0, 0).makeGraphic(1, 1, FlxColor.BLACK);
+		overlay.scale.set(FlxG.width * 2, FlxG.height * 2);
+		overlay.scrollFactor.set(0, 0);
+		add(overlay);
+
+		FlxTween.tween(overlay, {alpha: 0});
     }
 
     override public function update(elapsed:Float)
-    {
-        // FlxG.collide(player, collisionMap);
-        super.update(elapsed);
-        FlxG.collide(player, collisionMap);
+	{
+		super.update(elapsed);
 
-        if (FlxG.keys.justPressed.ENTER)
+		FlxG.collide(player, walls);
+		FlxG.collide(entities, walls);
+		FlxG.collide(entities, tilemap, (a:Entity, b:FlxTilemapExt) -> a.onCollision(b));
+		FlxG.collide(player, tilemap);
+		FlxG.overlap(player, entities, (a:Player, b:Entity) ->
+		{
+			a.onOverlap(b);
+			b.onOverlap(a);
+		});
+
+		if (FlxG.keys.justPressed.R)
+		{
+			FlxG.resetState();
+		}
+
+		if (FlxG.keys.justPressed.ENTER && !runningCutscene)
         {
             // camGame.updateMovement = !camGame.updateMovement;
             // player.updateMovement = !camGame.updateMovement;
             cameraViewMode = !cameraViewMode;
-            player.updateMovement = !cameraViewMode;
+			player.canMove = !cameraViewMode;
             cameraViewGroup.visible = cameraViewMode;
 
             FlxG.camera.target = cameraViewMode ? null : player;
@@ -134,4 +191,93 @@ class PlayState extends FlxState
                 camera.scroll.y += cameraViewMoveSpeed * elapsed;
         }
     }
+
+	function initTilemap():Void
+	{
+		tilemap = new FlxTilemapExt();
+		tilemap.setDownwardsGlue(true);
+		add(tilemap);
+
+		final tiles = level.l_Tiles;
+		final tileArray = LdtkUtil.createTileArray(tiles);
+		tilemap.loadMapFromArray(tileArray, tiles.cWid, tiles.cHei, "assets/images/tilestest.png", tiles.gridSize, tiles.gridSize, null, 0, 0);
+
+        // air tiles are literally empty so no need to draw them
+		var airTilePos = tilemap.getAllTilePos(0);
+        for (pos in airTilePos)
+        {
+            var tile = tilemap.getTileData(pos);
+            tile.ignoreDrawDebug = true;
+        }
+
+		entities = new FlxTypedGroup<Entity>();
+		add(entities);
+
+		for (ldtkEntity in level.l_Entities.getAllUntyped())
+		{
+			switch (ldtkEntity.identifier.toLowerCase())
+			{
+				case "playerspawnpos": player.setPosition(ldtkEntity.pixelX, ldtkEntity.pixelY);
+				case "mushroom": entities.add(new Mushroom(ldtkEntity.pixelX, ldtkEntity.pixelY));
+                case "mainflower": entities.add(new MainFlower(ldtkEntity.pixelX, ldtkEntity.pixelY));
+				case "exitarea": entities.add(new ExitArea(ldtkEntity.pixelX, ldtkEntity.pixelY));
+                case "pot": entities.add(new Pot(ldtkEntity.pixelX, ldtkEntity.pixelY));
+				default: FlxG.log.warn('Unhandled entity ${ldtkEntity.identifier}');
+			}
+		}
+	}
+
+	function createWalls():Void
+	{
+		walls = new FlxTypedGroup<FlxObject>();
+		add(walls);
+
+		var wallL:FlxObject = new FlxObject(-1, 0, 1, level.pxHei);
+		wallL.active = false;
+		wallL.immovable = true;
+		walls.add(wallL);
+
+		var wallU:FlxObject = new FlxObject(0, -1, level.pxWid, 1);
+		wallU.active = false;
+		wallU.immovable = true;
+		walls.add(wallU);
+
+		var wallD:FlxObject = new FlxObject(0, level.pxHei + 1, level.pxWid, 1);
+		wallD.active = false;
+		wallD.immovable = true;
+		walls.add(wallD);
+	}
+
+	public function runExitCutscene():Void
+	{
+        if (runningCutscene)
+            return;
+
+		runningCutscene = true;
+
+
+		var vinesPos = tilemap.getAllTilePos(8);
+		for (pos in vinesPos)
+			tilemap.setTileIndex(pos, 0);
+
+		cameraViewMode = false;
+		cameraViewGroup.visible = false;
+        FlxG.camera.target = player;
+
+		player.canMove = false;
+
+        player.velocity.x = 0;        
+		FlxTimer.wait(2, () ->
+		{
+            player.animation.play("walkR");
+			player.velocity.x = 200;
+			FlxTween.tween(overlay, {alpha: 1}, 1);
+            FlxTimer.wait(2, () -> FlxG.switchState(PlayState.new.bind(getNextLevel())));
+		});
+	}
+
+	function getNextLevel():String
+	{
+		return "Level_0";
+	}
 }
