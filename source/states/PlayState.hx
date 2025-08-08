@@ -266,12 +266,11 @@ class PlayState extends FlxState
 
 		player.canMove = false;
 
-        player.velocity.x = 0;
-        player.acceleration.x = 0;
-		// player.acceleration.y = 0;
+        player.velocity.x = 0;        
 		FlxTimer.wait(2, () ->
 		{
-			player.acceleration.x = 200;
+            player.animation.play("walkR");
+			player.velocity.x = 200;
 			FlxTween.tween(overlay, {alpha: 1}, 1);
             FlxTimer.wait(2, () -> FlxG.switchState(PlayState.new.bind(getNextLevel())));
 		});

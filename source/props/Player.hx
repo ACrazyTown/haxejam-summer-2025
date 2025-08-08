@@ -1,5 +1,6 @@
 package props;
 
+import flixel.graphics.frames.FlxAtlasFrames;
 import flixel.math.FlxAngle;
 import util.FlxVelocityEx;
 import flixel.math.FlxPoint;
@@ -26,11 +27,16 @@ class Player extends Entity
     public function new(x:Float = 0, y:Float = 0)
     {
 		super(x, y);
-		loadGraphic("assets/images/Player.png");
+		frames = FlxAtlasFrames.fromSparrow("assets/images/playeranim.png", "assets/images/playeranim.xml");
 
-		drag.x = 1600;
+		animation.addByPrefix("idleL", "idle", 6);
+		animation.addByPrefix("idleR", "idle", 6, false, true);
+		animation.addByPrefix("walkL", "walk", 6, false);
+		animation.addByPrefix("walkR", "walk", 6, false, true);
+
+		// drag.x = 400;
 		acceleration.y = Constants.GRAVITY;
-		maxVelocity.set(200, Constants.GRAVITY);
+		maxVelocity.set(Constants.PLAYER_WALK_VELOCITY, Constants.GRAVITY);
 
 		width /= 2;
 		offset.x = width / 2;
@@ -39,27 +45,47 @@ class Player extends Entity
     override function update(elapsed:Float)
     {
 		// why does movement need to be above super.update?
-		if (canMove)
-			updateMovement();
-
+		updateMovement();
 		updateCarrying();
 
 		super.update(elapsed);
 	}
 
+	var flipIdle:Bool = false;
 	function updateMovement():Void
 	{
-		acceleration.x = 0;
-		// velocity.x = 0;
+		velocity.x = 0;
 
-		if (FlxG.keys.anyPressed(Controls.LEFT))
-			// velocity.x = -200;
-		    acceleration.x = -800;
-		if (FlxG.keys.anyPressed(Controls.RIGHT))
-			// velocity.x = 200;
-		    acceleration.x = 800;
-		if (FlxG.keys.anyPressed(Controls.UP) && isTouching(FLOOR))
-			velocity.y = -350;
+		if (canMove)
+		{
+			var leftP = FlxG.keys.anyPressed(Controls.LEFT);
+			var rightP = FlxG.keys.anyPressed(Controls.RIGHT);
+			var upP = FlxG.keys.anyPressed(Controls.UP);
+
+			if (leftP)
+			{
+				velocity.x = -Constants.PLAYER_WALK_VELOCITY;
+				animation.play("walkL");
+				flipIdle = false;
+			}
+
+			if (rightP)
+			{
+				velocity.x = Constants.PLAYER_WALK_VELOCITY;
+				animation.play("walkR");
+				flipIdle = true;
+			}
+
+			if (upP && isTouching(FLOOR))
+			{
+				velocity.y = Constants.PLAYER_JUMP_VELOCITY;
+			}
+
+			if (!leftP && !rightP && !upP)
+			{
+				animation.play('idle${flipIdle ? "R" : "L"}');
+			}
+		}
 	}
 
 	function updateCarrying():Void
