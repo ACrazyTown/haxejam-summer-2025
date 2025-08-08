@@ -49,7 +49,7 @@ class PlayState extends FlxState
     var cameraViewObject:FlxObject;
     var cameraViewGroup:FlxGroup;
 
-	final CAMERA_PADDING:Int = 200;
+	final CAMERA_PADDING:Int = 50;
 
 	var runningCutscene:Bool = false;
 
@@ -71,15 +71,6 @@ class PlayState extends FlxState
 		level = project.all_worlds.Default.getLevel(levelID);
 		final levelWidth:Int = level.pxWid;
 		final levelHeight:Int = level.pxHei;
-
-		// FlxEcho.init({
-		// 	x: 0,
-		// 	y: 0,
-		// 	width: levelWidth,
-		// 	height: levelHeight,
-		// 	gravity_y: 800
-		// });
-		// FlxEcho.draw_debug = true;
 
         camGame = new FlxCamera();
         camGame.bgColor = 0;
@@ -272,7 +263,7 @@ class PlayState extends FlxState
 			FlxTween.tween(overlay, {alpha: 1}, 1);
             FlxTimer.wait(2, () -> 
             {
-                var nextLevel = levelNum++;
+				var nextLevel = levelNum + 1;
                 var nextState = nextLevel > 10 ? PlayState.new.bind("TODO") : PlayState.new.bind('Level_$nextLevel');
                 FlxG.switchState(nextState);
             });
