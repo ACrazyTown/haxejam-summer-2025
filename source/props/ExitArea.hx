@@ -22,7 +22,7 @@ class ExitArea extends Entity
             {
                 // TODO: DIALOGUE REMINDER INDICATOR THING
             }
-            else if (Std.isOfType(player.carried, MainFlower))
+            else if (Std.isOfType(player.carried, Rose))
             {
 				PlayState.instance.runExitCutscene();
             }
