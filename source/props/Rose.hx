@@ -2,7 +2,7 @@ package props;
 
 import flixel.FlxG;
 
-class MainFlower extends Plant
+class Rose extends Plant
 {
     public function new(x:Float = 0, y:Float = 0)
     {

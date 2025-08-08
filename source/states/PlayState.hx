@@ -1,13 +1,12 @@
 package states;
 
+import props.Rose;
 import props.Pot;
-import flixel.tweens.FlxEase;
 import flixel.util.FlxColor;
 import flixel.tweens.FlxTween;
 import flixel.util.FlxTimer;
 import props.ExitArea;
 import ui.trajectory.Trajectory;
-import props.MainFlower;
 import props.Mushroom;
 import props.Entity;
 import flixel.addons.tile.FlxTilemapExt;
@@ -17,9 +16,7 @@ import flixel.FlxSprite;
 import flixel.FlxCamera;
 import flixel.group.FlxGroup;
 import flixel.FlxG;
-import flixel.group.FlxSpriteGroup;
 import data.LdtkProject;
-import flixel.tile.FlxTilemap;
 import props.Player;
 import flixel.FlxState;
 
@@ -30,6 +27,7 @@ class PlayState extends FlxState
     public static var instance:PlayState;
 
     var levelID:String;
+    var levelNum:Int;
     var project:LdtkProject;
 	var level:LdtkProject_Level;
 
@@ -63,6 +61,7 @@ class PlayState extends FlxState
         instance = this;
 
         this.levelID = level;
+		this.levelNum = Std.parseInt(levelID.split("_")[1]);
     }
 
     override public function create()
@@ -200,10 +199,10 @@ class PlayState extends FlxState
 
 		final tiles = level.l_Tiles;
 		final tileArray = LdtkUtil.createTileArray(tiles);
-		tilemap.loadMapFromArray(tileArray, tiles.cWid, tiles.cHei, "assets/images/tilestest.png", tiles.gridSize, tiles.gridSize, null, 0, 0);
+		tilemap.loadMapFromArray(tileArray, tiles.cWid, tiles.cHei, "assets/images/tilestest2.png", tiles.gridSize, tiles.gridSize, null, 0, 0);
 
         // air tiles are literally empty so no need to draw them
-		var airTilePos = tilemap.getAllTilePos(0);
+		var airTilePos = tilemap.getAllTilePos(29); // oops
         for (pos in airTilePos)
         {
             var tile = tilemap.getTileData(pos);
@@ -219,7 +218,7 @@ class PlayState extends FlxState
 			{
 				case "playerspawnpos": player.setPosition(ldtkEntity.pixelX, ldtkEntity.pixelY);
 				case "mushroom": entities.add(new Mushroom(ldtkEntity.pixelX, ldtkEntity.pixelY));
-                case "mainflower": entities.add(new MainFlower(ldtkEntity.pixelX, ldtkEntity.pixelY));
+                case "rose": entities.add(new Rose(ldtkEntity.pixelX, ldtkEntity.pixelY));
 				case "exitarea": entities.add(new ExitArea(ldtkEntity.pixelX, ldtkEntity.pixelY));
                 case "pot": entities.add(new Pot(ldtkEntity.pixelX, ldtkEntity.pixelY));
 				default: FlxG.log.warn('Unhandled entity ${ldtkEntity.identifier}');
@@ -255,7 +254,6 @@ class PlayState extends FlxState
 
 		runningCutscene = true;
 
-
 		var vinesPos = tilemap.getAllTilePos(8);
 		for (pos in vinesPos)
 			tilemap.setTileIndex(pos, 0);
@@ -272,12 +270,12 @@ class PlayState extends FlxState
             player.animation.play("walkR");
 			player.velocity.x = 200;
 			FlxTween.tween(overlay, {alpha: 1}, 1);
-            FlxTimer.wait(2, () -> FlxG.switchState(PlayState.new.bind(getNextLevel())));
+            FlxTimer.wait(2, () -> 
+            {
+                var nextLevel = levelNum++;
+                var nextState = nextLevel > 10 ? PlayState.new.bind("TODO") : PlayState.new.bind('Level_$nextLevel');
+                FlxG.switchState(nextState);
+            });
 		});
-	}
-
-	function getNextLevel():String
-	{
-		return "Level_0";
 	}
 }
