@@ -1,5 +1,6 @@
 package states;
 
+import flixel.FlxObject;
 import flixel.system.scaleModes.PixelPerfectScaleMode;
 import flixel.FlxSprite;
 import lime.system.System;
@@ -93,6 +94,7 @@ class InitState extends FlxState
 		FlxG.updateFramerate = highestRefreshRate;
         FlxG.drawFramerate = highestRefreshRate;
 
+        FlxObject.defaultPixelPerfectPosition = true;
         FlxSprite.defaultAntialiasing = false;
         FlxG.stage.quality = LOW;
         FlxG.scaleMode = new PixelPerfectScaleMode();

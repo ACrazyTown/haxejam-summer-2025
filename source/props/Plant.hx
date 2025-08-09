@@ -29,7 +29,12 @@ class Plant extends Entity
         if (!carried)
         {
             if (lastVelocity.y > Constants.FALL_DAMAGE_VELOCITY)
-                thrown = true;
+            {
+                if (!ignoreFallDamage)
+					thrown = true;
+
+                ignoreFallDamage = false;
+            }
             else
                 canPickup = true;
         }

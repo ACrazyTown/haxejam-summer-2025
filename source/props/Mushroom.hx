@@ -1,5 +1,6 @@
 package props;
 
+import states.PlayState;
 import ant.math.MathEx;
 import flixel.FlxG;
 import util.Constants;
@@ -40,6 +41,7 @@ class Mushroom extends Plant
                 {
                     sound.play();
                     sound.pitch = MathEx.eerp(0.8, 1.2);
+                    sound.proximity(x, y, PlayState.instance.player, FlxG.width);
                 }
 
 				entity.velocity.y = Constants.MUSHROOM_JUMP_VELOCITY;

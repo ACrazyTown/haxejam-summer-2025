@@ -48,7 +48,7 @@ class PlayState extends FlxState
 	var entities:FlxTypedGroup<Entity>;
 	var walls:FlxTypedGroup<FlxObject>;
 
-    var player:Player;
+	public var player:Player;
 
 	public var trajectory:Trajectory;
 
@@ -83,6 +83,7 @@ class PlayState extends FlxState
 
         camGame = new FlxCamera();
 		camGame.bgColor = 0xFF6D546D;
+        camGame.pixelPerfectRender = true;
         FlxG.cameras.reset(camGame);
 
         camUI = new FlxCamera();
@@ -155,8 +156,8 @@ class PlayState extends FlxState
 		FlxG.collide(player, walls);
 		FlxG.collide(entities, walls);
         
-		FlxG.collide(player, tilemap, (a:Player, b:FlxTilemapExt) -> a.onCollision(b));
-		FlxG.collide(entities, tilemap, (a:Entity, b:FlxTilemapExt) -> a.onCollision(b));
+		FlxG.collide(player, tilemap, (a:Player, b:FlxTilemap) -> a.onCollision(b));
+		FlxG.collide(entities, tilemap, (a:Entity, b:FlxTilemap) -> a.onCollision(b));
 
 		FlxG.overlap(player, entities, (a:Player, b:Entity) ->
 		{

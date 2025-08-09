@@ -38,6 +38,8 @@ class Player extends Entity
 		animation.addByPrefix("idleBlinkR", "idleblink0", 6, true, true);
 		animation.addByPrefix("walkL", "walk", 6, false);
 		animation.addByPrefix("walkR", "walk", 6, false, true);
+		animation.addByPrefix("jumpL", "jump", 8, false);
+		animation.addByPrefix("jumpR", "jump", 8, false, true);
 
         animation.play("idleR");
 
@@ -91,25 +93,30 @@ class Player extends Entity
 			if (leftP)
 			{
 				velocity.x = -Constants.PLAYER_WALK_VELOCITY;
-				animation.play("walkL");
+				if (isTouching(FLOOR))
+					animation.play("walkL");
 				flipIdle = false;
 			}
 
 			if (rightP)
 			{
 				velocity.x = Constants.PLAYER_WALK_VELOCITY;
-				animation.play("walkR");
+				if (isTouching(FLOOR))
+					animation.play("walkR");
 				flipIdle = true;
 			}
 
 			if (upP && isTouching(FLOOR))
 			{
 				velocity.y = Constants.PLAYER_JUMP_VELOCITY;
+				var dir = animation.curAnim.name.charAt(animation.curAnim.name.length - 1);
+				animation.play('jump$dir', true);
 			}
 
 			if (!leftP && !rightP && !upP && !animation?.curAnim?.name.startsWith("idle"))
 			{
-				animation.play('idle${flipIdle ? "R" : "L"}');
+				if (isTouching(FLOOR))
+					animation.play('idle${flipIdle ? "R" : "L"}');
 			}
 		}
 	}
@@ -119,7 +126,7 @@ class Player extends Entity
 		if (carried != null)
 		{
 			carried.x = x + ((width - carried.width) / 2);
-			carried.y = y + ((height - carried.height) / 2) + 20;
+			carried.y = y - carried.height + 20;
 
 			if (carried.throwable)
 			{
@@ -153,6 +160,7 @@ class Player extends Entity
 			if (FlxG.keys.justPressed.SPACE && !PlayState.instance.trajectory.exists)
 			{
 				carried.canPickup = false;
+				carried.ignoreFallDamage = true;
 				stopCarrying();
 			}
 		}
