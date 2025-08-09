@@ -38,7 +38,7 @@ class FloatingIsland extends Entity
             if (resetTime < 0)
             {
                 fallTimer = Math.max(fallTimer - (elapsed / 4), 0);
-                velocity.y = -Constants.FLOATINGISLAND_VELOCITY * 4;
+				velocity.y = -Constants.FLOATINGISLAND_VELOCITY * 8;
                 if (y <= initialPos.y)
                 {
                     velocity.y = 0;

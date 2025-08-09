@@ -13,10 +13,12 @@ class FloatingPlatform extends Entity
     {
         super(x, y);
         trace(x);
+
+		this.endPos = endPos;
         makeGraphic(wide ? 240 : 120, 16, FlxColor.BLUE);
-        this.endPos = endPos;
 
         path = new FlxPath([getPosition(), endPos]);
+        path.centerMode = TOP_LEFT;
         path.start(null, Constants.FLOATINGPLATFORM_VELOCITY, LOOP_FORWARD);
 
         collidable = true;

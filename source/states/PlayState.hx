@@ -208,6 +208,7 @@ class PlayState extends FlxState
 		final tiles = level.l_Tiles;
 		final tileArray = LdtkUtil.createTileArray(tiles);
 		tilemap.loadMapFromArray(tileArray, tiles.cWid, tiles.cHei, "assets/images/tilestest2.png", tiles.gridSize, tiles.gridSize, null, 0, 0);
+        tilemap.setTileProperties(16, NONE);
 
         // air tiles are literally empty so no need to draw them
 		var airTilePos = tilemap.getAllTilePos(0);

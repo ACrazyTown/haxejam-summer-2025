@@ -9,19 +9,26 @@ class LdtkUtil
 {
 	public static function createTileArray(layer:Layer_Tiles):Array<Int>
 	{
-		return [
-			for (y in 0...layer.cHei)
-			{
-				for (x in 0...layer.cWid)
-				{
-					if (layer.hasAnyTileAt(x, y))
-					{
-						layer.getTileStackAt(x, y)[0].tileId;
-					}
-					else
-						-1; // empty tile
-				}
-			}
-		];
+        var level = [];
+        trace("Building level");
+
+        for (y in 0...layer.cHei)
+        {
+            for (x in 0...layer.cWid)
+            {
+                if (layer.hasAnyTileAt(x, y))
+                {
+					var stack = layer.getTileStackAt(x, y);
+                    if (stack.length > 1)
+                        trace('Found duplicate tile at $x, $y (stack length: ${stack.length})');
+
+                    level.push(stack[0].tileId);
+                }
+                else
+                    level.push(-1); // empty tile
+            }
+        }
+
+        return level;
 	}
 }
