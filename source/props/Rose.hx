@@ -1,5 +1,6 @@
 package props;
 
+import states.PlayState;
 import flixel.FlxG;
 
 class Rose extends Plant
@@ -9,5 +10,15 @@ class Rose extends Plant
         super(x, y);
         loadGraphic("assets/images/mainflower.png");
         throwable = false;
+    }
+
+    override function update(elapsed:Float):Void
+    {
+        super.update(elapsed);
+
+        if (broken)
+        {
+            PlayState.instance.die();
+        }
     }
 }

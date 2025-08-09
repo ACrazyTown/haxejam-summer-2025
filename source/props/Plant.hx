@@ -27,7 +27,12 @@ class Plant extends Entity
     override function onCollision(object:FlxObject)
     {
         if (!carried)
-            canPickup = true;
+        {
+            if (lastVelocity.y > Constants.FALL_DAMAGE_VELOCITY)
+                thrown = true;
+            else
+                canPickup = true;
+        }
 
 		if (thrown)
 		{

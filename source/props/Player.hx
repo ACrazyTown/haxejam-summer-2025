@@ -163,11 +163,16 @@ class Player extends Entity
 
         if (carried != null)
         {
-            if (velocity.y > 300)
-            {
-                // lie so it breaks
-                carried.thrown = true;
-                stopCarrying();
+			if (lastVelocity.y > Constants.FALL_DAMAGE_VELOCITY)
+			{
+				if (!ignoreFallDamage)
+				{
+					// lie so it breaks
+					carried.thrown = true;
+					carried.acceleration.y *= 2;
+					stopCarrying();
+				}
+				ignoreFallDamage = false;
             }
         }
 	}

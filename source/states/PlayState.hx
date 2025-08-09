@@ -1,5 +1,6 @@
 package states;
 
+import props.PlantSafeland;
 import flixel.math.FlxPoint;
 import props.FloatingPlatform;
 import data.Controls;
@@ -151,7 +152,7 @@ class PlayState extends FlxState
 		FlxG.collide(player, walls);
 		FlxG.collide(entities, walls);
         
-		FlxG.collide(player, tilemap);
+		FlxG.collide(player, tilemap, (a:Player, b:FlxTilemapExt) -> a.onCollision(b));
 		FlxG.collide(entities, tilemap, (a:Entity, b:FlxTilemapExt) -> a.onCollision(b));
 
 		FlxG.overlap(player, entities, (a:Player, b:Entity) ->
@@ -244,6 +245,7 @@ class PlayState extends FlxState
                     var wide:Bool = id == "floatingplatformwide";
                     var platform = new FloatingPlatform(ldtkEntity.pixelX, ldtkEntity.pixelY, wide, FlxPoint.get(endPosX ?? ldtkEntity.pixelX, endPosY ?? ldtkEntity.pixelY));
                     entities.add(platform);
+                case "plantsafelanding": entities.add(new PlantSafeland(ldtkEntity.pixelX, ldtkEntity.pixelY));
 
 				default: FlxG.log.warn('Unhandled entity ${ldtkEntity.identifier}');
 			}
@@ -300,7 +302,7 @@ class PlayState extends FlxState
 		});
 	}
 
-	function die():Void
+	public function die():Void
 	{
 		if (runningCutscene)
 			return;

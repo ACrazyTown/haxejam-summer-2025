@@ -6,12 +6,20 @@ import flixel.FlxSprite;
 
 class Entity extends FlxSprite
 {
-    public var lastVelocity:FlxPoint;
+    public var lastVelocity:FlxPoint = FlxPoint.get();
+	public var ignoreFallDamage:Bool = false;
+
     public var collidable:Bool = false;
 
     public function new(x:Float = 0, y:Float = 0)
     {
         super(x, y);
+    }
+
+    override function update(elapsed:Float) 
+    {
+        super.update(elapsed);
+        lastVelocity.copyFrom(velocity);    
     }
 
     public function onOverlap(object:FlxObject) 

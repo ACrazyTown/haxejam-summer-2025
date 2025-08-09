@@ -12,4 +12,6 @@ class Constants
 	public static inline var FLOATINGISLAND_VELOCITY:Int = 5;
 
 	public static inline var FLOATINGPLATFORM_VELOCITY:Int = 60;
+
+    public static inline var FALL_DAMAGE_VELOCITY:Int = 500;
 }
