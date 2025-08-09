@@ -1699,22 +1699,6 @@
 					"gridTiles": [],
 					"entityInstances": [
 						{
-							"__identifier": "PlantPlatform",
-							"__grid": [42,42],
-							"__pivot": [0,0],
-							"__tags": [],
-							"__tile": { "tilesetUid": 11, "x": 420, "y": 0, "w": 60, "h": 60 },
-							"__smartColor": "#C0CBDC",
-							"iid": "7ad55490-5e50-11f0-84b3-cdd239887cbd",
-							"width": 60,
-							"height": 60,
-							"defUid": 25,
-							"px": [420,420],
-							"fieldInstances": [],
-							"__worldX": 5760,
-							"__worldY": 420
-						},
-						{
 							"__identifier": "PlayerSpawnPos",
 							"__grid": [22,28],
 							"__pivot": [0,0],
@@ -1777,6 +1761,38 @@
 							"fieldInstances": [],
 							"__worldX": 7020,
 							"__worldY": 300
+						},
+						{
+							"__identifier": "Rose",
+							"__grid": [12,42],
+							"__pivot": [0,0],
+							"__tags": [],
+							"__tile": { "tilesetUid": 11, "x": 180, "y": 60, "w": 60, "h": 60 },
+							"__smartColor": "#8B9BB4",
+							"iid": "94490080-5e50-11f0-9e73-913b1031975c",
+							"width": 60,
+							"height": 60,
+							"defUid": 26,
+							"px": [120,420],
+							"fieldInstances": [],
+							"__worldX": 5460,
+							"__worldY": 420
+						},
+						{
+							"__identifier": "PlantSafeLanding",
+							"__grid": [42,42],
+							"__pivot": [0,0],
+							"__tags": [],
+							"__tile": { "tilesetUid": 11, "x": 480, "y": 0, "w": 60, "h": 60 },
+							"__smartColor": "#3E8948",
+							"iid": "df005d40-5e50-11f0-9e73-71a2665b1931",
+							"width": 60,
+							"height": 60,
+							"defUid": 20,
+							"px": [420,420],
+							"fieldInstances": [],
+							"__worldX": 5760,
+							"__worldY": 420
 						}
 					]
 				},
@@ -1812,15 +1828,10 @@
 						{ "px": [1860,360], "src": [0,120], "f": 0, "t": 18, "d": [223], "a": 1 },
 						{ "px": [1860,420], "src": [0,120], "f": 0, "t": 18, "d": [255], "a": 1 },
 						{ "px": [120,480], "src": [60,0], "f": 0, "t": 1, "d": [258], "a": 1 },
-						{ "px": [180,480], "src": [0,0], "f": 0, "t": 0, "d": [259], "a": 1 },
 						{ "px": [180,480], "src": [60,0], "f": 0, "t": 1, "d": [259], "a": 1 },
-						{ "px": [240,480], "src": [0,0], "f": 0, "t": 0, "d": [260], "a": 1 },
 						{ "px": [240,480], "src": [60,0], "f": 0, "t": 1, "d": [260], "a": 1 },
-						{ "px": [300,480], "src": [0,0], "f": 0, "t": 0, "d": [261], "a": 1 },
 						{ "px": [300,480], "src": [60,0], "f": 0, "t": 1, "d": [261], "a": 1 },
-						{ "px": [360,480], "src": [0,0], "f": 0, "t": 0, "d": [262], "a": 1 },
 						{ "px": [360,480], "src": [60,0], "f": 0, "t": 1, "d": [262], "a": 1 },
-						{ "px": [420,480], "src": [0,0], "f": 0, "t": 0, "d": [263], "a": 1 },
 						{ "px": [420,480], "src": [60,0], "f": 0, "t": 1, "d": [263], "a": 1 },
 						{ "px": [480,480], "src": [60,0], "f": 0, "t": 1, "d": [264], "a": 1 },
 						{ "px": [1860,480], "src": [0,120], "f": 0, "t": 18, "d": [287], "a": 1 },
@@ -1832,7 +1843,6 @@
 						{ "px": [300,540], "src": [60,120], "f": 0, "t": 19, "d": [293], "a": 1 },
 						{ "px": [360,540], "src": [60,120], "f": 0, "t": 19, "d": [294], "a": 1 },
 						{ "px": [420,540], "src": [60,120], "f": 0, "t": 19, "d": [295], "a": 1 },
-						{ "px": [480,540], "src": [0,0], "f": 0, "t": 0, "d": [296], "a": 1 },
 						{ "px": [480,540], "src": [60,0], "f": 0, "t": 1, "d": [296], "a": 1 },
 						{ "px": [1860,540], "src": [0,120], "f": 0, "t": 18, "d": [319], "a": 1 },
 						{ "px": [0,600], "src": [60,120], "f": 0, "t": 19, "d": [320], "a": 1 },
@@ -1842,7 +1852,6 @@
 						{ "px": [240,600], "src": [60,120], "f": 0, "t": 19, "d": [324], "a": 1 },
 						{ "px": [300,600], "src": [60,120], "f": 0, "t": 19, "d": [325], "a": 1 },
 						{ "px": [360,600], "src": [60,120], "f": 0, "t": 19, "d": [326], "a": 1 },
-						{ "px": [420,600], "src": [0,0], "f": 0, "t": 0, "d": [327], "a": 1 },
 						{ "px": [420,600], "src": [60,0], "f": 0, "t": 1, "d": [327], "a": 1 },
 						{ "px": [480,600], "src": [60,0], "f": 0, "t": 1, "d": [328], "a": 1 },
 						{ "px": [1620,600], "src": [360,60], "f": 0, "t": 15, "d": [347], "a": 1 },
@@ -1857,7 +1866,6 @@
 						{ "px": [240,660], "src": [60,120], "f": 0, "t": 19, "d": [356], "a": 1 },
 						{ "px": [300,660], "src": [60,120], "f": 0, "t": 19, "d": [357], "a": 1 },
 						{ "px": [360,660], "src": [60,120], "f": 0, "t": 19, "d": [358], "a": 1 },
-						{ "px": [420,660], "src": [0,0], "f": 0, "t": 0, "d": [359], "a": 1 },
 						{ "px": [420,660], "src": [60,0], "f": 0, "t": 1, "d": [359], "a": 1 },
 						{ "px": [0,720], "src": [60,120], "f": 0, "t": 19, "d": [384], "a": 1 },
 						{ "px": [60,720], "src": [60,120], "f": 0, "t": 19, "d": [385], "a": 1 },
@@ -1865,7 +1873,6 @@
 						{ "px": [180,720], "src": [60,120], "f": 0, "t": 19, "d": [387], "a": 1 },
 						{ "px": [240,720], "src": [60,120], "f": 0, "t": 19, "d": [388], "a": 1 },
 						{ "px": [300,720], "src": [60,120], "f": 0, "t": 19, "d": [389], "a": 1 },
-						{ "px": [360,720], "src": [0,0], "f": 0, "t": 0, "d": [390], "a": 1 },
 						{ "px": [360,720], "src": [60,0], "f": 0, "t": 1, "d": [390], "a": 1 },
 						{ "px": [420,720], "src": [60,0], "f": 0, "t": 1, "d": [391], "a": 1 },
 						{ "px": [0,780], "src": [60,120], "f": 0, "t": 19, "d": [416], "a": 1 },
@@ -1874,7 +1881,6 @@
 						{ "px": [180,780], "src": [60,120], "f": 0, "t": 19, "d": [419], "a": 1 },
 						{ "px": [240,780], "src": [60,120], "f": 0, "t": 19, "d": [420], "a": 1 },
 						{ "px": [300,780], "src": [60,120], "f": 0, "t": 19, "d": [421], "a": 1 },
-						{ "px": [360,780], "src": [0,0], "f": 0, "t": 0, "d": [422], "a": 1 },
 						{ "px": [360,780], "src": [60,0], "f": 0, "t": 1, "d": [422], "a": 1 },
 						{ "px": [0,840], "src": [60,120], "f": 0, "t": 19, "d": [448], "a": 1 },
 						{ "px": [60,840], "src": [60,120], "f": 0, "t": 19, "d": [449], "a": 1 },
@@ -1882,33 +1888,22 @@
 						{ "px": [180,840], "src": [60,120], "f": 0, "t": 19, "d": [451], "a": 1 },
 						{ "px": [240,840], "src": [60,120], "f": 0, "t": 19, "d": [452], "a": 1 },
 						{ "px": [300,840], "src": [60,120], "f": 0, "t": 19, "d": [453], "a": 1 },
-						{ "px": [360,840], "src": [0,0], "f": 0, "t": 0, "d": [454], "a": 1 },
 						{ "px": [360,840], "src": [60,0], "f": 0, "t": 1, "d": [454], "a": 1 },
-						{ "px": [660,840], "src": [0,0], "f": 0, "t": 0, "d": [459], "a": 1 },
 						{ "px": [660,840], "src": [60,0], "f": 0, "t": 1, "d": [459], "a": 1 },
-						{ "px": [720,840], "src": [0,0], "f": 0, "t": 0, "d": [460], "a": 1 },
 						{ "px": [720,840], "src": [60,0], "f": 0, "t": 1, "d": [460], "a": 1 },
-						{ "px": [780,840], "src": [0,0], "f": 0, "t": 0, "d": [461], "a": 1 },
 						{ "px": [780,840], "src": [60,0], "f": 0, "t": 1, "d": [461], "a": 1 },
-						{ "px": [840,840], "src": [0,0], "f": 0, "t": 0, "d": [462], "a": 1 },
 						{ "px": [840,840], "src": [60,0], "f": 0, "t": 1, "d": [462], "a": 1 },
-						{ "px": [900,840], "src": [0,0], "f": 0, "t": 0, "d": [463], "a": 1 },
 						{ "px": [900,840], "src": [60,0], "f": 0, "t": 1, "d": [463], "a": 1 },
-						{ "px": [960,840], "src": [0,0], "f": 0, "t": 0, "d": [464], "a": 1 },
 						{ "px": [960,840], "src": [60,0], "f": 0, "t": 1, "d": [464], "a": 1 },
-						{ "px": [1020,840], "src": [0,0], "f": 0, "t": 0, "d": [465], "a": 1 },
 						{ "px": [1020,840], "src": [60,0], "f": 0, "t": 1, "d": [465], "a": 1 },
 						{ "px": [1080,840], "src": [60,0], "f": 0, "t": 1, "d": [466], "a": 1 },
-						{ "px": [1140,840], "src": [60,0], "f": 0, "t": 1, "d": [467], "a": 1 },
 						{ "px": [0,900], "src": [60,120], "f": 0, "t": 19, "d": [480], "a": 1 },
 						{ "px": [60,900], "src": [60,120], "f": 0, "t": 19, "d": [481], "a": 1 },
 						{ "px": [120,900], "src": [60,120], "f": 0, "t": 19, "d": [482], "a": 1 },
 						{ "px": [180,900], "src": [60,120], "f": 0, "t": 19, "d": [483], "a": 1 },
 						{ "px": [240,900], "src": [60,120], "f": 0, "t": 19, "d": [484], "a": 1 },
 						{ "px": [300,900], "src": [60,120], "f": 0, "t": 19, "d": [485], "a": 1 },
-						{ "px": [360,900], "src": [0,0], "f": 0, "t": 0, "d": [486], "a": 1 },
 						{ "px": [360,900], "src": [60,0], "f": 0, "t": 1, "d": [486], "a": 1 },
-						{ "px": [660,900], "src": [0,0], "f": 0, "t": 0, "d": [491], "a": 1 },
 						{ "px": [660,900], "src": [60,0], "f": 0, "t": 1, "d": [491], "a": 1 },
 						{ "px": [720,900], "src": [60,120], "f": 0, "t": 19, "d": [492], "a": 1 },
 						{ "px": [780,900], "src": [60,120], "f": 0, "t": 19, "d": [493], "a": 1 },
@@ -1916,59 +1911,46 @@
 						{ "px": [900,900], "src": [60,120], "f": 0, "t": 19, "d": [495], "a": 1 },
 						{ "px": [960,900], "src": [60,120], "f": 0, "t": 19, "d": [496], "a": 1 },
 						{ "px": [1020,900], "src": [60,120], "f": 0, "t": 19, "d": [497], "a": 1 },
-						{ "px": [1080,900], "src": [0,0], "f": 0, "t": 0, "d": [498], "a": 1 },
 						{ "px": [1080,900], "src": [60,0], "f": 0, "t": 1, "d": [498], "a": 1 },
 						{ "px": [1140,900], "src": [0,0], "f": 0, "t": 0, "d": [499], "a": 1 },
-						{ "px": [1140,900], "src": [60,0], "f": 0, "t": 1, "d": [499], "a": 1 },
 						{ "px": [0,960], "src": [60,120], "f": 0, "t": 19, "d": [512], "a": 1 },
 						{ "px": [60,960], "src": [60,120], "f": 0, "t": 19, "d": [513], "a": 1 },
 						{ "px": [120,960], "src": [60,120], "f": 0, "t": 19, "d": [514], "a": 1 },
 						{ "px": [180,960], "src": [60,120], "f": 0, "t": 19, "d": [515], "a": 1 },
 						{ "px": [240,960], "src": [60,120], "f": 0, "t": 19, "d": [516], "a": 1 },
-						{ "px": [300,960], "src": [0,0], "f": 0, "t": 0, "d": [517], "a": 1 },
 						{ "px": [300,960], "src": [60,0], "f": 0, "t": 1, "d": [517], "a": 1 },
-						{ "px": [360,960], "src": [60,0], "f": 0, "t": 1, "d": [518], "a": 1 },
 						{ "px": [660,960], "src": [60,0], "f": 0, "t": 1, "d": [523], "a": 1 },
-						{ "px": [720,960], "src": [0,0], "f": 0, "t": 0, "d": [524], "a": 1 },
 						{ "px": [720,960], "src": [60,0], "f": 0, "t": 1, "d": [524], "a": 1 },
 						{ "px": [780,960], "src": [60,120], "f": 0, "t": 19, "d": [525], "a": 1 },
 						{ "px": [840,960], "src": [60,120], "f": 0, "t": 19, "d": [526], "a": 1 },
 						{ "px": [900,960], "src": [60,120], "f": 0, "t": 19, "d": [527], "a": 1 },
 						{ "px": [960,960], "src": [60,120], "f": 0, "t": 19, "d": [528], "a": 1 },
 						{ "px": [1020,960], "src": [60,120], "f": 0, "t": 19, "d": [529], "a": 1 },
-						{ "px": [1080,960], "src": [0,0], "f": 0, "t": 0, "d": [530], "a": 1 },
 						{ "px": [1080,960], "src": [60,0], "f": 0, "t": 1, "d": [530], "a": 1 },
 						{ "px": [0,1020], "src": [60,120], "f": 0, "t": 19, "d": [544], "a": 1 },
 						{ "px": [60,1020], "src": [60,120], "f": 0, "t": 19, "d": [545], "a": 1 },
 						{ "px": [120,1020], "src": [60,120], "f": 0, "t": 19, "d": [546], "a": 1 },
 						{ "px": [180,1020], "src": [60,120], "f": 0, "t": 19, "d": [547], "a": 1 },
 						{ "px": [240,1020], "src": [60,120], "f": 0, "t": 19, "d": [548], "a": 1 },
-						{ "px": [300,1020], "src": [0,0], "f": 0, "t": 0, "d": [549], "a": 1 },
 						{ "px": [300,1020], "src": [60,0], "f": 0, "t": 1, "d": [549], "a": 1 },
 						{ "px": [720,1020], "src": [60,0], "f": 0, "t": 1, "d": [556], "a": 1 },
-						{ "px": [780,1020], "src": [0,0], "f": 0, "t": 0, "d": [557], "a": 1 },
 						{ "px": [780,1020], "src": [60,0], "f": 0, "t": 1, "d": [557], "a": 1 },
 						{ "px": [840,1020], "src": [60,120], "f": 0, "t": 19, "d": [558], "a": 1 },
 						{ "px": [900,1020], "src": [60,120], "f": 0, "t": 19, "d": [559], "a": 1 },
 						{ "px": [960,1020], "src": [60,120], "f": 0, "t": 19, "d": [560], "a": 1 },
 						{ "px": [1020,1020], "src": [60,120], "f": 0, "t": 19, "d": [561], "a": 1 },
-						{ "px": [1080,1020], "src": [0,0], "f": 0, "t": 0, "d": [562], "a": 1 },
 						{ "px": [1080,1020], "src": [60,0], "f": 0, "t": 1, "d": [562], "a": 1 },
 						{ "px": [0,1080], "src": [60,120], "f": 0, "t": 19, "d": [576], "a": 1 },
 						{ "px": [60,1080], "src": [60,120], "f": 0, "t": 19, "d": [577], "a": 1 },
 						{ "px": [120,1080], "src": [60,120], "f": 0, "t": 19, "d": [578], "a": 1 },
 						{ "px": [180,1080], "src": [60,120], "f": 0, "t": 19, "d": [579], "a": 1 },
 						{ "px": [240,1080], "src": [60,120], "f": 0, "t": 19, "d": [580], "a": 1 },
-						{ "px": [300,1080], "src": [0,0], "f": 0, "t": 0, "d": [581], "a": 1 },
 						{ "px": [300,1080], "src": [60,0], "f": 0, "t": 1, "d": [581], "a": 1 },
-						{ "px": [780,1080], "src": [0,0], "f": 0, "t": 0, "d": [589], "a": 1 },
 						{ "px": [780,1080], "src": [60,0], "f": 0, "t": 1, "d": [589], "a": 1 },
 						{ "px": [840,1080], "src": [60,120], "f": 0, "t": 19, "d": [590], "a": 1 },
 						{ "px": [900,1080], "src": [60,120], "f": 0, "t": 19, "d": [591], "a": 1 },
 						{ "px": [960,1080], "src": [60,120], "f": 0, "t": 19, "d": [592], "a": 1 },
-						{ "px": [1020,1080], "src": [0,0], "f": 0, "t": 0, "d": [593], "a": 1 },
 						{ "px": [1020,1080], "src": [60,0], "f": 0, "t": 1, "d": [593], "a": 1 },
-						{ "px": [1080,1080], "src": [0,0], "f": 0, "t": 0, "d": [594], "a": 1 },
 						{ "px": [1080,1080], "src": [60,0], "f": 0, "t": 1, "d": [594], "a": 1 }
 					],
 					"entityInstances": []
@@ -1981,7 +1963,7 @@
 			"iid": "28434280-5e50-11f0-84b3-21bf48ddf692",
 			"uid": 35,
 			"worldX": 7260,
-			"worldY": -60,
+			"worldY": 120,
 			"worldDepth": 0,
 			"pxWid": 2700,
 			"pxHei": 1860,
@@ -2035,7 +2017,7 @@
 							"px": [480,810],
 							"fieldInstances": [],
 							"__worldX": 7740,
-							"__worldY": 750
+							"__worldY": 930
 						},
 						{
 							"__identifier": "PlantKeyA",
@@ -2051,7 +2033,7 @@
 							"px": [1260,1140],
 							"fieldInstances": [],
 							"__worldX": 8520,
-							"__worldY": 1080
+							"__worldY": 1260
 						},
 						{
 							"__identifier": "PlayerSpawnPos",
@@ -2067,7 +2049,7 @@
 							"px": [110,280],
 							"fieldInstances": [],
 							"__worldX": 7370,
-							"__worldY": 220
+							"__worldY": 400
 						},
 						{
 							"__identifier": "DepositKeyA",
@@ -2083,7 +2065,7 @@
 							"px": [1680,780],
 							"fieldInstances": [],
 							"__worldX": 8940,
-							"__worldY": 720
+							"__worldY": 900
 						},
 						{
 							"__identifier": "FloatingPlatform",
@@ -2102,7 +2084,7 @@
 								{ "__identifier": "endY", "__type": "Float", "__value": null, "__tile": null, "defUid": 60, "realEditorValues": [] }
 							],
 							"__worldX": 8580,
-							"__worldY": 960
+							"__worldY": 1140
 						},
 						{
 							"__identifier": "Mushroom",
@@ -2118,7 +2100,7 @@
 							"px": [2370,900],
 							"fieldInstances": [],
 							"__worldX": 9630,
-							"__worldY": 840
+							"__worldY": 1020
 						},
 						{
 							"__identifier": "BlockKeyARev",
@@ -2134,7 +2116,7 @@
 							"px": [1920,960],
 							"fieldInstances": [],
 							"__worldX": 9180,
-							"__worldY": 900
+							"__worldY": 1080
 						},
 						{
 							"__identifier": "BlockKeyARev",
@@ -2150,7 +2132,7 @@
 							"px": [1980,960],
 							"fieldInstances": [],
 							"__worldX": 9240,
-							"__worldY": 900
+							"__worldY": 1080
 						},
 						{
 							"__identifier": "BlockKeyARev",
@@ -2166,7 +2148,7 @@
 							"px": [2040,960],
 							"fieldInstances": [],
 							"__worldX": 9300,
-							"__worldY": 900
+							"__worldY": 1080
 						},
 						{
 							"__identifier": "BlockKeyARev",
@@ -2182,7 +2164,7 @@
 							"px": [2100,960],
 							"fieldInstances": [],
 							"__worldX": 9360,
-							"__worldY": 900
+							"__worldY": 1080
 						},
 						{
 							"__identifier": "BlockKeyARev",
@@ -2198,7 +2180,7 @@
 							"px": [2160,960],
 							"fieldInstances": [],
 							"__worldX": 9420,
-							"__worldY": 900
+							"__worldY": 1080
 						},
 						{
 							"__identifier": "BlockKeyARev",
@@ -2214,7 +2196,7 @@
 							"px": [2220,960],
 							"fieldInstances": [],
 							"__worldX": 9480,
-							"__worldY": 900
+							"__worldY": 1080
 						},
 						{
 							"__identifier": "BlockKeyARev",
@@ -2230,7 +2212,7 @@
 							"px": [2280,960],
 							"fieldInstances": [],
 							"__worldX": 9540,
-							"__worldY": 900
+							"__worldY": 1080
 						},
 						{
 							"__identifier": "BlockKeyA",
@@ -2246,7 +2228,7 @@
 							"px": [420,1200],
 							"fieldInstances": [],
 							"__worldX": 7680,
-							"__worldY": 1140
+							"__worldY": 1320
 						},
 						{
 							"__identifier": "BlockKeyA",
@@ -2262,7 +2244,7 @@
 							"px": [480,1200],
 							"fieldInstances": [],
 							"__worldX": 7740,
-							"__worldY": 1140
+							"__worldY": 1320
 						},
 						{
 							"__identifier": "BlockKeyA",
@@ -2278,7 +2260,7 @@
 							"px": [540,1200],
 							"fieldInstances": [],
 							"__worldX": 7800,
-							"__worldY": 1140
+							"__worldY": 1320
 						},
 						{
 							"__identifier": "BlockKeyA",
@@ -2294,7 +2276,7 @@
 							"px": [600,1200],
 							"fieldInstances": [],
 							"__worldX": 7860,
-							"__worldY": 1140
+							"__worldY": 1320
 						},
 						{
 							"__identifier": "BlockKeyA",
@@ -2310,7 +2292,7 @@
 							"px": [660,1200],
 							"fieldInstances": [],
 							"__worldX": 7920,
-							"__worldY": 1140
+							"__worldY": 1320
 						},
 						{
 							"__identifier": "BlockKeyA",
@@ -2326,7 +2308,7 @@
 							"px": [720,1200],
 							"fieldInstances": [],
 							"__worldX": 7980,
-							"__worldY": 1140
+							"__worldY": 1320
 						},
 						{
 							"__identifier": "BlockKeyA",
@@ -2342,7 +2324,7 @@
 							"px": [780,1200],
 							"fieldInstances": [],
 							"__worldX": 8040,
-							"__worldY": 1140
+							"__worldY": 1320
 						},
 						{
 							"__identifier": "TeleporterA",
@@ -2358,7 +2340,7 @@
 							"px": [860,1380],
 							"fieldInstances": [],
 							"__worldX": 8120,
-							"__worldY": 1320
+							"__worldY": 1500
 						},
 						{
 							"__identifier": "TeleporterB",
@@ -2374,7 +2356,7 @@
 							"px": [2120,120],
 							"fieldInstances": [],
 							"__worldX": 9380,
-							"__worldY": 60
+							"__worldY": 240
 						},
 						{
 							"__identifier": "ExitArea",
@@ -2390,7 +2372,7 @@
 							"px": [2460,120],
 							"fieldInstances": [],
 							"__worldX": 9720,
-							"__worldY": 60
+							"__worldY": 240
 						}
 					]
 				},
@@ -3104,7 +3086,7 @@
 			"iid": "5ff2d550-5e50-11f0-91a5-0f872f83642b",
 			"uid": 43,
 			"worldX": 9960,
-			"worldY": -660,
+			"worldY": -480,
 			"worldDepth": 0,
 			"pxWid": 2400,
 			"pxHei": 1320,
@@ -3158,7 +3140,7 @@
 							"px": [90,780],
 							"fieldInstances": [],
 							"__worldX": 10050,
-							"__worldY": 120
+							"__worldY": 300
 						},
 						{
 							"__identifier": "PlayerSpawnPos",
@@ -3174,7 +3156,7 @@
 							"px": [200,820],
 							"fieldInstances": [],
 							"__worldX": 10160,
-							"__worldY": 160
+							"__worldY": 340
 						},
 						{
 							"__identifier": "DepositKeyA",
@@ -3190,7 +3172,7 @@
 							"px": [1440,360],
 							"fieldInstances": [],
 							"__worldX": 11400,
-							"__worldY": -300
+							"__worldY": -120
 						},
 						{
 							"__identifier": "FloatingPlatform",
@@ -3209,7 +3191,7 @@
 								{ "__identifier": "endY", "__type": "Float", "__value": null, "__tile": null, "defUid": 60, "realEditorValues": [] }
 							],
 							"__worldX": 10370,
-							"__worldY": 300
+							"__worldY": 480
 						},
 						{
 							"__identifier": "PlantKeyA",
@@ -3225,7 +3207,7 @@
 							"px": [330,960],
 							"fieldInstances": [],
 							"__worldX": 10290,
-							"__worldY": 300
+							"__worldY": 480
 						},
 						{
 							"__identifier": "Mushroom",
@@ -3241,7 +3223,7 @@
 							"px": [180,300],
 							"fieldInstances": [],
 							"__worldX": 10140,
-							"__worldY": -360
+							"__worldY": -180
 						},
 						{
 							"__identifier": "PlantSafeLanding",
@@ -3257,7 +3239,7 @@
 							"px": [950,420],
 							"fieldInstances": [],
 							"__worldX": 10910,
-							"__worldY": -240
+							"__worldY": -60
 						},
 						{
 							"__identifier": "PlantSafeLanding",
@@ -3273,7 +3255,7 @@
 							"px": [1040,420],
 							"fieldInstances": [],
 							"__worldX": 11000,
-							"__worldY": -240
+							"__worldY": -60
 						},
 						{
 							"__identifier": "BlockKeyARev",
@@ -3289,7 +3271,7 @@
 							"px": [540,1020],
 							"fieldInstances": [],
 							"__worldX": 10500,
-							"__worldY": 360
+							"__worldY": 540
 						},
 						{
 							"__identifier": "BlockKeyARev",
@@ -3305,7 +3287,7 @@
 							"px": [600,1020],
 							"fieldInstances": [],
 							"__worldX": 10560,
-							"__worldY": 360
+							"__worldY": 540
 						},
 						{
 							"__identifier": "BlockKeyARev",
@@ -3321,7 +3303,7 @@
 							"px": [660,1020],
 							"fieldInstances": [],
 							"__worldX": 10620,
-							"__worldY": 360
+							"__worldY": 540
 						},
 						{
 							"__identifier": "BlockKeyARev",
@@ -3337,7 +3319,7 @@
 							"px": [720,1020],
 							"fieldInstances": [],
 							"__worldX": 10680,
-							"__worldY": 360
+							"__worldY": 540
 						},
 						{
 							"__identifier": "BlockKeyARev",
@@ -3353,7 +3335,7 @@
 							"px": [780,1020],
 							"fieldInstances": [],
 							"__worldX": 10740,
-							"__worldY": 360
+							"__worldY": 540
 						},
 						{
 							"__identifier": "BlockKeyARev",
@@ -3369,7 +3351,7 @@
 							"px": [840,1020],
 							"fieldInstances": [],
 							"__worldX": 10800,
-							"__worldY": 360
+							"__worldY": 540
 						},
 						{
 							"__identifier": "BlockKeyA",
@@ -3385,7 +3367,7 @@
 							"px": [540,540],
 							"fieldInstances": [],
 							"__worldX": 10500,
-							"__worldY": -120
+							"__worldY": 60
 						},
 						{
 							"__identifier": "BlockKeyA",
@@ -3401,7 +3383,7 @@
 							"px": [600,540],
 							"fieldInstances": [],
 							"__worldX": 10560,
-							"__worldY": -120
+							"__worldY": 60
 						},
 						{
 							"__identifier": "BlockKeyA",
@@ -3417,7 +3399,7 @@
 							"px": [660,540],
 							"fieldInstances": [],
 							"__worldX": 10620,
-							"__worldY": -120
+							"__worldY": 60
 						},
 						{
 							"__identifier": "BlockKeyA",
@@ -3433,7 +3415,7 @@
 							"px": [720,540],
 							"fieldInstances": [],
 							"__worldX": 10680,
-							"__worldY": -120
+							"__worldY": 60
 						},
 						{
 							"__identifier": "BlockKeyA",
@@ -3449,7 +3431,7 @@
 							"px": [780,540],
 							"fieldInstances": [],
 							"__worldX": 10740,
-							"__worldY": -120
+							"__worldY": 60
 						},
 						{
 							"__identifier": "BlockKeyA",
@@ -3465,7 +3447,7 @@
 							"px": [840,540],
 							"fieldInstances": [],
 							"__worldX": 10800,
-							"__worldY": -120
+							"__worldY": 60
 						},
 						{
 							"__identifier": "BlockKeyA",
@@ -3481,7 +3463,7 @@
 							"px": [180,360],
 							"fieldInstances": [],
 							"__worldX": 10140,
-							"__worldY": -300
+							"__worldY": -120
 						},
 						{
 							"__identifier": "ExitArea",
@@ -3497,7 +3479,7 @@
 							"px": [2160,420],
 							"fieldInstances": [],
 							"__worldX": 12120,
-							"__worldY": -240
+							"__worldY": -60
 						}
 					]
 				},
@@ -4025,7 +4007,7 @@
 			"iid": "61a1d620-5e50-11f0-91a5-49f6bc5cf962",
 			"uid": 44,
 			"worldX": 12360,
-			"worldY": -600,
+			"worldY": -420,
 			"worldDepth": 0,
 			"pxWid": 3060,
 			"pxHei": 1080,
@@ -4079,7 +4061,7 @@
 							"px": [370,420],
 							"fieldInstances": [],
 							"__worldX": 12730,
-							"__worldY": -180
+							"__worldY": 0
 						},
 						{
 							"__identifier": "PlayerSpawnPos",
@@ -4095,7 +4077,7 @@
 							"px": [20,460],
 							"fieldInstances": [],
 							"__worldX": 12380,
-							"__worldY": -140
+							"__worldY": 40
 						},
 						{
 							"__identifier": "PlantPlatform",
@@ -4111,7 +4093,7 @@
 							"px": [300,360],
 							"fieldInstances": [],
 							"__worldX": 12660,
-							"__worldY": -240
+							"__worldY": -60
 						},
 						{
 							"__identifier": "PlantPlatform",
@@ -4127,7 +4109,7 @@
 							"px": [460,360],
 							"fieldInstances": [],
 							"__worldX": 12820,
-							"__worldY": -240
+							"__worldY": -60
 						},
 						{
 							"__identifier": "PlantPlatform",
@@ -4143,7 +4125,7 @@
 							"px": [1680,360],
 							"fieldInstances": [],
 							"__worldX": 14040,
-							"__worldY": -240
+							"__worldY": -60
 						},
 						{
 							"__identifier": "BlockBreakable",
@@ -4159,7 +4141,7 @@
 							"px": [540,720],
 							"fieldInstances": [],
 							"__worldX": 12900,
-							"__worldY": 120
+							"__worldY": 300
 						},
 						{
 							"__identifier": "BlockBreakable",
@@ -4175,7 +4157,7 @@
 							"px": [1440,660],
 							"fieldInstances": [],
 							"__worldX": 13800,
-							"__worldY": 60
+							"__worldY": 240
 						},
 						{
 							"__identifier": "BlockBreakable",
@@ -4191,7 +4173,7 @@
 							"px": [2040,670],
 							"fieldInstances": [],
 							"__worldX": 14400,
-							"__worldY": 70
+							"__worldY": 250
 						},
 						{
 							"__identifier": "DepositKeyA",
@@ -4207,7 +4189,7 @@
 							"px": [540,960],
 							"fieldInstances": [],
 							"__worldX": 12900,
-							"__worldY": 360
+							"__worldY": 540
 						},
 						{
 							"__identifier": "PlantKeyA",
@@ -4223,7 +4205,7 @@
 							"px": [540,660],
 							"fieldInstances": [],
 							"__worldX": 12900,
-							"__worldY": 60
+							"__worldY": 240
 						},
 						{
 							"__identifier": "PlantKeyB",
@@ -4239,7 +4221,7 @@
 							"px": [1440,600],
 							"fieldInstances": [],
 							"__worldX": 13800,
-							"__worldY": 0
+							"__worldY": 180
 						},
 						{
 							"__identifier": "DepositKeyB",
@@ -4255,7 +4237,7 @@
 							"px": [1440,960],
 							"fieldInstances": [],
 							"__worldX": 13800,
-							"__worldY": 360
+							"__worldY": 540
 						},
 						{
 							"__identifier": "PlantSafeLanding",
@@ -4271,7 +4253,7 @@
 							"px": [2040,610],
 							"fieldInstances": [],
 							"__worldX": 14400,
-							"__worldY": 10
+							"__worldY": 190
 						},
 						{
 							"__identifier": "BlockKeyA",
@@ -4287,7 +4269,7 @@
 							"px": [540,840],
 							"fieldInstances": [],
 							"__worldX": 12900,
-							"__worldY": 240
+							"__worldY": 420
 						},
 						{
 							"__identifier": "BlockKeyA",
@@ -4303,7 +4285,7 @@
 							"px": [2340,900],
 							"fieldInstances": [],
 							"__worldX": 14700,
-							"__worldY": 300
+							"__worldY": 480
 						},
 						{
 							"__identifier": "BlockKeyA",
@@ -4319,7 +4301,7 @@
 							"px": [2340,840],
 							"fieldInstances": [],
 							"__worldX": 14700,
-							"__worldY": 240
+							"__worldY": 420
 						},
 						{
 							"__identifier": "BlockKeyA",
@@ -4335,7 +4317,7 @@
 							"px": [2340,780],
 							"fieldInstances": [],
 							"__worldX": 14700,
-							"__worldY": 180
+							"__worldY": 360
 						},
 						{
 							"__identifier": "BlockKeyA",
@@ -4351,7 +4333,7 @@
 							"px": [2340,720],
 							"fieldInstances": [],
 							"__worldX": 14700,
-							"__worldY": 120
+							"__worldY": 300
 						},
 						{
 							"__identifier": "BlockKeyA",
@@ -4367,7 +4349,7 @@
 							"px": [2340,660],
 							"fieldInstances": [],
 							"__worldX": 14700,
-							"__worldY": 60
+							"__worldY": 240
 						},
 						{
 							"__identifier": "BlockKeyA",
@@ -4383,7 +4365,7 @@
 							"px": [2340,600],
 							"fieldInstances": [],
 							"__worldX": 14700,
-							"__worldY": 0
+							"__worldY": 180
 						},
 						{
 							"__identifier": "BlockKeyA",
@@ -4399,7 +4381,7 @@
 							"px": [2340,540],
 							"fieldInstances": [],
 							"__worldX": 14700,
-							"__worldY": -60
+							"__worldY": 120
 						},
 						{
 							"__identifier": "BlockKeyA",
@@ -4415,7 +4397,7 @@
 							"px": [2340,480],
 							"fieldInstances": [],
 							"__worldX": 14700,
-							"__worldY": -120
+							"__worldY": 60
 						},
 						{
 							"__identifier": "BlockKeyB",
@@ -4431,7 +4413,7 @@
 							"px": [2400,480],
 							"fieldInstances": [],
 							"__worldX": 14760,
-							"__worldY": -120
+							"__worldY": 60
 						},
 						{
 							"__identifier": "BlockKeyB",
@@ -4447,7 +4429,7 @@
 							"px": [2400,540],
 							"fieldInstances": [],
 							"__worldX": 14760,
-							"__worldY": -60
+							"__worldY": 120
 						},
 						{
 							"__identifier": "BlockKeyB",
@@ -4463,7 +4445,7 @@
 							"px": [2400,600],
 							"fieldInstances": [],
 							"__worldX": 14760,
-							"__worldY": 0
+							"__worldY": 180
 						},
 						{
 							"__identifier": "BlockKeyB",
@@ -4479,7 +4461,7 @@
 							"px": [2400,660],
 							"fieldInstances": [],
 							"__worldX": 14760,
-							"__worldY": 60
+							"__worldY": 240
 						},
 						{
 							"__identifier": "BlockKeyB",
@@ -4495,7 +4477,7 @@
 							"px": [2400,720],
 							"fieldInstances": [],
 							"__worldX": 14760,
-							"__worldY": 120
+							"__worldY": 300
 						},
 						{
 							"__identifier": "BlockKeyB",
@@ -4511,7 +4493,7 @@
 							"px": [2400,780],
 							"fieldInstances": [],
 							"__worldX": 14760,
-							"__worldY": 180
+							"__worldY": 360
 						},
 						{
 							"__identifier": "BlockKeyB",
@@ -4527,7 +4509,7 @@
 							"px": [2400,840],
 							"fieldInstances": [],
 							"__worldX": 14760,
-							"__worldY": 240
+							"__worldY": 420
 						},
 						{
 							"__identifier": "BlockKeyB",
@@ -4543,7 +4525,7 @@
 							"px": [2400,900],
 							"fieldInstances": [],
 							"__worldX": 14760,
-							"__worldY": 300
+							"__worldY": 480
 						},
 						{
 							"__identifier": "FloatingPlatformWide",
@@ -4559,7 +4541,7 @@
 							"px": [2460,770],
 							"fieldInstances": [],
 							"__worldX": 14820,
-							"__worldY": 170
+							"__worldY": 350
 						},
 						{
 							"__identifier": "BlockKeyB",
@@ -4575,7 +4557,7 @@
 							"px": [2400,420],
 							"fieldInstances": [],
 							"__worldX": 14760,
-							"__worldY": -180
+							"__worldY": 0
 						},
 						{
 							"__identifier": "BlockKeyA",
@@ -4591,7 +4573,7 @@
 							"px": [2340,420],
 							"fieldInstances": [],
 							"__worldX": 14700,
-							"__worldY": -180
+							"__worldY": 0
 						},
 						{
 							"__identifier": "ExitArea",
@@ -4607,7 +4589,7 @@
 							"px": [2820,0],
 							"fieldInstances": [],
 							"__worldX": 15180,
-							"__worldY": -600
+							"__worldY": -420
 						}
 					]
 				},
@@ -4868,7 +4850,7 @@
 			"iid": "ff16afd0-5e50-11f0-91a5-75c1a69d62c7",
 			"uid": 45,
 			"worldX": 15420,
-			"worldY": -1320,
+			"worldY": -1140,
 			"worldDepth": 0,
 			"pxWid": 1560,
 			"pxHei": 1200,
@@ -4922,7 +4904,7 @@
 							"px": [420,720],
 							"fieldInstances": [],
 							"__worldX": 15840,
-							"__worldY": -600
+							"__worldY": -420
 						},
 						{
 							"__identifier": "BlockBreakable",
@@ -4938,7 +4920,7 @@
 							"px": [480,720],
 							"fieldInstances": [],
 							"__worldX": 15900,
-							"__worldY": -600
+							"__worldY": -420
 						},
 						{
 							"__identifier": "BlockBreakable",
@@ -4954,7 +4936,7 @@
 							"px": [540,720],
 							"fieldInstances": [],
 							"__worldX": 15960,
-							"__worldY": -600
+							"__worldY": -420
 						},
 						{
 							"__identifier": "PlantPlatform",
@@ -4970,7 +4952,7 @@
 							"px": [480,960],
 							"fieldInstances": [],
 							"__worldX": 15900,
-							"__worldY": -360
+							"__worldY": -180
 						},
 						{
 							"__identifier": "PlantPlatform",
@@ -4986,7 +4968,7 @@
 							"px": [480,660],
 							"fieldInstances": [],
 							"__worldX": 15900,
-							"__worldY": -660
+							"__worldY": -480
 						},
 						{
 							"__identifier": "BlockBreakable",
@@ -5002,7 +4984,7 @@
 							"px": [420,600],
 							"fieldInstances": [],
 							"__worldX": 15840,
-							"__worldY": -720
+							"__worldY": -540
 						},
 						{
 							"__identifier": "BlockBreakable",
@@ -5018,7 +5000,7 @@
 							"px": [480,600],
 							"fieldInstances": [],
 							"__worldX": 15900,
-							"__worldY": -720
+							"__worldY": -540
 						},
 						{
 							"__identifier": "BlockBreakable",
@@ -5034,7 +5016,7 @@
 							"px": [540,600],
 							"fieldInstances": [],
 							"__worldX": 15960,
-							"__worldY": -720
+							"__worldY": -540
 						},
 						{
 							"__identifier": "Mushroom",
@@ -5050,7 +5032,7 @@
 							"px": [480,540],
 							"fieldInstances": [],
 							"__worldX": 15900,
-							"__worldY": -780
+							"__worldY": -600
 						},
 						{
 							"__identifier": "DepositKeyA",
@@ -5066,7 +5048,7 @@
 							"px": [1020,720],
 							"fieldInstances": [],
 							"__worldX": 16440,
-							"__worldY": -600
+							"__worldY": -420
 						},
 						{
 							"__identifier": "PlantKeyB",
@@ -5082,7 +5064,7 @@
 							"px": [690,300],
 							"fieldInstances": [],
 							"__worldX": 16110,
-							"__worldY": -1020
+							"__worldY": -840
 						},
 						{
 							"__identifier": "DepositKeyB",
@@ -5098,7 +5080,7 @@
 							"px": [840,900],
 							"fieldInstances": [],
 							"__worldX": 16260,
-							"__worldY": -420
+							"__worldY": -240
 						},
 						{
 							"__identifier": "Mushroom",
@@ -5114,7 +5096,7 @@
 							"px": [690,180],
 							"fieldInstances": [],
 							"__worldX": 16110,
-							"__worldY": -1140
+							"__worldY": -960
 						},
 						{
 							"__identifier": "PlantKeyA",
@@ -5130,7 +5112,7 @@
 							"px": [690,600],
 							"fieldInstances": [],
 							"__worldX": 16110,
-							"__worldY": -720
+							"__worldY": -540
 						},
 						{
 							"__identifier": "BlockKeyB",
@@ -5146,7 +5128,7 @@
 							"px": [660,240],
 							"fieldInstances": [],
 							"__worldX": 16080,
-							"__worldY": -1080
+							"__worldY": -900
 						},
 						{
 							"__identifier": "BlockKeyB",
@@ -5162,7 +5144,7 @@
 							"px": [720,240],
 							"fieldInstances": [],
 							"__worldX": 16140,
-							"__worldY": -1080
+							"__worldY": -900
 						},
 						{
 							"__identifier": "BlockKeyA",
@@ -5178,7 +5160,7 @@
 							"px": [660,360],
 							"fieldInstances": [],
 							"__worldX": 16080,
-							"__worldY": -960
+							"__worldY": -780
 						},
 						{
 							"__identifier": "BlockKeyA",
@@ -5194,7 +5176,7 @@
 							"px": [720,360],
 							"fieldInstances": [],
 							"__worldX": 16140,
-							"__worldY": -960
+							"__worldY": -780
 						},
 						{
 							"__identifier": "PlayerSpawnPos",
@@ -5210,7 +5192,7 @@
 							"px": [40,820],
 							"fieldInstances": [],
 							"__worldX": 15460,
-							"__worldY": -500
+							"__worldY": -320
 						},
 						{
 							"__identifier": "ExitArea",
@@ -5226,7 +5208,7 @@
 							"px": [1320,120],
 							"fieldInstances": [],
 							"__worldX": 16740,
-							"__worldY": -1200
+							"__worldY": -1020
 						}
 					]
 				},
@@ -5447,7 +5429,7 @@
 			"iid": "13c05cc0-5e50-11f0-b221-c1ea8f2f2017",
 			"uid": 46,
 			"worldX": 16980,
-			"worldY": -1740,
+			"worldY": -1560,
 			"worldDepth": 0,
 			"pxWid": 3000,
 			"pxHei": 2040,
@@ -5501,7 +5483,7 @@
 							"px": [50,640],
 							"fieldInstances": [],
 							"__worldX": 17030,
-							"__worldY": -1100
+							"__worldY": -920
 						},
 						{
 							"__identifier": "FloatingPlatform",
@@ -5520,7 +5502,7 @@
 								{ "__identifier": "endY", "__type": "Float", "__value": null, "__tile": null, "defUid": 60, "realEditorValues": [] }
 							],
 							"__worldX": 17180,
-							"__worldY": -900
+							"__worldY": -720
 						},
 						{
 							"__identifier": "FloatingIsland",
@@ -5536,7 +5518,7 @@
 							"px": [2340,900],
 							"fieldInstances": [],
 							"__worldX": 19320,
-							"__worldY": -840
+							"__worldY": -660
 						},
 						{
 							"__identifier": "PlantKeyA",
@@ -5552,7 +5534,7 @@
 							"px": [2100,1320],
 							"fieldInstances": [],
 							"__worldX": 19080,
-							"__worldY": -420
+							"__worldY": -240
 						},
 						{
 							"__identifier": "FloatingPlatform",
@@ -5571,7 +5553,7 @@
 								{ "__identifier": "endY", "__type": "Float", "__value": null, "__tile": null, "defUid": 60, "realEditorValues": [] }
 							],
 							"__worldX": 17220,
-							"__worldY": -100
+							"__worldY": 80
 						},
 						{
 							"__identifier": "TeleporterA",
@@ -5587,7 +5569,7 @@
 							"px": [30,1080],
 							"fieldInstances": [],
 							"__worldX": 17010,
-							"__worldY": -660
+							"__worldY": -480
 						},
 						{
 							"__identifier": "DepositKeyA",
@@ -5603,7 +5585,7 @@
 							"px": [180,1260],
 							"fieldInstances": [],
 							"__worldX": 17160,
-							"__worldY": -480
+							"__worldY": -300
 						},
 						{
 							"__identifier": "Mushroom",
@@ -5619,7 +5601,7 @@
 							"px": [120,1620],
 							"fieldInstances": [],
 							"__worldX": 17100,
-							"__worldY": -120
+							"__worldY": 60
 						},
 						{
 							"__identifier": "DepositKeyB",
@@ -5635,7 +5617,7 @@
 							"px": [60,1620],
 							"fieldInstances": [],
 							"__worldX": 17040,
-							"__worldY": -120
+							"__worldY": 60
 						},
 						{
 							"__identifier": "Mushroom",
@@ -5651,7 +5633,7 @@
 							"px": [690,1020],
 							"fieldInstances": [],
 							"__worldX": 17670,
-							"__worldY": -720
+							"__worldY": -540
 						},
 						{
 							"__identifier": "PlantKeyB",
@@ -5667,7 +5649,7 @@
 							"px": [840,1200],
 							"fieldInstances": [],
 							"__worldX": 17820,
-							"__worldY": -540
+							"__worldY": -360
 						},
 						{
 							"__identifier": "FloatingIslandSmall",
@@ -5683,7 +5665,7 @@
 							"px": [1140,840],
 							"fieldInstances": [],
 							"__worldX": 18120,
-							"__worldY": -900
+							"__worldY": -720
 						},
 						{
 							"__identifier": "FloatingIslandSmall",
@@ -5699,7 +5681,7 @@
 							"px": [1380,840],
 							"fieldInstances": [],
 							"__worldX": 18360,
-							"__worldY": -900
+							"__worldY": -720
 						},
 						{
 							"__identifier": "FloatingIslandSmall",
@@ -5715,7 +5697,7 @@
 							"px": [1620,840],
 							"fieldInstances": [],
 							"__worldX": 18600,
-							"__worldY": -900
+							"__worldY": -720
 						},
 						{
 							"__identifier": "FloatingIslandSmall",
@@ -5731,7 +5713,7 @@
 							"px": [1140,1680],
 							"fieldInstances": [],
 							"__worldX": 18120,
-							"__worldY": -60
+							"__worldY": 120
 						},
 						{
 							"__identifier": "FloatingIslandSmall",
@@ -5747,7 +5729,7 @@
 							"px": [1380,1680],
 							"fieldInstances": [],
 							"__worldX": 18360,
-							"__worldY": -60
+							"__worldY": 120
 						},
 						{
 							"__identifier": "FloatingIslandSmall",
@@ -5763,7 +5745,7 @@
 							"px": [1620,1680],
 							"fieldInstances": [],
 							"__worldX": 18600,
-							"__worldY": -60
+							"__worldY": 120
 						},
 						{
 							"__identifier": "BlockKeyB",
@@ -5779,7 +5761,7 @@
 							"px": [120,1080],
 							"fieldInstances": [],
 							"__worldX": 17100,
-							"__worldY": -660
+							"__worldY": -480
 						},
 						{
 							"__identifier": "BlockKeyB",
@@ -5795,7 +5777,7 @@
 							"px": [120,1140],
 							"fieldInstances": [],
 							"__worldX": 17100,
-							"__worldY": -600
+							"__worldY": -420
 						},
 						{
 							"__identifier": "BlockKeyB",
@@ -5811,7 +5793,7 @@
 							"px": [120,1200],
 							"fieldInstances": [],
 							"__worldX": 17100,
-							"__worldY": -540
+							"__worldY": -360
 						},
 						{
 							"__identifier": "BlockKeyB",
@@ -5827,7 +5809,7 @@
 							"px": [120,1260],
 							"fieldInstances": [],
 							"__worldX": 17100,
-							"__worldY": -480
+							"__worldY": -300
 						},
 						{
 							"__identifier": "BlockKeyARev",
@@ -5843,7 +5825,7 @@
 							"px": [180,900],
 							"fieldInstances": [],
 							"__worldX": 17160,
-							"__worldY": -840
+							"__worldY": -660
 						},
 						{
 							"__identifier": "BlockKeyARev",
@@ -5859,7 +5841,7 @@
 							"px": [240,900],
 							"fieldInstances": [],
 							"__worldX": 17220,
-							"__worldY": -840
+							"__worldY": -660
 						},
 						{
 							"__identifier": "BlockKeyARev",
@@ -5875,7 +5857,7 @@
 							"px": [300,900],
 							"fieldInstances": [],
 							"__worldX": 17280,
-							"__worldY": -840
+							"__worldY": -660
 						},
 						{
 							"__identifier": "BlockKeyARev",
@@ -5891,7 +5873,7 @@
 							"px": [360,900],
 							"fieldInstances": [],
 							"__worldX": 17340,
-							"__worldY": -840
+							"__worldY": -660
 						},
 						{
 							"__identifier": "BlockKeyARev",
@@ -5907,7 +5889,7 @@
 							"px": [420,900],
 							"fieldInstances": [],
 							"__worldX": 17400,
-							"__worldY": -840
+							"__worldY": -660
 						},
 						{
 							"__identifier": "BlockKeyA",
@@ -5923,7 +5905,7 @@
 							"px": [660,840],
 							"fieldInstances": [],
 							"__worldX": 17640,
-							"__worldY": -900
+							"__worldY": -720
 						},
 						{
 							"__identifier": "BlockKeyA",
@@ -5939,7 +5921,7 @@
 							"px": [720,840],
 							"fieldInstances": [],
 							"__worldX": 17700,
-							"__worldY": -900
+							"__worldY": -720
 						},
 						{
 							"__identifier": "BlockKeyA",
@@ -5955,7 +5937,7 @@
 							"px": [660,1080],
 							"fieldInstances": [],
 							"__worldX": 17640,
-							"__worldY": -660
+							"__worldY": -480
 						},
 						{
 							"__identifier": "BlockKeyA",
@@ -5971,7 +5953,7 @@
 							"px": [720,1080],
 							"fieldInstances": [],
 							"__worldX": 17700,
-							"__worldY": -660
+							"__worldY": -480
 						},
 						{
 							"__identifier": "TeleporterB",
@@ -5987,7 +5969,7 @@
 							"px": [2560,180],
 							"fieldInstances": [],
 							"__worldX": 19540,
-							"__worldY": -1560
+							"__worldY": -1380
 						},
 						{
 							"__identifier": "ExitArea",
@@ -6003,7 +5985,7 @@
 							"px": [2760,120],
 							"fieldInstances": [],
 							"__worldX": 19740,
-							"__worldY": -1620
+							"__worldY": -1440
 						}
 					]
 				},
@@ -6602,7 +6584,7 @@
 			"iid": "79847b10-5e50-11f0-b221-75f4ffaea8d7",
 			"uid": 48,
 			"worldX": 19980,
-			"worldY": -2100,
+			"worldY": -1920,
 			"worldDepth": 0,
 			"pxWid": 2220,
 			"pxHei": 1560,
@@ -6656,7 +6638,7 @@
 							"px": [170,580],
 							"fieldInstances": [],
 							"__worldX": 20150,
-							"__worldY": -1520
+							"__worldY": -1340
 						},
 						{
 							"__identifier": "FloatingIslandSmall",
@@ -6672,7 +6654,7 @@
 							"px": [1200,840],
 							"fieldInstances": [],
 							"__worldX": 21180,
-							"__worldY": -1260
+							"__worldY": -1080
 						},
 						{
 							"__identifier": "FloatingIslandSmall",
@@ -6688,7 +6670,7 @@
 							"px": [1320,840],
 							"fieldInstances": [],
 							"__worldX": 21300,
-							"__worldY": -1260
+							"__worldY": -1080
 						},
 						{
 							"__identifier": "FloatingIslandSmall",
@@ -6704,7 +6686,7 @@
 							"px": [1440,840],
 							"fieldInstances": [],
 							"__worldX": 21420,
-							"__worldY": -1260
+							"__worldY": -1080
 						},
 						{
 							"__identifier": "FloatingIslandSmall",
@@ -6720,7 +6702,7 @@
 							"px": [1560,840],
 							"fieldInstances": [],
 							"__worldX": 21540,
-							"__worldY": -1260
+							"__worldY": -1080
 						},
 						{
 							"__identifier": "FloatingIslandSmall",
@@ -6736,7 +6718,7 @@
 							"px": [1680,840],
 							"fieldInstances": [],
 							"__worldX": 21660,
-							"__worldY": -1260
+							"__worldY": -1080
 						},
 						{
 							"__identifier": "FloatingIslandSmall",
@@ -6752,7 +6734,7 @@
 							"px": [1800,840],
 							"fieldInstances": [],
 							"__worldX": 21780,
-							"__worldY": -1260
+							"__worldY": -1080
 						},
 						{
 							"__identifier": "FloatingIslandSmall",
@@ -6768,7 +6750,7 @@
 							"px": [1920,840],
 							"fieldInstances": [],
 							"__worldX": 21900,
-							"__worldY": -1260
+							"__worldY": -1080
 						},
 						{
 							"__identifier": "BlockKeyA",
@@ -6784,7 +6766,7 @@
 							"px": [900,1260],
 							"fieldInstances": [],
 							"__worldX": 20880,
-							"__worldY": -840
+							"__worldY": -660
 						},
 						{
 							"__identifier": "PlantSafeLanding",
@@ -6800,7 +6782,7 @@
 							"px": [900,1200],
 							"fieldInstances": [],
 							"__worldX": 20880,
-							"__worldY": -900
+							"__worldY": -720
 						},
 						{
 							"__identifier": "DepositKeyA",
@@ -6816,7 +6798,7 @@
 							"px": [780,1080],
 							"fieldInstances": [],
 							"__worldX": 20760,
-							"__worldY": -1020
+							"__worldY": -840
 						},
 						{
 							"__identifier": "FloatingPlatform",
@@ -6835,7 +6817,7 @@
 								{ "__identifier": "endY", "__type": "Float", "__value": null, "__tile": null, "defUid": 60, "realEditorValues": [] }
 							],
 							"__worldX": 20780,
-							"__worldY": -1260
+							"__worldY": -1080
 						},
 						{
 							"__identifier": "TeleporterA",
@@ -6851,7 +6833,7 @@
 							"px": [620,1200],
 							"fieldInstances": [],
 							"__worldX": 20600,
-							"__worldY": -900
+							"__worldY": -720
 						},
 						{
 							"__identifier": "TeleporterB",
@@ -6867,7 +6849,7 @@
 							"px": [1790,120],
 							"fieldInstances": [],
 							"__worldX": 21770,
-							"__worldY": -1980
+							"__worldY": -1800
 						},
 						{
 							"__identifier": "PlantKeyA",
@@ -6883,7 +6865,7 @@
 							"px": [2040,780],
 							"fieldInstances": [],
 							"__worldX": 22020,
-							"__worldY": -1320
+							"__worldY": -1140
 						},
 						{
 							"__identifier": "ExitArea",
@@ -6899,7 +6881,7 @@
 							"px": [1980,60],
 							"fieldInstances": [],
 							"__worldX": 21960,
-							"__worldY": -2040
+							"__worldY": -1860
 						}
 					]
 				},
@@ -7255,7 +7237,7 @@
 			"iid": "39e56d40-5e50-11f0-b221-85e94a848511",
 			"uid": 55,
 			"worldX": 22200,
-			"worldY": -4320,
+			"worldY": -4140,
 			"worldDepth": 0,
 			"pxWid": 1560,
 			"pxHei": 3000,
@@ -7309,7 +7291,7 @@
 							"px": [120,2380],
 							"fieldInstances": [],
 							"__worldX": 22320,
-							"__worldY": -1940
+							"__worldY": -1760
 						},
 						{
 							"__identifier": "TeleporterA",
@@ -7325,7 +7307,7 @@
 							"px": [30,2340],
 							"fieldInstances": [],
 							"__worldX": 22230,
-							"__worldY": -1980
+							"__worldY": -1800
 						},
 						{
 							"__identifier": "BlockKeyA",
@@ -7341,7 +7323,7 @@
 							"px": [420,2580],
 							"fieldInstances": [],
 							"__worldX": 22620,
-							"__worldY": -1740
+							"__worldY": -1560
 						},
 						{
 							"__identifier": "BlockKeyA",
@@ -7357,7 +7339,7 @@
 							"px": [480,2580],
 							"fieldInstances": [],
 							"__worldX": 22680,
-							"__worldY": -1740
+							"__worldY": -1560
 						},
 						{
 							"__identifier": "BlockKeyA",
@@ -7373,7 +7355,7 @@
 							"px": [540,2580],
 							"fieldInstances": [],
 							"__worldX": 22740,
-							"__worldY": -1740
+							"__worldY": -1560
 						},
 						{
 							"__identifier": "BlockKeyA",
@@ -7389,7 +7371,7 @@
 							"px": [600,2580],
 							"fieldInstances": [],
 							"__worldX": 22800,
-							"__worldY": -1740
+							"__worldY": -1560
 						},
 						{
 							"__identifier": "BlockKeyA",
@@ -7405,7 +7387,7 @@
 							"px": [660,2580],
 							"fieldInstances": [],
 							"__worldX": 22860,
-							"__worldY": -1740
+							"__worldY": -1560
 						},
 						{
 							"__identifier": "BlockKeyA",
@@ -7421,7 +7403,7 @@
 							"px": [720,2580],
 							"fieldInstances": [],
 							"__worldX": 22920,
-							"__worldY": -1740
+							"__worldY": -1560
 						},
 						{
 							"__identifier": "BlockKeyA",
@@ -7437,7 +7419,7 @@
 							"px": [780,2580],
 							"fieldInstances": [],
 							"__worldX": 22980,
-							"__worldY": -1740
+							"__worldY": -1560
 						},
 						{
 							"__identifier": "BlockKeyA",
@@ -7453,7 +7435,7 @@
 							"px": [840,2580],
 							"fieldInstances": [],
 							"__worldX": 23040,
-							"__worldY": -1740
+							"__worldY": -1560
 						},
 						{
 							"__identifier": "BlockKeyA",
@@ -7469,7 +7451,7 @@
 							"px": [900,2580],
 							"fieldInstances": [],
 							"__worldX": 23100,
-							"__worldY": -1740
+							"__worldY": -1560
 						},
 						{
 							"__identifier": "BlockKeyA",
@@ -7485,7 +7467,7 @@
 							"px": [960,2580],
 							"fieldInstances": [],
 							"__worldX": 23160,
-							"__worldY": -1740
+							"__worldY": -1560
 						},
 						{
 							"__identifier": "BlockKeyA",
@@ -7501,7 +7483,7 @@
 							"px": [1020,2580],
 							"fieldInstances": [],
 							"__worldX": 23220,
-							"__worldY": -1740
+							"__worldY": -1560
 						},
 						{
 							"__identifier": "FloatingPlatformWide",
@@ -7517,7 +7499,7 @@
 							"px": [420,2640],
 							"fieldInstances": [],
 							"__worldX": 22620,
-							"__worldY": -1680
+							"__worldY": -1500
 						},
 						{
 							"__identifier": "FloatingPlatformWide",
@@ -7533,7 +7515,7 @@
 							"px": [660,2640],
 							"fieldInstances": [],
 							"__worldX": 22860,
-							"__worldY": -1680
+							"__worldY": -1500
 						},
 						{
 							"__identifier": "FloatingPlatformWide",
@@ -7549,7 +7531,7 @@
 							"px": [900,2640],
 							"fieldInstances": [],
 							"__worldX": 23100,
-							"__worldY": -1680
+							"__worldY": -1500
 						},
 						{
 							"__identifier": "BlockKeyA",
@@ -7565,7 +7547,7 @@
 							"px": [1080,2580],
 							"fieldInstances": [],
 							"__worldX": 23280,
-							"__worldY": -1740
+							"__worldY": -1560
 						},
 						{
 							"__identifier": "DepositKeyA",
@@ -7581,7 +7563,7 @@
 							"px": [360,2520],
 							"fieldInstances": [],
 							"__worldX": 22560,
-							"__worldY": -1800
+							"__worldY": -1620
 						},
 						{
 							"__identifier": "PlantKeyA",
@@ -7597,7 +7579,7 @@
 							"px": [270,2520],
 							"fieldInstances": [],
 							"__worldX": 22470,
-							"__worldY": -1800
+							"__worldY": -1620
 						},
 						{
 							"__identifier": "ExitArea",
@@ -7613,7 +7595,7 @@
 							"px": [1320,180],
 							"fieldInstances": [],
 							"__worldX": 23520,
-							"__worldY": -4140
+							"__worldY": -3960
 						}
 					]
 				},
@@ -7938,7 +7920,7 @@
 			"iid": "7e8f0620-5e50-11f0-b221-51cb2401211b",
 			"uid": 56,
 			"worldX": 23760,
-			"worldY": -4740,
+			"worldY": -4560,
 			"worldDepth": 0,
 			"pxWid": 3000,
 			"pxHei": 1620,
@@ -7992,7 +7974,7 @@
 							"px": [70,700],
 							"fieldInstances": [],
 							"__worldX": 23830,
-							"__worldY": -4040
+							"__worldY": -3860
 						},
 						{
 							"__identifier": "Mushroom",
@@ -8008,7 +7990,7 @@
 							"px": [1320,840],
 							"fieldInstances": [],
 							"__worldX": 25080,
-							"__worldY": -3900
+							"__worldY": -3720
 						}
 					]
 				},
