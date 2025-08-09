@@ -4,7 +4,7 @@
 
     <!-- _________________________ Application Settings _________________________ -->
 
-    <app title="act-game-template" file="act-game-template" main="Main" version="0.0.1" company="acrazytown" />
+    <app title="Rooted in Love" file="rootedinlove" main="Main" version="0.0.1" company="acrazytown" />
 
     <!--The flixel preloader is not accurate in Chrome. You can use it regularly if you embed the swf into a html file
         or you can set the actual size of your file manually at "FlxPreloaderBase-onUpdate-bytesTotal"-->
@@ -39,6 +39,7 @@
 
     <assets path="assets" />
     <assets path="assets/preload" embed="true" />
+    <assets path="assets/font" embed="true" />
 
     <!-- Deploy the coconut -->
     <!-- <section if="ACT_COCONUTJPG">

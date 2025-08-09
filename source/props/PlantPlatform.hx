@@ -37,7 +37,7 @@ class PlantPlatform extends Plant
         scale.x = 2;
 		scale.y = oldSize.y / height;
 
-        FlxTween.tween(this, {"scale.x": 1, "scale.y": wantedHeight / height}, 0.8, {ease: FlxEase.backOut, onComplete: (_) ->
+        FlxTween.tween(this, {"scale.x": 1, "scale.y": wantedHeight / height}, 0.6, {ease: FlxEase.backOut, onComplete: (_) ->
         {
             // updateHitbox();
             // height = frameHeight * scale.y - 10 * scale.y;

@@ -45,6 +45,12 @@ class Mushroom extends Plant
                 }
 
 				entity.velocity.y = Constants.MUSHROOM_JUMP_VELOCITY;
+
+                if (object is Player)
+                {
+                    var dir = entity.animation.curAnim.name.charAt(entity.animation.curAnim.name.length - 1);
+                    entity.animation.play('jump$dir');
+                }
 			}
         }
     }

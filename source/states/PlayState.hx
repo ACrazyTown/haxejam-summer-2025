@@ -1,5 +1,7 @@
 package states;
 
+import flixel.text.FlxBitmapFont;
+import flixel.text.FlxBitmapText;
 import flixel.tile.FlxTilemap;
 import props.PlantPlatform;
 import props.PlantSafeland;
@@ -27,6 +29,7 @@ import flixel.FlxG;
 import data.LdtkProject;
 import props.Player;
 import flixel.FlxState;
+import flixel.text.FlxText;
 
 // using echo.FlxEcho;
 
@@ -43,6 +46,7 @@ class PlayState extends FlxState
     var camUI:FlxCamera;
 
     var uiGroup:FlxGroup;
+	var controlsText:FlxBitmapText;
 
 	public var tilemap:FlxTilemap;
 	var entities:FlxTypedGroup<Entity>;
@@ -96,6 +100,14 @@ class PlayState extends FlxState
         uiGroup = new FlxGroup();
         add(uiGroup);
 
+		controlsText = new FlxBitmapText(5, 10, "", FlxBitmapFont.fromAngelCode("assets/font/badpixelz.png", "assets/font/badpixelz.xml"));
+		controlsText.scrollFactor.set();
+		controlsText.camera = camUI;
+		controlsText.setBorderStyle(SHADOW, FlxColor.BLACK, 2);
+		controlsText.lineSpacing = 4;
+		updateControlsText();
+		add(controlsText);
+
 		player = new Player();
 		add(player);
 
@@ -146,6 +158,8 @@ class PlayState extends FlxState
 		overlay.scrollFactor.set(0, 0);
 		add(overlay);
 
+        if (!FlxG.sound.music?.playing)
+            FlxG.sound.playMusic("assets/music/songloop", 0.7);
 		FlxTween.tween(overlay, {alpha: 0});
     }
 
@@ -186,6 +200,7 @@ class PlayState extends FlxState
             cameraViewMode = !cameraViewMode;
 			player.canMove = !cameraViewMode;
             cameraViewGroup.visible = cameraViewMode;
+			updateControlsText();
 
             FlxG.camera.target = cameraViewMode ? null : player;
         }
@@ -326,5 +341,16 @@ class PlayState extends FlxState
 		runningCutscene = true;
 
 		FlxTween.tween(overlay, {alpha: 1}, 1, {onComplete: (_) -> FlxG.resetState()});
+	}
+	function updateControlsText():Void
+	{
+		if (cameraViewMode)
+		{
+			controlsText.text = "[ENTER] Return to gameplay";
+		}
+		else
+		{
+			controlsText.text = '[R] Restart level\n[ENTER] Look around\n[SPACE] Interact';
+		}
 	}
 }
