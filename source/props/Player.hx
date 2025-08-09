@@ -65,6 +65,7 @@ class Player extends Entity
 
 		width /= 2;
 		offset.x = width / 2;
+        offset.y = -2;
     }
 
     override function update(elapsed:Float)

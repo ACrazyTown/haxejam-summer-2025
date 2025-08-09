@@ -31,9 +31,9 @@ class Mushroom extends Plant
 	{
         super.onOverlap(object);
 
-		if (Std.isOfType(object, Player))
+		if (object is Entity)
 		{
-			var player:Player = cast object;
+			var entity:Entity = cast object;
 			if (rooted)
 			{
                 if (!sound.playing)
@@ -42,7 +42,7 @@ class Mushroom extends Plant
                     sound.pitch = MathEx.eerp(0.8, 1.2);
                 }
 
-				player.velocity.y = Constants.MUSHROOM_JUMP_VELOCITY;
+				entity.velocity.y = Constants.MUSHROOM_JUMP_VELOCITY;
 			}
         }
     }

@@ -44,7 +44,7 @@ class Plant extends Entity
 				broken = true;
 			}
 
-			if (isTouching(FLOOR))
+			if (isTouching(FLOOR) && !rooted)
 				root();
 		}
 	}

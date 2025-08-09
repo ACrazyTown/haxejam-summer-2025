@@ -1,5 +1,7 @@
 package states;
 
+import flixel.tile.FlxTilemap;
+import props.PlantPlatform;
 import props.PlantSafeland;
 import flixel.math.FlxPoint;
 import props.FloatingPlatform;
@@ -42,7 +44,7 @@ class PlayState extends FlxState
 
     var uiGroup:FlxGroup;
 
-	public var tilemap:FlxTilemapExt;
+	public var tilemap:FlxTilemap;
 	var entities:FlxTypedGroup<Entity>;
 	var walls:FlxTypedGroup<FlxObject>;
 
@@ -73,13 +75,14 @@ class PlayState extends FlxState
     override public function create()
     {
         super.create();
+
 		project = new LdtkProject();
 		level = project.all_worlds.Default.getLevel(levelID);
 		final levelWidth:Int = level.pxWid;
 		final levelHeight:Int = level.pxHei;
 
         camGame = new FlxCamera();
-        camGame.bgColor = 0;
+		camGame.bgColor = 0xFF6D546D;
         FlxG.cameras.reset(camGame);
 
         camUI = new FlxCamera();
@@ -201,8 +204,9 @@ class PlayState extends FlxState
 
 	function initTilemap():Void
 	{
-		tilemap = new FlxTilemapExt();
-		tilemap.setDownwardsGlue(true);
+		tilemap = new FlxTilemap();
+		// tilemap.setDownwardsGlue(true);
+        tilemap.framePadding = 0; // having frame padding crashes on HTML5?
 		add(tilemap);
 
 		final tiles = level.l_Tiles;
@@ -247,6 +251,16 @@ class PlayState extends FlxState
                     var platform = new FloatingPlatform(ldtkEntity.pixelX, ldtkEntity.pixelY, wide, FlxPoint.get(endPosX ?? ldtkEntity.pixelX, endPosY ?? ldtkEntity.pixelY));
                     entities.add(platform);
                 case "plantsafelanding": entities.add(new PlantSafeland(ldtkEntity.pixelX, ldtkEntity.pixelY));
+				case "plantplatform":
+                    var height:Null<Float> = null;
+					for (fi in ldtkEntity.json.fieldInstances)
+					{
+                        trace(fi);
+						if (fi.__identifier == "height")
+							height = fi.__value;
+					}
+
+					entities.add(new PlantPlatform(ldtkEntity.pixelX, ldtkEntity.pixelY, height));
 
 				default: FlxG.log.warn('Unhandled entity ${ldtkEntity.identifier}');
 			}

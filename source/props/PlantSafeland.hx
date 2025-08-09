@@ -17,7 +17,6 @@ class PlantSafeland extends Plant
 
         if (object is Player)
         {
-            trace("get trolled idiot");
             var player:Player = cast object;
             player.ignoreFallDamage = true;
         }
