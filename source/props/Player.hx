@@ -38,8 +38,10 @@ class Player extends Entity
 		animation.addByPrefix("idleBlinkR", "idleblink0", 6, true, true);
 		animation.addByPrefix("walkL", "walk", 6, false);
 		animation.addByPrefix("walkR", "walk", 6, false, true);
-		animation.addByPrefix("jumpL", "jump", 8, false);
-		animation.addByPrefix("jumpR", "jump", 8, false, true);
+		animation.addByPrefix("jumpL", "jump", 6, false);
+		animation.addByIndices("jumpLoopL", "jump", [1, 2, 3, 4], "", 6);
+		animation.addByPrefix("jumpR", "jump", 6, false, true);
+		animation.addByIndices("jumpLoopR", "jump", [1, 2, 3, 4], "", 6, true, true);
 
         animation.play("idleR");
 
@@ -58,6 +60,15 @@ class Player extends Entity
 				{
 					animation.play('idleBlink$dir', true);
 				}
+			}
+		});
+
+		animation.onFinish.add((name) ->
+		{
+			var dir = name.charAt(name.length - 1);
+			if (name == 'jump$dir')
+			{
+				animation.play('jumpLoop$dir');
 			}
 		});
 
@@ -93,6 +104,7 @@ class Player extends Entity
 			if (leftP)
 			{
 				velocity.x = -Constants.PLAYER_WALK_VELOCITY;
+				// animation.play(isTouching(FLOOR) ? "walkL" : "jumpLoopL");
 				if (isTouching(FLOOR))
 					animation.play("walkL");
 				flipIdle = false;
@@ -101,6 +113,7 @@ class Player extends Entity
 			if (rightP)
 			{
 				velocity.x = Constants.PLAYER_WALK_VELOCITY;
+				// animation.play(isTouching(FLOOR) ? "walkR" : "jumpLoopR");
 				if (isTouching(FLOOR))
 					animation.play("walkR");
 				flipIdle = true;
