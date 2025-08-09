@@ -1,5 +1,6 @@
 package props;
 
+import flixel.math.FlxMath;
 import flixel.graphics.frames.FlxAtlasFrames;
 import flixel.math.FlxAngle;
 import util.FlxVelocityEx;
@@ -10,12 +11,14 @@ import util.Constants;
 import data.Controls;
 import flixel.FlxG;
 
+using StringTools;
+
 class Player extends Entity
 {
     final PLAYER_WIDTH:Int = 90;
     final PLAYER_HEIGHT:Int = 200;
     
-	public var canMove:Bool = true;
+	public var canMove(default, set):Bool = true;
 
 	// carrying
 	public var carried:Plant = null;
@@ -29,10 +32,32 @@ class Player extends Entity
 		super(x, y);
 		frames = FlxAtlasFrames.fromSparrow("assets/images/playeranim.png", "assets/images/playeranim.xml");
 
-		animation.addByPrefix("idleL", "idle", 6);
-		animation.addByPrefix("idleR", "idle", 6, false, true);
+		animation.addByPrefix("idleL", "idle0", 6, true);
+		animation.addByPrefix("idleBlinkL", "idleblink0", 6, true);
+		animation.addByPrefix("idleR", "idle0", 6, true, true);
+		animation.addByPrefix("idleBlinkR", "idleblink0", 6, true, true);
 		animation.addByPrefix("walkL", "walk", 6, false);
 		animation.addByPrefix("walkR", "walk", 6, false, true);
+
+        animation.play("idleR");
+
+        animation.onLoop.add((name) ->
+		{
+			var dir = name.charAt(name.length - 1);
+
+			if (name.startsWith("idleBlink"))
+			{
+				animation.play('idle$dir', true);
+			}
+			else if (name.startsWith("idle"))
+			{
+				var shouldBlink = FlxG.random.bool(45);
+				if (shouldBlink)
+				{
+					animation.play('idleBlink$dir', true);
+				}
+			}
+		});
 
 		// drag.x = 400;
 		acceleration.y = Constants.GRAVITY;
@@ -54,10 +79,10 @@ class Player extends Entity
 	var flipIdle:Bool = false;
 	function updateMovement():Void
 	{
-		velocity.x = 0;
-
 		if (canMove)
 		{
+			velocity.x = 0;
+
 			var leftP = FlxG.keys.anyPressed(Controls.LEFT);
 			var rightP = FlxG.keys.anyPressed(Controls.RIGHT);
 			var upP = FlxG.keys.anyPressed(Controls.UP);
@@ -81,7 +106,7 @@ class Player extends Entity
 				velocity.y = Constants.PLAYER_JUMP_VELOCITY;
 			}
 
-			if (!leftP && !rightP && !upP)
+			if (!leftP && !rightP && !upP && !animation?.curAnim?.name.startsWith("idle"))
 			{
 				animation.play('idle${flipIdle ? "R" : "L"}');
 			}
@@ -93,7 +118,7 @@ class Player extends Entity
 		if (carried != null)
 		{
 			carried.x = x + ((width - carried.width) / 2);
-			carried.y = y + ((height - carried.height) / 2);
+			carried.y = y + ((height - carried.height) / 2) + 20;
 
 			if (carried.throwable)
 			{
@@ -166,5 +191,15 @@ class Player extends Entity
 	{
 		carried.carried = false;
 		carried = null;
+	}
+	function set_canMove(value:Bool):Bool
+	{
+		if (!value)
+		{
+			velocity.set(0, 0);
+			animation.play('idle${flipIdle ? "R" : "L"}');
+		}
+
+		return canMove = value;
 	}
 }

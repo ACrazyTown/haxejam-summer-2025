@@ -1,5 +1,10 @@
 package states;
 
+import flixel.math.FlxPoint;
+import props.FloatingPlatform;
+import data.Controls;
+import util.Constants;
+import props.FloatingIsland;
 import props.Rose;
 import props.Pot;
 import flixel.util.FlxColor;
@@ -49,7 +54,7 @@ class PlayState extends FlxState
     var cameraViewObject:FlxObject;
     var cameraViewGroup:FlxGroup;
 
-	final CAMERA_PADDING:Int = 50;
+	final CAMERA_PADDING:Int = 0;
 
 	var runningCutscene:Bool = false;
 
@@ -145,13 +150,24 @@ class PlayState extends FlxState
 
 		FlxG.collide(player, walls);
 		FlxG.collide(entities, walls);
-		FlxG.collide(entities, tilemap, (a:Entity, b:FlxTilemapExt) -> a.onCollision(b));
+        
 		FlxG.collide(player, tilemap);
+		FlxG.collide(entities, tilemap, (a:Entity, b:FlxTilemapExt) -> a.onCollision(b));
+
 		FlxG.overlap(player, entities, (a:Player, b:Entity) ->
 		{
 			a.onOverlap(b);
 			b.onOverlap(a);
 		});
+
+		FlxG.overlap(entities, entities, (a:Entity, b:Entity) ->
+		{
+			a.onOverlap(b);
+			b.onOverlap(a);
+		});
+
+		if (player.y > level.pxHei + player.height + 100)
+			die();
 
 		if (FlxG.keys.justPressed.R)
 		{
@@ -171,13 +187,13 @@ class PlayState extends FlxState
 
         if (cameraViewMode)
         {
-            if (FlxG.keys.pressed.LEFT)
+            if (FlxG.keys.anyPressed(Controls.LEFT))
                 camera.scroll.x -= cameraViewMoveSpeed * elapsed;
-            if (FlxG.keys.pressed.RIGHT)
+			if (FlxG.keys.anyPressed(Controls.RIGHT))
                 camera.scroll.x += cameraViewMoveSpeed * elapsed;
-            if (FlxG.keys.pressed.UP)
+			if (FlxG.keys.anyPressed(Controls.UP))
                 camera.scroll.y -= cameraViewMoveSpeed * elapsed;
-            if (FlxG.keys.pressed.DOWN)
+			if (FlxG.keys.anyPressed(Controls.DOWN))
                 camera.scroll.y += cameraViewMoveSpeed * elapsed;
         }
     }
@@ -193,7 +209,7 @@ class PlayState extends FlxState
 		tilemap.loadMapFromArray(tileArray, tiles.cWid, tiles.cHei, "assets/images/tilestest2.png", tiles.gridSize, tiles.gridSize, null, 0, 0);
 
         // air tiles are literally empty so no need to draw them
-		var airTilePos = tilemap.getAllTilePos(29); // oops
+		var airTilePos = tilemap.getAllTilePos(0);
         for (pos in airTilePos)
         {
             var tile = tilemap.getTileData(pos);
@@ -205,13 +221,30 @@ class PlayState extends FlxState
 
 		for (ldtkEntity in level.l_Entities.getAllUntyped())
 		{
-			switch (ldtkEntity.identifier.toLowerCase())
+			var id = ldtkEntity.identifier.toLowerCase();
+			switch (id)
 			{
 				case "playerspawnpos": player.setPosition(ldtkEntity.pixelX, ldtkEntity.pixelY);
 				case "mushroom": entities.add(new Mushroom(ldtkEntity.pixelX, ldtkEntity.pixelY));
                 case "rose": entities.add(new Rose(ldtkEntity.pixelX, ldtkEntity.pixelY));
 				case "exitarea": entities.add(new ExitArea(ldtkEntity.pixelX, ldtkEntity.pixelY));
                 case "pot": entities.add(new Pot(ldtkEntity.pixelX, ldtkEntity.pixelY));
+				case "floatingisland": entities.add(new FloatingIsland(ldtkEntity.pixelX, ldtkEntity.pixelY));
+                case "floatingplatform", "floatingplatformwide":
+                    var endPosX:Null<Float> = null;
+                    var endPosY:Null<Float> = null;
+                    for (fi in ldtkEntity.json.fieldInstances)
+                    {
+                        if (fi.__identifier == "endX")
+                            endPosX = fi.__value;
+                        if (fi.__identifier == "endY")
+                            endPosY = fi.__value;
+                    }
+
+                    var wide:Bool = id == "floatingplatformwide";
+                    var platform = new FloatingPlatform(ldtkEntity.pixelX, ldtkEntity.pixelY, wide, FlxPoint.get(endPosX ?? ldtkEntity.pixelX, endPosY ?? ldtkEntity.pixelY));
+                    entities.add(platform);
+
 				default: FlxG.log.warn('Unhandled entity ${ldtkEntity.identifier}');
 			}
 		}
@@ -245,7 +278,7 @@ class PlayState extends FlxState
 
 		runningCutscene = true;
 
-		var vinesPos = tilemap.getAllTilePos(8);
+		var vinesPos = tilemap.getAllTilePos(18);
 		for (pos in vinesPos)
 			tilemap.setTileIndex(pos, 0);
 
@@ -254,19 +287,26 @@ class PlayState extends FlxState
         FlxG.camera.target = player;
 
 		player.canMove = false;
+		player.animation.play("walkR");
+		player.animation.curAnim.looped = true;
+		player.velocity.x = Constants.PLAYER_WALK_VELOCITY / 2;
 
-        player.velocity.x = 0;        
-		FlxTimer.wait(2, () ->
+		FlxTween.tween(overlay, {alpha: 1}, 2);
+		FlxTimer.wait(3, () ->
 		{
-            player.animation.play("walkR");
-			player.velocity.x = 200;
-			FlxTween.tween(overlay, {alpha: 1}, 1);
-            FlxTimer.wait(2, () -> 
-            {
-				var nextLevel = levelNum + 1;
-                var nextState = nextLevel > 10 ? PlayState.new.bind("TODO") : PlayState.new.bind('Level_$nextLevel');
-                FlxG.switchState(nextState);
-            });
+			var nextLevel = levelNum + 1;
+			var nextState = nextLevel > 10 ? PlayState.new.bind("TODO") : PlayState.new.bind('Level_$nextLevel');
+			FlxG.switchState(nextState);
 		});
+	}
+
+	function die():Void
+	{
+		if (runningCutscene)
+			return;
+
+		runningCutscene = true;
+
+		FlxTween.tween(overlay, {alpha: 1}, 1, {onComplete: (_) -> FlxG.resetState()});
 	}
 }

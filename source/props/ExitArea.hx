@@ -9,8 +9,11 @@ class ExitArea extends Entity
     public function new(x:Float = 0, y:Float = 0)
     {
         super(x, y);
-        makeGraphic(180, 300, FlxColor.RED);
-        alpha = 0.1;
+        // makeGraphic(180, 300, FlxColor.RED);
+        // alpha = 0.1;
+        width = 180;
+        height = 300;
+        visible = false;
     }
 
     override function onOverlap(object:FlxObject):Void

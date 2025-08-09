@@ -1,5 +1,6 @@
 package;
 
+import haxe.macro.Compiler;
 import flixel.FlxGame;
 import openfl.display.Sprite;
 import states.InitState;
@@ -16,7 +17,8 @@ class Main extends Sprite
         super();
         Main.instance = this;
 
-        game = new FlxGame(0, 0, InitState.new.bind(PlayState.new.bind("Level_0")), 60, 60, true, false);
+		var startingLevel:String = #if LEVEL Compiler.getDefine("LEVEL") #else "Level_0" #end;
+        game = new FlxGame(0, 0, InitState.new.bind(PlayState.new.bind(startingLevel)), 60, 60, true, false);
         addChild(game);
     }
 }
