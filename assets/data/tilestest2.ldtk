@@ -1301,54 +1301,6 @@
 							"fieldInstances": [],
 							"__worldX": 2160,
 							"__worldY": 600
-						},
-						{
-							"__identifier": "PlantPlatform",
-							"__grid": [42,78],
-							"__pivot": [0,0],
-							"__tags": [],
-							"__tile": { "tilesetUid": 11, "x": 420, "y": 0, "w": 60, "h": 60 },
-							"__smartColor": "#C0CBDC",
-							"iid": "37447ca0-5e50-11f0-9e73-0d70d49463ed",
-							"width": 60,
-							"height": 60,
-							"defUid": 25,
-							"px": [420,780],
-							"fieldInstances": [{ "__identifier": "height", "__type": "Float", "__value": 180, "__tile": null, "defUid": 64, "realEditorValues": [{ "id": "V_Float", "params": [180] }] }],
-							"__worldX": 480,
-							"__worldY": 840
-						},
-						{
-							"__identifier": "PlantSafeLanding",
-							"__grid": [52,78],
-							"__pivot": [0,0],
-							"__tags": [],
-							"__tile": { "tilesetUid": 11, "x": 480, "y": 0, "w": 60, "h": 60 },
-							"__smartColor": "#3E8948",
-							"iid": "58f25020-5e50-11f0-9e73-537614394901",
-							"width": 60,
-							"height": 60,
-							"defUid": 20,
-							"px": [520,780],
-							"fieldInstances": [],
-							"__worldX": 580,
-							"__worldY": 840
-						},
-						{
-							"__identifier": "Mushroom",
-							"__grid": [33,78],
-							"__pivot": [0,0],
-							"__tags": [],
-							"__tile": { "tilesetUid": 11, "x": 0, "y": 60, "w": 60, "h": 60 },
-							"__smartColor": "#124E89",
-							"iid": "9dea1390-5e50-11f0-9e73-f9b13ec72de4",
-							"width": 60,
-							"height": 60,
-							"defUid": 21,
-							"px": [330,780],
-							"fieldInstances": [],
-							"__worldX": 390,
-							"__worldY": 840
 						}
 					]
 				},
@@ -6428,6 +6380,25 @@
 							],
 							"__worldX": 17220,
 							"__worldY": 110
+						},
+						{
+							"__identifier": "Teleporter",
+							"__grid": [3,112],
+							"__pivot": [0,0],
+							"__tags": [],
+							"__tile": null,
+							"__smartColor": "#EAD4AA",
+							"iid": "050bc3d0-5e50-11f0-8d85-29198bc59046",
+							"width": 60,
+							"height": 200,
+							"defUid": 69,
+							"px": [30,1120],
+							"fieldInstances": [
+								{ "__identifier": "x", "__type": "Float", "__value": 2588, "__tile": null, "defUid": 70, "realEditorValues": [{ "id": "V_Float", "params": [2588] }] },
+								{ "__identifier": "y", "__type": "Float", "__value": 226, "__tile": null, "defUid": 71, "realEditorValues": [{ "id": "V_Float", "params": [226] }] }
+							],
+							"__worldX": 17010,
+							"__worldY": -440
 						}
 					]
 				},
@@ -6977,6 +6948,25 @@
 							],
 							"__worldX": 20760,
 							"__worldY": -1080
+						},
+						{
+							"__identifier": "Teleporter",
+							"__grid": [65,124],
+							"__pivot": [0,0],
+							"__tags": [],
+							"__tile": null,
+							"__smartColor": "#EAD4AA",
+							"iid": "1a523cb0-5e50-11f0-8d85-75e2a5a71936",
+							"width": 60,
+							"height": 200,
+							"defUid": 69,
+							"px": [650,1240],
+							"fieldInstances": [
+								{ "__identifier": "x", "__type": "Float", "__value": 1806, "__tile": null, "defUid": 70, "realEditorValues": [{ "id": "V_Float", "params": [1806] }] },
+								{ "__identifier": "y", "__type": "Float", "__value": 164, "__tile": null, "defUid": 71, "realEditorValues": [{ "id": "V_Float", "params": [164] }] }
+							],
+							"__worldX": 20630,
+							"__worldY": -680
 						}
 					]
 				},
