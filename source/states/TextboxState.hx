@@ -48,6 +48,8 @@ class TextboxState extends FlxSubState
 		add(bg);
 
 		text = new FlxBitmapText(bg.x + 16, bg.y + 16, "", font);
+		text.fieldWidth = cast bg.width - 32;
+		text.autoSize = false;
 		text.camera = uiCamera;
 		add(text);
 
@@ -57,6 +59,7 @@ class TextboxState extends FlxSubState
 		arrow.y = bg.y + bg.height - arrow.height / 2;
 
 		typer = new FlxTextTyper();
+		typer.delay = CONST(0.025);
 		typer.onChange.add(() ->
 		{
 			text.text = typer.text;

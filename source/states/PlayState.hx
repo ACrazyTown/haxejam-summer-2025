@@ -183,19 +183,19 @@ class PlayState extends FlxState
 			};
 			openSubState(pauseMenuSubState);
 		}
-		if (FlxG.keys.justPressed.TAB && !textboxIsOpen && !cameraViewMode)
-		{
-			textboxIsOpen = true;
-			player.canMove = false;
-			var textboxState = new TextboxState(["Hi this is text", "Hi this is more text"], camUI, false);
-			textboxState.closeCallback = () ->
-			{
-				trace("hi!");
-				textboxIsOpen = false;
-				player.canMove = true; // risky?
-			};
-			openSubState(textboxState);
-		}
+		// if (FlxG.keys.justPressed.TAB && !textboxIsOpen && !cameraViewMode)
+		// {
+		// 	textboxIsOpen = true;
+		// 	player.canMove = false;
+		// 	var textboxState = new TextboxState(["Hi this is text", "Hi this is more text"], camUI, false);
+		// 	textboxState.closeCallback = () ->
+		// 	{
+		// 		trace("hi!");
+		// 		textboxIsOpen = false;
+		// 		player.canMove = true; // risky?
+		// 	};
+		// 	openSubState(textboxState);
+		// }
 
 		FlxG.collide(player, walls);
 		FlxG.collide(entities, walls);
