@@ -6,7 +6,6 @@ enum abstract MouseState(String) from String to String
 {
     var NORMAL = "normal";
     var CLICKABLE = "clickable";
-    var TRASH = "trash";
 }
 
 class Mouse
@@ -14,9 +13,8 @@ class Mouse
     public static var state(default, null):MouseState;
     private static var stateAssets:Map<MouseState, String> = 
     [
-        NORMAL => "assets/images/ui/cursor-default.png",
-        CLICKABLE => "assets/images/ui/cursor-clickable.png",
-        TRASH => "assets/images/ui/cursor-trash.png"
+        NORMAL => "assets/images/cursor-default.png",
+        CLICKABLE => "assets/images/cursor-clickable.png"
     ];
 
     public static function setState(newState:MouseState):Void
