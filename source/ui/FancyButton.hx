@@ -41,7 +41,7 @@ class FancyButton extends FlxSprite
     {
         Mouse.setState(CLICKABLE);
 
-        FlxTween.angle(btn, 0, -10, 0.25, {ease: FlxEase.cubeOut});
+        // FlxTween.angle(btn, 0, -10, 0.25, {ease: FlxEase.cubeOut});
         FlxTween.tween(btn.scale, {x: 1.2, y: 1.2}, 0.25, {ease: FlxEase.cubeOut});
     }
 
@@ -50,7 +50,7 @@ class FancyButton extends FlxSprite
         Mouse.setState(NORMAL);
         mouseWasDownOnBtn = false;
 
-        FlxTween.angle(btn, -10, 0, 0.25, {ease: FlxEase.cubeOut});
+        // FlxTween.angle(btn, -10, 0, 0.25, {ease: FlxEase.cubeOut});
         FlxTween.tween(btn.scale, {x: 1, y: 1}, 0.25, {ease: FlxEase.cubeOut});
     }
 

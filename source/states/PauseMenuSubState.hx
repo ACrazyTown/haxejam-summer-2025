@@ -1,5 +1,6 @@
 package states;
 
+import ui.FancyButton;
 import flixel.tweens.FlxEase;
 import flixel.tweens.FlxTween;
 import flixel.FlxCamera;
@@ -19,8 +20,9 @@ class PauseMenuSubState extends FlxSubState
 	var squigglyBottom:FlxSprite;
 
 	var statusText:FlxBitmapText;
-	var resumeText:FlxBitmapText;
-	var backToMainText:FlxBitmapText;
+
+	var resumeButton:FancyButton;
+	var mainMenuButton:FancyButton;
 
 	public function new()
 	{
@@ -47,23 +49,19 @@ class PauseMenuSubState extends FlxSubState
 		statusText.scale.scale(3, 3);
 		statusText.screenCenter(X);
 
-		resumeText = new FlxBitmapText(0, 400, "Resume", font);
-		resumeText.setBorderStyle(SHADOW, FlxColor.BLACK, 2);
-		resumeText.camera = pauseCam;
-		resumeText.scale.scale(2, 2);
-		resumeText.x = 1280 / 4 - resumeText.width / 2;
+		resumeButton = new FancyButton(0, 400, "assets/images/btn_resume.png", close);
+		resumeButton.camera = pauseCam;
+		resumeButton.x = 1280 / 4 - resumeButton.width / 2;
 
-		backToMainText = new FlxBitmapText(0, 400, "Main Menu", font);
-		backToMainText.setBorderStyle(SHADOW, FlxColor.BLACK, 2);
-		backToMainText.camera = pauseCam;
-		backToMainText.scale.scale(2, 2);
-		backToMainText.x = 3 * 1280 / 4 - backToMainText.width / 2;
+		mainMenuButton = new FancyButton(0, 400, "assets/images/btn_main_menu.png", () -> {});
+		mainMenuButton.camera = pauseCam;
+		mainMenuButton.x = 3 * 1280 / 4 - mainMenuButton.width / 2;
 
 		add(squigglyTop);
 		add(squigglyBottom);
 		add(statusText);
-		add(resumeText);
-		add(backToMainText);
+		add(resumeButton);
+		add(mainMenuButton);
 	}
 
 	override function create()

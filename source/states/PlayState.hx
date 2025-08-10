@@ -1,5 +1,6 @@
 package states;
 
+import ui.Mouse;
 import flixel.text.FlxBitmapFont;
 import flixel.text.FlxBitmapText;
 import flixel.tile.FlxTilemap;
@@ -79,6 +80,8 @@ class PlayState extends FlxState
     override public function create()
     {
         super.create();
+
+		Mouse.setState(NORMAL);
 
 		project = new LdtkProject();
 		level = project.all_worlds.Default.getLevel(levelID);
