@@ -253,7 +253,7 @@
 			"fieldDefs": []
 		},
 		{
-			"identifier": "Custcene",
+			"identifier": "Cutscene",
 			"uid": 72,
 			"tags": [],
 			"exportToToc": false,
@@ -6869,7 +6869,7 @@
 							"__worldY": -3720
 						},
 						{
-							"__identifier": "Custcene",
+							"__identifier": "Cutscene",
 							"__grid": [215,0],
 							"__pivot": [0,0],
 							"__tags": [],
