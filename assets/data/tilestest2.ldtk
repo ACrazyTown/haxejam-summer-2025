@@ -4374,13 +4374,13 @@
 							"defUid": 49,
 							"px": [540,840],
 							"fieldInstances": [{ "__identifier": "parent", "__type": "EntityRef", "__value": {
-								"entityIid": "f7e23bb0-5e50-11f0-91a5-2fefcf44394b",
+								"entityIid": "7343a0f0-5e50-11f0-8dfd-1b79ce37c61b",
 								"layerIid": "61a1d622-5e50-11f0-91a5-5bfab8d67a11",
 								"levelIid": "61a1d620-5e50-11f0-91a5-49f6bc5cf962",
 								"worldIid": "4065d0c1-5e50-11f0-9519-01297b0d537f"
 							}, "__tile": null, "defUid": 65, "realEditorValues": [{
 								"id": "V_String",
-								"params": ["f7e23bb0-5e50-11f0-91a5-2fefcf44394b"]
+								"params": ["7343a0f0-5e50-11f0-8dfd-1b79ce37c61b"]
 							}] }],
 							"__worldX": 12900,
 							"__worldY": 420
