@@ -10,12 +10,12 @@ class FancyButton extends FlxSprite
     var onClick:Null<Void->Void>;
     var mouseWasDownOnBtn:Bool = false;
 
-    public function new(x:Float = 0, y:Float = 0, sprite:FlxSprite, onClick:Null<Void -> Void>)
+	public function new(x:Float = 0, y:Float = 0, graphicPath:String, onClick:Null<Void -> Void>)
     {
         super(x, y);
         this.onClick = onClick;
 
-        loadGraphicFromSprite(sprite);
+        loadGraphic(graphicPath);
         
         FlxMouseEvent.add(this, onMouseDown, onMouseUp, onMouseOver, onMouseOut);
     }
