@@ -22,12 +22,12 @@ class MenuState extends FlxState
 	var logo:FlxSprite;
 
 	var playButton:FancyButton;
-	var continueButton:FancyButton;
 	var levelSelectButton:FancyButton;
 	var creditsButton:FancyButton;
-	var bottomText:FlxBitmapText;
 
 	var timersDone = -1;
+
+	final BUTTONS_Y = 460;
 
 	public function new()
 	{
@@ -47,7 +47,6 @@ class MenuState extends FlxState
 		fadeRect.makeGraphic(1280, 720, FlxColor.BLACK);
 
 		logo = new FlxSprite(0, 800, "assets/images/logo.png");
-		logo.scale.scale(2, 2);
 		logo.camera = mainMenuCam;
 		logo.screenCenter(X);
 
@@ -56,39 +55,26 @@ class MenuState extends FlxState
 			trace("open playstate!");
 		});
 		playButton.camera = mainMenuCam;
-		playButton.x = 1280 / 8 - playButton.width / 2;
-
-		continueButton = new FancyButton(0, 800, "assets/images/btn_continue.png", () ->
-		{
-			trace("open playstate (continue)!");
-		});
-		continueButton.camera = mainMenuCam;
-		continueButton.x = 3 * 1280 / 8 - continueButton.width / 2;
+		playButton.x = 1280 / 6 - playButton.width / 2;
 
 		levelSelectButton = new FancyButton(0, 800, "assets/images/btn_level_select.png", () ->
 		{
 			trace("open level select!");
 		});
 		levelSelectButton.camera = mainMenuCam;
-		levelSelectButton.x = 5 * 1280 / 8 - levelSelectButton.width / 2;
+		levelSelectButton.x = 3 * 1280 / 6 - levelSelectButton.width / 2;
 
 		creditsButton = new FancyButton(0, 800, "assets/images/btn_credits.png", () ->
 		{
 			trace("open credits!");
 		});
 		creditsButton.camera = mainMenuCam;
-		creditsButton.x = 7 * 1280 / 8 - creditsButton.width / 2;
-
-		bottomText = new FlxBitmapText(0, 900, "(text here text here text here)", font);
-		bottomText.camera = mainMenuCam;
-		bottomText.screenCenter(X);
+		creditsButton.x = 5 * 1280 / 6 - creditsButton.width / 2;
 
 		add(logo);
 		add(playButton);
-		add(continueButton);
 		add(levelSelectButton);
 		add(creditsButton);
-		add(bottomText);
 		add(fadeRect);
 
 		FlxTimer.wait(timtime(), () ->
@@ -97,27 +83,19 @@ class MenuState extends FlxState
 		});
 		FlxTimer.wait(timtime(), () ->
 		{
-			FlxTween.tween(logo, {y: 120}, 2, {ease: FlxEase.cubeOut});
+			FlxTween.tween(logo, {y: 15}, 2, {ease: FlxEase.cubeOut});
 		});
 		FlxTimer.wait(timtime(), () ->
 		{
-			FlxTween.tween(playButton, {y: 400}, 2, {ease: FlxEase.cubeOut});
+			FlxTween.tween(playButton, {y: BUTTONS_Y}, 2, {ease: FlxEase.cubeOut});
 		});
 		FlxTimer.wait(timtime(), () ->
 		{
-			FlxTween.tween(continueButton, {y: 400}, 2, {ease: FlxEase.cubeOut});
+			FlxTween.tween(levelSelectButton, {y: BUTTONS_Y}, 2, {ease: FlxEase.cubeOut});
 		});
 		FlxTimer.wait(timtime(), () ->
 		{
-			FlxTween.tween(levelSelectButton, {y: 400}, 2, {ease: FlxEase.cubeOut});
-		});
-		FlxTimer.wait(timtime(), () ->
-		{
-			FlxTween.tween(creditsButton, {y: 400}, 2, {ease: FlxEase.cubeOut});
-		});
-		FlxTimer.wait(timtime(), () ->
-		{
-			FlxTween.tween(bottomText, {y: 720 - 50}, 2, {ease: FlxEase.cubeOut});
+			FlxTween.tween(creditsButton, {y: BUTTONS_Y}, 2, {ease: FlxEase.cubeOut});
 		});
 	}
 
