@@ -22,6 +22,8 @@ class MenuState extends FlxState
 	var logo:FlxSprite;
 
 	var playButton:FancyButton;
+	var continueButton:FancyButton;
+	var levelSelectButton:FancyButton;
 	var creditsButton:FancyButton;
 	var bottomText:FlxBitmapText;
 
@@ -54,14 +56,28 @@ class MenuState extends FlxState
 			trace("open playstate!");
 		});
 		playButton.camera = mainMenuCam;
-		playButton.x = 1280 / 4 - playButton.width / 2;
+		playButton.x = 1280 / 8 - playButton.width / 2;
+
+		continueButton = new FancyButton(0, 800, "assets/images/btn_continue.png", () ->
+		{
+			trace("open playstate (continue)!");
+		});
+		continueButton.camera = mainMenuCam;
+		continueButton.x = 3 * 1280 / 8 - continueButton.width / 2;
+
+		levelSelectButton = new FancyButton(0, 800, "assets/images/btn_level_select.png", () ->
+		{
+			trace("open level select!");
+		});
+		levelSelectButton.camera = mainMenuCam;
+		levelSelectButton.x = 5 * 1280 / 8 - levelSelectButton.width / 2;
 
 		creditsButton = new FancyButton(0, 800, "assets/images/btn_credits.png", () ->
 		{
 			trace("open credits!");
 		});
 		creditsButton.camera = mainMenuCam;
-		creditsButton.x = 3 * 1280 / 4 - creditsButton.width / 2;
+		creditsButton.x = 7 * 1280 / 8 - creditsButton.width / 2;
 
 		bottomText = new FlxBitmapText(0, 900, "(text here text here text here)", font);
 		bottomText.camera = mainMenuCam;
@@ -69,6 +85,8 @@ class MenuState extends FlxState
 
 		add(logo);
 		add(playButton);
+		add(continueButton);
+		add(levelSelectButton);
 		add(creditsButton);
 		add(bottomText);
 		add(fadeRect);
@@ -84,6 +102,14 @@ class MenuState extends FlxState
 		FlxTimer.wait(timtime(), () ->
 		{
 			FlxTween.tween(playButton, {y: 400}, 2, {ease: FlxEase.cubeOut});
+		});
+		FlxTimer.wait(timtime(), () ->
+		{
+			FlxTween.tween(continueButton, {y: 400}, 2, {ease: FlxEase.cubeOut});
+		});
+		FlxTimer.wait(timtime(), () ->
+		{
+			FlxTween.tween(levelSelectButton, {y: 400}, 2, {ease: FlxEase.cubeOut});
 		});
 		FlxTimer.wait(timtime(), () ->
 		{
