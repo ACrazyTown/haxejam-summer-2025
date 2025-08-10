@@ -33,6 +33,9 @@ class PauseMenuSubState extends FlxSubState
 	{
 		super.create();
 
+        if (FlxG.sound.music?.playing)
+            FlxG.sound.music.pause();
+
 		pauseCam = new FlxCamera();
 		pauseCam.bgColor = 0;
 		FlxG.cameras.add(pauseCam, false);
@@ -77,6 +80,9 @@ class PauseMenuSubState extends FlxSubState
 		super.update(elapsed);
 		if (FlxG.keys.justPressed.ESCAPE)
 		{
+            if (FlxG.sound.music != null)
+                FlxG.sound.music.play();
+
 			close();
 		}
 	}

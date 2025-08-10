@@ -22,7 +22,7 @@ class MenuState extends FlxState
 	var logo:FlxSprite;
 
 	var playButton:FancyButton;
-	var levelSelectButton:FancyButton;
+	// var levelSelectButton:FancyButton;
 	var creditsButton:FancyButton;
 
 	var timersDone = -1;
@@ -52,28 +52,28 @@ class MenuState extends FlxState
 
 		playButton = new FancyButton(0, 800, "assets/images/btn_play.png", () ->
 		{
-			trace("open playstate!");
+			FlxG.switchState(PlayState.new.bind("Level_0"));
 		});
 		playButton.camera = mainMenuCam;
 		playButton.x = 1280 / 6 - playButton.width / 2;
 
-		levelSelectButton = new FancyButton(0, 800, "assets/images/btn_level_select.png", () ->
-		{
-			trace("open level select!");
-		});
-		levelSelectButton.camera = mainMenuCam;
-		levelSelectButton.x = 3 * 1280 / 6 - levelSelectButton.width / 2;
+		// levelSelectButton = new FancyButton(0, 800, "assets/images/btn_level_select.png", () ->
+		// {
+		// 	trace("open level select!");
+		// });
+		// levelSelectButton.camera = mainMenuCam;
+		// levelSelectButton.x = 3 * 1280 / 6 - levelSelectButton.width / 2;
 
 		creditsButton = new FancyButton(0, 800, "assets/images/btn_credits.png", () ->
 		{
-			trace("open credits!");
+			FlxG.openURL("https://github.com/ACrazyTown/haxejam-summer-2025/blob/main/CREDITS.md");
 		});
 		creditsButton.camera = mainMenuCam;
 		creditsButton.x = 5 * 1280 / 6 - creditsButton.width / 2;
 
 		add(logo);
 		add(playButton);
-		add(levelSelectButton);
+		// add(levelSelectButton);
 		add(creditsButton);
 		add(fadeRect);
 
@@ -89,10 +89,10 @@ class MenuState extends FlxState
 		{
 			FlxTween.tween(playButton, {y: BUTTONS_Y}, 2, {ease: FlxEase.cubeOut});
 		});
-		FlxTimer.wait(timtime(), () ->
-		{
-			FlxTween.tween(levelSelectButton, {y: BUTTONS_Y}, 2, {ease: FlxEase.cubeOut});
-		});
+		// FlxTimer.wait(timtime(), () ->
+		// {
+		// 	FlxTween.tween(levelSelectButton, {y: BUTTONS_Y}, 2, {ease: FlxEase.cubeOut});
+		// });
 		FlxTimer.wait(timtime(), () ->
 		{
 			FlxTween.tween(creditsButton, {y: BUTTONS_Y}, 2, {ease: FlxEase.cubeOut});

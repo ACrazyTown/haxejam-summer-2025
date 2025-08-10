@@ -174,11 +174,11 @@ class PlayState extends FlxState
 
 		if (FlxG.keys.justPressed.ESCAPE && !textboxIsOpen && !cameraViewMode)
 		{
-			controlsText.text = "";
+            controlsText.visible = false;
 			var pauseMenuSubState = new PauseMenuSubState();
 			pauseMenuSubState.closeCallback = () ->
 			{
-				updateControlsText();
+				controlsText.visible = true;
 				Mouse.setState(NORMAL);
 			};
 			openSubState(pauseMenuSubState);

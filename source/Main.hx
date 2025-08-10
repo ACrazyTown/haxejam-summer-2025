@@ -5,6 +5,7 @@ import flixel.FlxGame;
 import openfl.display.Sprite;
 import states.InitState;
 import states.PlayState;
+import states.MenuState;
 
 class Main extends Sprite
 {
@@ -18,7 +19,7 @@ class Main extends Sprite
         Main.instance = this;
 
 		var startingLevel:String = #if LEVEL Compiler.getDefine("LEVEL") #else "Level_0" #end;
-        game = new FlxGame(0, 0, InitState.new.bind(PlayState.new.bind(startingLevel)), 60, 60, true, false);
+		game = new FlxGame(0, 0, InitState.new.bind(#if LEVEL PlayState.new.bind(startingLevel) #else MenuState.new #end), 60, 60, true, false);
         addChild(game);
     }
 }
