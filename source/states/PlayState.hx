@@ -1,5 +1,6 @@
 package states;
 
+import ui.Mouse;
 import props.Teleporter;
 import props.BreakableBlock;
 import ldtk.Json.EntityReferenceInfos;
@@ -75,6 +76,8 @@ class PlayState extends FlxState
 
 	var overlay:FlxSprite;
 
+	var textboxIsOpen:Bool = false;
+
     public function new(level:String)
     {
         super();
@@ -87,6 +90,8 @@ class PlayState extends FlxState
     override public function create()
     {
         super.create();
+
+		Mouse.setState(NORMAL);
 
 		project = new LdtkProject();
 		level = project.all_worlds.Default.getLevel(levelID);
@@ -175,6 +180,31 @@ class PlayState extends FlxState
 	{
 		super.update(elapsed);
 
+		if (FlxG.keys.justPressed.ESCAPE && !textboxIsOpen && !cameraViewMode)
+		{
+            controlsText.visible = false;
+			var pauseMenuSubState = new PauseMenuSubState();
+			pauseMenuSubState.closeCallback = () ->
+			{
+				controlsText.visible = true;
+				Mouse.setState(NORMAL);
+			};
+			openSubState(pauseMenuSubState);
+		}
+		// if (FlxG.keys.justPressed.TAB && !textboxIsOpen && !cameraViewMode)
+		// {
+		// 	textboxIsOpen = true;
+		// 	player.canMove = false;
+		// 	var textboxState = new TextboxState(["Hi this is text", "Hi this is more text"], camUI, false);
+		// 	textboxState.closeCallback = () ->
+		// 	{
+		// 		trace("hi!");
+		// 		textboxIsOpen = false;
+		// 		player.canMove = true; // risky?
+		// 	};
+		// 	openSubState(textboxState);
+		// }
+
 		FlxG.collide(player, walls);
 		FlxG.collide(entities, walls);
         
@@ -201,7 +231,7 @@ class PlayState extends FlxState
 			FlxG.resetState();
 		}
 
-		if (FlxG.keys.justPressed.ENTER && !runningCutscene)
+		if (FlxG.keys.justPressed.ENTER && !runningCutscene && !textboxIsOpen)
         {
             // camGame.updateMovement = !camGame.updateMovement;
             // player.updateMovement = !camGame.updateMovement;
