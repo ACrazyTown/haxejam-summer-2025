@@ -1,5 +1,10 @@
 package states;
 
+import ldtk.Json.EntityReferenceInfos;
+import props.DepositKey;
+import props.PlantKey;
+import ldtk.Json.EntityInstanceJson;
+import props.BlockKey;
 import flixel.text.FlxBitmapFont;
 import flixel.text.FlxBitmapText;
 import flixel.tile.FlxTilemap;
@@ -49,6 +54,7 @@ class PlayState extends FlxState
 	var controlsText:FlxBitmapText;
 
 	public var tilemap:FlxTilemap;
+
 	var entities:FlxTypedGroup<Entity>;
 	var walls:FlxTypedGroup<FlxObject>;
 
@@ -94,7 +100,7 @@ class PlayState extends FlxState
         camUI.bgColor = 0;
         FlxG.cameras.add(camUI, false);
 
-		FlxG.worldBounds.set(0, 0, levelWidth, levelHeight);
+		FlxG.worldBounds.set(-1, -1, levelWidth + 1, levelHeight + 1);
 		FlxG.camera.setScrollBounds(0, levelWidth, -CAMERA_PADDING, levelHeight + CAMERA_PADDING);
 
         uiGroup = new FlxGroup();
@@ -248,12 +254,18 @@ class PlayState extends FlxState
 			var id = ldtkEntity.identifier.toLowerCase();
 			switch (id)
 			{
-				case "playerspawnpos": player.setPosition(ldtkEntity.pixelX, ldtkEntity.pixelY);
-				case "mushroom": entities.add(new Mushroom(ldtkEntity.pixelX, ldtkEntity.pixelY));
-                case "rose": entities.add(new Rose(ldtkEntity.pixelX, ldtkEntity.pixelY));
-				case "exitarea": entities.add(new ExitArea(ldtkEntity.pixelX, ldtkEntity.pixelY));
-                case "pot": entities.add(new Pot(ldtkEntity.pixelX, ldtkEntity.pixelY));
-				case "floatingisland": entities.add(new FloatingIsland(ldtkEntity.pixelX, ldtkEntity.pixelY));
+				case "playerspawnpos":
+					player.setPosition(ldtkEntity.pixelX, ldtkEntity.pixelY);
+				case "mushroom":
+					entities.add(new Mushroom(ldtkEntity, ldtkEntity.pixelX, ldtkEntity.pixelY));
+				case "rose":
+					entities.add(new Rose(ldtkEntity, ldtkEntity.pixelX, ldtkEntity.pixelY));
+				case "exitarea":
+					entities.add(new ExitArea(ldtkEntity, ldtkEntity.pixelX, ldtkEntity.pixelY));
+				case "pot":
+					entities.add(new Pot(ldtkEntity, ldtkEntity.pixelX, ldtkEntity.pixelY));
+				case "floatingisland":
+					entities.add(new FloatingIsland(ldtkEntity, ldtkEntity.pixelX, ldtkEntity.pixelY));
                 case "floatingplatform", "floatingplatformwide":
                     var endPosX:Null<Float> = null;
                     var endPosY:Null<Float> = null;
@@ -266,22 +278,66 @@ class PlayState extends FlxState
                     }
 
                     var wide:Bool = id == "floatingplatformwide";
-                    var platform = new FloatingPlatform(ldtkEntity.pixelX, ldtkEntity.pixelY, wide, FlxPoint.get(endPosX ?? ldtkEntity.pixelX, endPosY ?? ldtkEntity.pixelY));
+					var platform = new FloatingPlatform(ldtkEntity, ldtkEntity.pixelX, ldtkEntity.pixelY, wide,
+						FlxPoint.get(endPosX ?? ldtkEntity.pixelX, endPosY ?? ldtkEntity.pixelY));
                     entities.add(platform);
-                case "plantsafelanding": entities.add(new PlantSafeland(ldtkEntity.pixelX, ldtkEntity.pixelY));
+				case "plantsafelanding":
+					entities.add(new PlantSafeland(ldtkEntity, ldtkEntity.pixelX, ldtkEntity.pixelY));
 				case "plantplatform":
                     var height:Null<Float> = null;
 					for (fi in ldtkEntity.json.fieldInstances)
 					{
-                        trace(fi);
 						if (fi.__identifier == "height")
 							height = fi.__value;
 					}
 
-					entities.add(new PlantPlatform(ldtkEntity.pixelX, ldtkEntity.pixelY, height));
+					entities.add(new PlantPlatform(ldtkEntity, ldtkEntity.pixelX, ldtkEntity.pixelY, height));
+				case "blockkey", "blockkeyrev":
+					var parent:Null<EntityReferenceInfos> = null;
+					for (fi in ldtkEntity.json.fieldInstances)
+					{
+						if (fi.__identifier == "parent")
+							parent = fi.__value;
+					}
 
-				default: FlxG.log.warn('Unhandled entity ${ldtkEntity.identifier}');
+					if (parent != null)
+					{
+						var reverse:Bool = id == "blockkeyrev";
+						entities.add(new BlockKey(ldtkEntity, ldtkEntity.pixelX, ldtkEntity.pixelY, parent, reverse));
+					}
+					else
+						FlxG.log.warn("Parentless block found");
+				case "plantkey":
+					entities.add(new PlantKey(ldtkEntity, ldtkEntity.pixelX, ldtkEntity.pixelY));
+				case "depositkey":
+					var key:Null<EntityReferenceInfos> = null;
+					for (fi in ldtkEntity.json.fieldInstances)
+					{
+						trace(fi);
+						if (fi.__identifier == "key")
+							key = fi.__value;
+					}
+
+					trace(key);
+
+					if (key != null)
+					{
+						entities.add(new DepositKey(ldtkEntity, ldtkEntity.pixelX, ldtkEntity.pixelY, key));
+					}
+					else
+						FlxG.log.warn("Keyless deposit found");
+
+				default:
+					FlxG.log.warn('Unhandled entity ${ldtkEntity.identifier}');
 			}
+		}
+
+		for (entity in entities)
+		{
+			if (entity is BlockKey)
+				cast(entity, BlockKey).findParent(entities);
+			if (entity is DepositKey)
+				cast(entity, DepositKey).findParent(entities);
 		}
 	}
 
@@ -300,10 +356,10 @@ class PlayState extends FlxState
 		wallU.immovable = true;
 		walls.add(wallU);
 
-		var wallD:FlxObject = new FlxObject(0, level.pxHei + 1, level.pxWid, 1);
-		wallD.active = false;
-		wallD.immovable = true;
-		walls.add(wallD);
+		// var wallD:FlxObject = new FlxObject(0, level.pxHei + 1, level.pxWid, 1);
+		// wallD.active = false;
+		// wallD.immovable = true;
+		// walls.add(wallD);
 	}
 
 	public function runExitCutscene():Void
@@ -344,6 +400,7 @@ class PlayState extends FlxState
 
 		FlxTween.tween(overlay, {alpha: 1}, 1, {onComplete: (_) -> FlxG.resetState()});
 	}
+
 	function updateControlsText():Void
 	{
 		if (cameraViewMode)

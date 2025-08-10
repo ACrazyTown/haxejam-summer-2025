@@ -6,15 +6,16 @@ import flixel.FlxG;
 import flixel.tweens.FlxEase;
 import flixel.tweens.FlxTween;
 import flixel.math.FlxPoint;
+import data.LdtkProject.LdtkProject_Entity;
 
 class PlantPlatform extends Plant
 {
     var oldSize:FlxPoint = FlxPoint.get();
     var wantedHeight:Null<Float>;
     
-    public function new(x:Float = 0, y:Float = 0, ?height:Float)
+	public function new(entity:LdtkProject_Entity, x:Float = 0, y:Float = 0, ?height:Float)
     {
-        super(x, y);
+        super(entity, x, y);
         this.wantedHeight = height;
 
         loadGraphic("assets/images/platformplant.png");
@@ -52,7 +53,7 @@ class PlantPlatform extends Plant
 
 				var offset = 40 * scale.y;
 				height -= offset;
-				this.offset.y += offset;
+				this.offset.y += Math.floor(offset);
 
 				x -= (width - oldSize.x) / 2;
 				y -= height - oldSize.y;

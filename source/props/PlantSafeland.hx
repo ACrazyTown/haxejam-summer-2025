@@ -1,12 +1,13 @@
 package props;
 
 import flixel.FlxObject;
+import data.LdtkProject.LdtkProject_Entity;
 
 class PlantSafeland extends Plant
 {
-    public function new(x:Float = 0, y:Float = 0)
+	public function new(entity:LdtkProject_Entity, x:Float = 0, y:Float = 0)
     {
-        super(x, y);
+        super(entity, x, y);
         loadGraphic("assets/images/safeland.png");
         throwable = true;
     }

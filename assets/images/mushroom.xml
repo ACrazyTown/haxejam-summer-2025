@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Created with Funkin Packer v0.1.3 https://neeeoo.github.io/funkin-packer/
+-->
+<TextureAtlas imagePath="mushroom.png" width="232" height="192">
+	<SubTexture name="bounce0000" x="1" y="1" width="90" height="45" frameX="-0" frameY="-15" frameWidth="90" frameHeight="60"/>
+	<SubTexture name="bounce0001" x="1" y="93" width="84" height="42" frameX="-3" frameY="-18" frameWidth="90" frameHeight="60"/>
+	<SubTexture name="bounce0002" x="1" y="138" width="74" height="53" frameX="-8" frameY="-7" frameWidth="90" frameHeight="60"/>
+	<SubTexture name="bounce0003" x="94" y="1" width="84" height="46" frameX="-3" frameY="-14" frameWidth="90" frameHeight="60"/>
+	<SubTexture name="bounce0004" x="1" y="1" width="90" height="45" frameX="-0" frameY="-15" frameWidth="90" frameHeight="60"/>
+	<SubTexture name="mushroom0000" x="148" y="132" width="41" height="54" frameX="-0" frameY="-0" frameWidth="41" frameHeight="54"/>
+	<SubTexture name="root0000" x="181" y="1" width="50" height="55" frameX="-19" frameY="-5" frameWidth="90" frameHeight="60"/>
+	<SubTexture name="root0001" x="173" y="59" width="52" height="47" frameX="-18" frameY="-13" frameWidth="90" frameHeight="60"/>
+	<SubTexture name="root0002" x="88" y="132" width="57" height="18" frameX="-14" frameY="-42" frameWidth="90" frameHeight="60"/>
+	<SubTexture name="root0003" x="88" y="108" width="62" height="21" frameX="-12" frameY="-39" frameWidth="90" frameHeight="60"/>
+	<SubTexture name="root0004" x="94" y="50" width="76" height="55" frameX="-7" frameY="-5" frameWidth="90" frameHeight="60"/>
+	<SubTexture name="root0005" x="1" y="49" width="90" height="41" frameX="-0" frameY="-19" frameWidth="90" frameHeight="60"/>
+</TextureAtlas>

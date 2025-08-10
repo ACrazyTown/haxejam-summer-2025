@@ -5,8 +5,9 @@ import util.Constants;
 import flixel.FlxG;
 import flixel.FlxObject;
 import flixel.util.FlxColor;
+import data.LdtkProject.LdtkProject_Entity;
 
-class FloatingIsland extends Entity
+class FloatingIsland extends LdtkEntity
 {
     var fallTimer:Float = 0;
 
@@ -15,9 +16,9 @@ class FloatingIsland extends Entity
 
     var resetTime:Float = 1.5;
 
-    public function new(x:Float = 0, y:Float = 0)
+	public function new(entity:LdtkProject_Entity, x:Float = 0, y:Float = 0)
     {
-        super(x, y);
+        super(entity, x, y);
         initialPos.set(x, y);
 
         makeGraphic(300, 300, FlxColor.PURPLE);

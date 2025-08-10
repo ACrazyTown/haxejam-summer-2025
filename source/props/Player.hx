@@ -39,9 +39,9 @@ class Player extends Entity
 		animation.addByPrefix("walkL", "walk", 6, false);
 		animation.addByPrefix("walkR", "walk", 6, false, true);
 		animation.addByPrefix("jumpL", "jump", 6, false);
-		animation.addByIndices("jumpLoopL", "jump", [1, 2, 3, 4], "", 6);
+		animation.addByIndices("jumpLoopL", "jump", [2, 3], "", 6);
 		animation.addByPrefix("jumpR", "jump", 6, false, true);
-		animation.addByIndices("jumpLoopR", "jump", [1, 2, 3, 4], "", 6, true, true);
+		animation.addByIndices("jumpLoopR", "jump", [2, 3], "", 6, true, true);
 
         animation.play("idleR");
 

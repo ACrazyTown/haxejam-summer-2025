@@ -5,8 +5,9 @@ import flixel.math.FlxPoint;
 import util.Constants;
 import flixel.FlxObject;
 import flixel.FlxG;
+import data.LdtkProject.LdtkProject_Entity;
 
-class Plant extends Entity
+class Plant extends LdtkEntity
 {
 	public var carriable:Bool;
 	public var throwable:Bool;
@@ -18,9 +19,9 @@ class Plant extends Entity
 
 	var broken:Bool = false;
 
-    public function new(x:Float = 0, y:Float = 0)
+	public function new(entity:LdtkProject_Entity, x:Float = 0, y:Float = 0)
     {
-		super(x, y);
+		super(entity, x, y);
 		acceleration.y = Constants.GRAVITY;
     }
 
