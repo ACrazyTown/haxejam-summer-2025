@@ -179,6 +179,7 @@ class PlayState extends FlxState
 			pauseMenuSubState.closeCallback = () ->
 			{
 				updateControlsText();
+				Mouse.setState(NORMAL);
 			};
 			openSubState(pauseMenuSubState);
 		}
@@ -186,7 +187,7 @@ class PlayState extends FlxState
 		{
 			textboxIsOpen = true;
 			player.canMove = false;
-			var textboxState = new TextboxState(["Hi this is text"], camUI);
+			var textboxState = new TextboxState(["Hi this is text", "Hi this is more text"], camUI, false);
 			textboxState.closeCallback = () ->
 			{
 				trace("hi!");
@@ -222,7 +223,7 @@ class PlayState extends FlxState
 			FlxG.resetState();
 		}
 
-		if (FlxG.keys.justPressed.ENTER && !runningCutscene)
+		if (FlxG.keys.justPressed.ENTER && !runningCutscene && !textboxIsOpen)
         {
             // camGame.updateMovement = !camGame.updateMovement;
             // player.updateMovement = !camGame.updateMovement;

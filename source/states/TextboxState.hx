@@ -6,13 +6,17 @@ import flixel.FlxCamera;
 import flixel.text.FlxBitmapFont;
 import flixel.addons.text.FlxTextTyper;
 import flixel.text.FlxBitmapText;
-import flixel.util.FlxColor;
 import flixel.FlxSprite;
 
 class TextboxState extends FlxSubState
 {
+	// not using normal prefix because it looks better this way
+	// by the way... the > character doesn't work...?
+	final PREFIX = "* ";
+
 	var textArray:Array<String>;
 	var uiCamera:FlxCamera;
+	var isAtBottom:Bool;
 
 	var font = FlxBitmapFont.fromAngelCode("assets/font/badpixelz.png", "assets/font/badpixelz.xml");
 
@@ -20,11 +24,16 @@ class TextboxState extends FlxSubState
 	var text:FlxBitmapText;
 	var typer:FlxTextTyper;
 
-	public function new(textArray_:Array<String>, uiCamera_:FlxCamera)
+	var arrow:FlxSprite;
+
+	var current = 0;
+
+	public function new(textArray_:Array<String>, uiCamera_:FlxCamera, isAtBottom_:Bool)
 	{
 		super();
 		textArray = textArray_;
 		uiCamera = uiCamera_;
+		isAtBottom = isAtBottom_;
 		FlxG.state.persistentUpdate = true;
 	}
 
@@ -32,24 +41,34 @@ class TextboxState extends FlxSubState
 	{
 		super.create();
 
-		bg = new FlxSprite(0, 20);
+		bg = new FlxSprite(0, isAtBottom ? 495 : 40);
 		bg.camera = uiCamera;
-		bg.makeGraphic(900, 300, FlxColor.PURPLE);
-		bg.screenCenter();
+		bg.makeGraphic(850, 200, 0xDD2B1A30);
+		bg.screenCenter(X);
 		add(bg);
 
-		text = new FlxBitmapText(bg.x + 10, bg.y + 10, "", font);
+		text = new FlxBitmapText(bg.x + 16, bg.y + 16, "", font);
 		text.camera = uiCamera;
 		add(text);
+
+		arrow = new FlxSprite(0, 0, "assets/images/textbox_arrow.png");
+		arrow.camera = uiCamera;
+		arrow.x = bg.x + bg.width - 32;
+		arrow.y = bg.y + bg.height - arrow.height / 2;
 
 		typer = new FlxTextTyper();
 		typer.onChange.add(() ->
 		{
 			text.text = typer.text;
 		});
+		typer.onTypingComplete.add(() ->
+		{
+			add(arrow);
+		});
 		add(typer);
 
-		typer.startTyping(textArray[0]);
+		// check comment at the top of class
+		typer.startTyping(PREFIX + textArray[current]);
 	}
 
 	override function update(elapsed:Float)
@@ -58,6 +77,16 @@ class TextboxState extends FlxSubState
 		if (FlxG.keys.justPressed.ESCAPE)
 		{
 			close();
+		}
+		if (FlxG.keys.justPressed.ENTER)
+		{
+			current++;
+			remove(arrow);
+			if (current > textArray.length - 1)
+				close();
+			else
+				// again, check comment at the top of class
+				typer.startTyping(PREFIX + textArray[current]);
 		}
 	}
 
