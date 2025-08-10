@@ -27,6 +27,11 @@ class PauseMenuSubState extends FlxSubState
 	public function new()
 	{
 		super(0x93000000);
+	}
+
+	override function create()
+	{
+		super.create();
 
 		pauseCam = new FlxCamera();
 		pauseCam.bgColor = 0;
@@ -67,13 +72,9 @@ class PauseMenuSubState extends FlxSubState
 		add(mainMenuButton);
 	}
 
-	override function create()
-	{
-		super.create();
-	}
-
 	override function update(elapsed:Float)
 	{
+		super.update(elapsed);
 		if (FlxG.keys.justPressed.ESCAPE)
 		{
 			close();

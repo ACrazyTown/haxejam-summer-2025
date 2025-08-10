@@ -127,5 +127,8 @@ class MenuState extends FlxState
 		return timersDone * 0.2;
 	}
 
-	override function update(elapsed:Float) {}
+	override function update(elapsed:Float)
+	{
+		super.update(elapsed);
+	}
 }

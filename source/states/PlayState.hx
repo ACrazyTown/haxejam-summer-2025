@@ -68,6 +68,8 @@ class PlayState extends FlxState
 
 	var overlay:FlxSprite;
 
+	var textboxIsOpen:Bool = false;
+
     public function new(level:String)
     {
         super();
@@ -170,10 +172,26 @@ class PlayState extends FlxState
 	{
 		super.update(elapsed);
 
-		if (FlxG.keys.justPressed.ESCAPE)
+		if (FlxG.keys.justPressed.ESCAPE && !textboxIsOpen)
 		{
 			controlsText.text = "";
-			openSubState(new PauseMenuSubState());
+			var pauseMenuSubState = new PauseMenuSubState();
+			pauseMenuSubState.closeCallback = () ->
+			{
+				updateControlsText();
+			};
+			openSubState(pauseMenuSubState);
+		}
+		if (FlxG.keys.justPressed.TAB && !textboxIsOpen)
+		{
+			textboxIsOpen = true;
+			var textboxState = new TextboxState(["Hi this is text"], camUI);
+			textboxState.closeCallback = () ->
+			{
+				trace("hi!");
+				textboxIsOpen = false;
+			};
+			openSubState(textboxState);
 		}
 
 		FlxG.collide(player, walls);
