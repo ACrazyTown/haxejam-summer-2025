@@ -172,7 +172,7 @@ class PlayState extends FlxState
 	{
 		super.update(elapsed);
 
-		if (FlxG.keys.justPressed.ESCAPE && !textboxIsOpen)
+		if (FlxG.keys.justPressed.ESCAPE && !textboxIsOpen && !cameraViewMode)
 		{
 			controlsText.text = "";
 			var pauseMenuSubState = new PauseMenuSubState();
@@ -182,14 +182,16 @@ class PlayState extends FlxState
 			};
 			openSubState(pauseMenuSubState);
 		}
-		if (FlxG.keys.justPressed.TAB && !textboxIsOpen)
+		if (FlxG.keys.justPressed.TAB && !textboxIsOpen && !cameraViewMode)
 		{
 			textboxIsOpen = true;
+			player.canMove = false;
 			var textboxState = new TextboxState(["Hi this is text"], camUI);
 			textboxState.closeCallback = () ->
 			{
 				trace("hi!");
 				textboxIsOpen = false;
+				player.canMove = true; // risky?
 			};
 			openSubState(textboxState);
 		}
