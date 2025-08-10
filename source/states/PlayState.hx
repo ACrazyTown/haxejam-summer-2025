@@ -1,5 +1,7 @@
 package states;
 
+import props.Teleporter;
+import props.BreakableBlock;
 import ldtk.Json.EntityReferenceInfos;
 import props.DepositKey;
 import props.PlantKey;
@@ -15,7 +17,7 @@ import props.FloatingPlatform;
 import data.Controls;
 import util.Constants;
 import props.FloatingIsland;
-import props.Rose;
+import props.Rose as RoseProp;
 import props.Pot;
 import flixel.util.FlxColor;
 import flixel.tweens.FlxTween;
@@ -259,7 +261,15 @@ class PlayState extends FlxState
 				case "mushroom":
 					entities.add(new Mushroom(ldtkEntity, ldtkEntity.pixelX, ldtkEntity.pixelY));
 				case "rose":
-					entities.add(new Rose(ldtkEntity, ldtkEntity.pixelX, ldtkEntity.pixelY));
+					var r = new RoseProp(ldtkEntity, ldtkEntity.pixelX, ldtkEntity.pixelY);
+					entities.add(r);
+
+					if (levelNum > 0)
+					{
+						player.carried = r;
+						player.carried.carried = true;
+						player.carried.carrier = player;
+					}
 				case "exitarea":
 					entities.add(new ExitArea(ldtkEntity, ldtkEntity.pixelX, ldtkEntity.pixelY));
 				case "pot":
@@ -326,7 +336,21 @@ class PlayState extends FlxState
 					}
 					else
 						FlxG.log.warn("Keyless deposit found");
+				case "blockbreakable":
+					entities.add(new BreakableBlock(ldtkEntity, ldtkEntity.pixelX, ldtkEntity.pixelY));
+				case "teleporter":
+					var x:Null<Float> = null;
+					var y:Null<Float> = null;
+					for (fi in ldtkEntity.json.fieldInstances)
+					{
+						if (fi.__identifier == "x")
+							x = fi.__value;
+						if (fi.__identifier == "y")
+							y = fi.__value;
+					}
 
+					var teleporter = new Teleporter(ldtkEntity, ldtkEntity.pixelX, ldtkEntity.pixelY, FlxPoint.get(x, y));
+					entities.add(teleporter);
 				default:
 					FlxG.log.warn('Unhandled entity ${ldtkEntity.identifier}');
 			}

@@ -1,5 +1,6 @@
 package props;
 
+import flixel.graphics.frames.FlxAtlasFrames;
 import states.PlayState;
 import ant.sound.SoundUtil;
 import flixel.FlxG;
@@ -18,52 +19,74 @@ class PlantPlatform extends Plant
         super(entity, x, y);
         this.wantedHeight = height;
 
-        loadGraphic("assets/images/platformplant.png");
+		frames = FlxAtlasFrames.fromSparrow("assets/images/tree.png", "assets/images/tree.xml");
+		animation.addByPrefix("idle", "tree", 6, false);
+		animation.addByPrefix("root", "root", 6, false);
+		animation.addByPrefix("land", "land", 6, false);
+		animation.play("idle");
+		updateHitbox();
+
 		oldSize.set(width, this.height);
-        throwable = true;
-    }
 
-    override function root():Void
-    {
-        super.root();
+		animation.onFinish.add((name) ->
+		{
+			if (name == "root")
+			{
+				// oldSize.set(width, height);
 
-        loadGraphic("assets/images/platformplant_rooted.png");
-        updateHitbox();
-        if (wantedHeight == null)
-            wantedHeight = height;
+				var offset = 30 * scale.y;
+				this.height -= offset;
+				this.offset.y += Math.floor(offset);
 
-        origin.set(width / 2, height);
+				this.y += offset;
 
-        x -= (width - oldSize.x) / 2;
-        y -= height - oldSize.y;
+				// x -= (width - oldSize.x) / 2;
+				// y -= height - oldSize.y;
 
-		// scale.x = oldSize.x / width;
-        scale.x = 2;
-		scale.y = oldSize.y / height;
+				velocity.y = 0;
+				acceleration.y = 0;
+				collidable = true;
+				immovable = true;
+
+				animation.play("land");
+				animation.curAnim.stop();
+			}
+		});
+
+		animation.onFrameChange.add((animName, frameNumber, frameIndex) -> 
+        {
+			if (animName == "root")
+			{
+				if (frameNumber == 3)
+				{
+					if (wantedHeight == null)
+						wantedHeight = this.height;
+
+					origin.set(width / 2, this.height);
+					scale.y = wantedHeight / this.height;
+					updateHitbox();
+
+					this.y -= Math.ceil(height - oldSize.y);
+				}
+			}
+		});
+
+		throwable = true;
+	}
+
+	override function root():Void
+	{
+		super.root();
+
+		animation.play("root");
+		updateHitbox();
+
+		x -= (width - oldSize.x) / 2;
+		y -= height - oldSize.y;
+
+		oldSize.set(width, height);
 
 		var snd = SoundUtil.playSFXWithPitchRange("assets/sounds/tree", 0.7, 0.9, 1.1);
 		snd.proximity(x, y, PlayState.instance.player, FlxG.width);
-
-		FlxTween.tween(this, {"scale.x": 1, "scale.y": wantedHeight / height}, 1, {
-			ease: FlxEase.backOut,
-			onComplete: (_) ->
-        {
-				oldSize.set(width, height);
-				updateHitbox();
-
-				var offset = 40 * scale.y;
-				height -= offset;
-				this.offset.y += Math.floor(offset);
-
-				x -= (width - oldSize.x) / 2;
-				y -= height - oldSize.y;
-
-            // height = frameHeight * scale.y - 10 * scale.y;
-            // width = frameWidth * scale.x - 10 * scale.x;
-
-            acceleration.y = 0;
-            collidable = true;
-            immovable = true;
-        }});
     }
 }

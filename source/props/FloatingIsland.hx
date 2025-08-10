@@ -21,7 +21,8 @@ class FloatingIsland extends LdtkEntity
         super(entity, x, y);
         initialPos.set(x, y);
 
-        makeGraphic(300, 300, FlxColor.PURPLE);
+		loadGraphic("assets/images/platform_fall.png");
+        height = 30;
         collidable = true;
         immovable = true;
 
@@ -39,7 +40,7 @@ class FloatingIsland extends LdtkEntity
             if (resetTime < 0)
             {
 				fallTimer = Math.max(fallTimer - (elapsed / 2), 0);
-				velocity.y = -Constants.FLOATINGISLAND_VELOCITY * 8;
+				velocity.y = -Constants.FLOATINGISLAND_VELOCITY * 16;
                 if (y <= initialPos.y)
                 {
                     velocity.y = 0;

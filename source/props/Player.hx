@@ -219,6 +219,7 @@ class Player extends Entity
 		carried.carried = false;
 		carried = null;
 	}
+
 	function set_canMove(value:Bool):Bool
 	{
 		if (!value)
