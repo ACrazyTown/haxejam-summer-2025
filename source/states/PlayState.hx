@@ -1,5 +1,6 @@
 package states;
 
+import props.CutsceneTrigger;
 import ui.Mouse;
 import props.Teleporter;
 import props.BreakableBlock;
@@ -54,7 +55,7 @@ class PlayState extends FlxState
     public var camUI:FlxCamera;
 
     var uiGroup:FlxGroup;
-	var controlsText:FlxBitmapText;
+	public var controlsText:FlxBitmapText;
 
 	public var tilemap:FlxTilemap;
 
@@ -76,7 +77,7 @@ class PlayState extends FlxState
 
 	public var overlay:FlxSprite;
 
-	var textboxIsOpen:Bool = false;
+	public var textboxIsOpen:Bool = false;
 
     public function new(level:String)
     {
@@ -389,6 +390,8 @@ class PlayState extends FlxState
 
 					var teleporter = new Teleporter(ldtkEntity, ldtkEntity.pixelX, ldtkEntity.pixelY, FlxPoint.get(x, y));
 					entities.add(teleporter);
+				case "cutscene":
+					entities.add(new CutsceneTrigger(ldtkEntity, ldtkEntity.pixelX, ldtkEntity.pixelY));
 				default:
 					FlxG.log.warn('Unhandled entity ${ldtkEntity.identifier}');
 			}
