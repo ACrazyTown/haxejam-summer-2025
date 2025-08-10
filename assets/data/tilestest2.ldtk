@@ -11,7 +11,7 @@
 	"iid": "4065d0c0-5e50-11f0-9519-8d1525399f69",
 	"jsonVersion": "1.5.3",
 	"appBuildId": 473703,
-	"nextUid": 65,
+	"nextUid": 68,
 	"identifierStyle": "Capitalize",
 	"toc": [],
 	"worldLayout": "Free",
@@ -253,76 +253,6 @@
 			"fieldDefs": []
 		},
 		{
-			"identifier": "TeleporterA",
-			"uid": 27,
-			"tags": [],
-			"exportToToc": false,
-			"allowOutOfBounds": false,
-			"doc": null,
-			"width": 60,
-			"height": 240,
-			"resizableX": false,
-			"resizableY": false,
-			"minWidth": null,
-			"maxWidth": null,
-			"minHeight": null,
-			"maxHeight": null,
-			"keepAspectRatio": false,
-			"tileOpacity": 1,
-			"fillOpacity": 1,
-			"lineOpacity": 1,
-			"hollow": false,
-			"color": "#5A6988",
-			"renderMode": "Rectangle",
-			"showName": true,
-			"tilesetId": null,
-			"tileRenderMode": "FitInside",
-			"tileRect": null,
-			"uiTileRect": null,
-			"nineSliceBorders": [],
-			"maxCount": 0,
-			"limitScope": "PerLevel",
-			"limitBehavior": "MoveLastOne",
-			"pivotX": 0,
-			"pivotY": 0,
-			"fieldDefs": []
-		},
-		{
-			"identifier": "TeleporterB",
-			"uid": 57,
-			"tags": [],
-			"exportToToc": false,
-			"allowOutOfBounds": false,
-			"doc": null,
-			"width": 60,
-			"height": 240,
-			"resizableX": false,
-			"resizableY": false,
-			"minWidth": null,
-			"maxWidth": null,
-			"minHeight": null,
-			"maxHeight": null,
-			"keepAspectRatio": false,
-			"tileOpacity": 1,
-			"fillOpacity": 1,
-			"lineOpacity": 1,
-			"hollow": false,
-			"color": "#97A1B5",
-			"renderMode": "Rectangle",
-			"showName": true,
-			"tilesetId": null,
-			"tileRenderMode": "FitInside",
-			"tileRect": null,
-			"uiTileRect": null,
-			"nineSliceBorders": [],
-			"maxCount": 0,
-			"limitScope": "PerLevel",
-			"limitBehavior": "MoveLastOne",
-			"pivotX": 0,
-			"pivotY": 0,
-			"fieldDefs": []
-		},
-		{
 			"identifier": "FloatingPlatform",
 			"uid": 30,
 			"tags": [],
@@ -538,8 +468,8 @@
 			"fieldDefs": []
 		},
 		{
-			"identifier": "BlockBreakable",
-			"uid": 14,
+			"identifier": "PlantKey",
+			"uid": 22,
 			"tags": [],
 			"exportToToc": false,
 			"allowOutOfBounds": false,
@@ -557,12 +487,12 @@
 			"fillOpacity": 0.08,
 			"lineOpacity": 0,
 			"hollow": false,
-			"color": "#E4A672",
+			"color": "#0099DB",
 			"renderMode": "Tile",
 			"showName": true,
 			"tilesetId": 11,
 			"tileRenderMode": "FitInside",
-			"tileRect": { "tilesetUid": 11, "x": 120, "y": 0, "w": 60, "h": 60 },
+			"tileRect": { "tilesetUid": 11, "x": 60, "y": 60, "w": 60, "h": 60 },
 			"uiTileRect": null,
 			"nineSliceBorders": [],
 			"maxCount": 0,
@@ -573,7 +503,80 @@
 			"fieldDefs": []
 		},
 		{
-			"identifier": "BlockKeyA",
+			"identifier": "DepositKey",
+			"uid": 17,
+			"tags": [],
+			"exportToToc": false,
+			"allowOutOfBounds": false,
+			"doc": null,
+			"width": 60,
+			"height": 60,
+			"resizableX": false,
+			"resizableY": false,
+			"minWidth": null,
+			"maxWidth": null,
+			"minHeight": null,
+			"maxHeight": null,
+			"keepAspectRatio": false,
+			"tileOpacity": 1,
+			"fillOpacity": 0.08,
+			"lineOpacity": 0,
+			"hollow": false,
+			"color": "#FEAE34",
+			"renderMode": "Tile",
+			"showName": true,
+			"tilesetId": 11,
+			"tileRenderMode": "FitInside",
+			"tileRect": { "tilesetUid": 11, "x": 240, "y": 0, "w": 60, "h": 60 },
+			"uiTileRect": null,
+			"nineSliceBorders": [],
+			"maxCount": 0,
+			"limitScope": "PerLevel",
+			"limitBehavior": "MoveLastOne",
+			"pivotX": 0,
+			"pivotY": 0,
+			"fieldDefs": [
+				{
+					"identifier": "key",
+					"doc": null,
+					"__type": "EntityRef",
+					"uid": 67,
+					"type": "F_EntityRef",
+					"isArray": false,
+					"canBeNull": false,
+					"arrayMinLength": null,
+					"arrayMaxLength": null,
+					"editorDisplayMode": "RefLinkBetweenCenters",
+					"editorDisplayScale": 1,
+					"editorDisplayPos": "Above",
+					"editorLinkStyle": "CurvedArrow",
+					"editorDisplayColor": null,
+					"editorAlwaysShow": false,
+					"editorShowInWorld": true,
+					"editorCutLongValues": true,
+					"editorTextSuffix": null,
+					"editorTextPrefix": null,
+					"useForSmartColor": false,
+					"exportToToc": false,
+					"searchable": false,
+					"min": null,
+					"max": null,
+					"regex": null,
+					"acceptFileTypes": null,
+					"defaultOverride": null,
+					"textLanguageMode": null,
+					"symmetricalRef": false,
+					"autoChainRef": true,
+					"allowOutOfLevelRef": false,
+					"allowedRefs": "OnlySpecificEntity",
+					"allowedRefsEntityUid": 22,
+					"allowedRefTags": [],
+					"tilesetUid": null
+				}
+			]
+		},
+		{
+			"identifier": "BlockKey",
 			"uid": 49,
 			"tags": [],
 			"exportToToc": false,
@@ -605,10 +608,48 @@
 			"limitBehavior": "MoveLastOne",
 			"pivotX": 0,
 			"pivotY": 0,
-			"fieldDefs": []
+			"fieldDefs": [
+				{
+					"identifier": "parent",
+					"doc": null,
+					"__type": "EntityRef",
+					"uid": 65,
+					"type": "F_EntityRef",
+					"isArray": false,
+					"canBeNull": false,
+					"arrayMinLength": null,
+					"arrayMaxLength": null,
+					"editorDisplayMode": "RefLinkBetweenCenters",
+					"editorDisplayScale": 1,
+					"editorDisplayPos": "Above",
+					"editorLinkStyle": "CurvedArrow",
+					"editorDisplayColor": null,
+					"editorAlwaysShow": false,
+					"editorShowInWorld": true,
+					"editorCutLongValues": true,
+					"editorTextSuffix": null,
+					"editorTextPrefix": null,
+					"useForSmartColor": false,
+					"exportToToc": false,
+					"searchable": false,
+					"min": null,
+					"max": null,
+					"regex": null,
+					"acceptFileTypes": null,
+					"defaultOverride": null,
+					"textLanguageMode": null,
+					"symmetricalRef": false,
+					"autoChainRef": true,
+					"allowOutOfLevelRef": false,
+					"allowedRefs": "OnlySpecificEntity",
+					"allowedRefsEntityUid": 17,
+					"allowedRefTags": [],
+					"tilesetUid": null
+				}
+			]
 		},
 		{
-			"identifier": "BlockKeyARev",
+			"identifier": "BlockKeyRev",
 			"uid": 50,
 			"tags": [],
 			"exportToToc": false,
@@ -633,6 +674,79 @@
 			"tilesetId": 11,
 			"tileRenderMode": "FitInside",
 			"tileRect": { "tilesetUid": 11, "x": 240, "y": 60, "w": 60, "h": 60 },
+			"uiTileRect": null,
+			"nineSliceBorders": [],
+			"maxCount": 0,
+			"limitScope": "PerLevel",
+			"limitBehavior": "MoveLastOne",
+			"pivotX": 0,
+			"pivotY": 0,
+			"fieldDefs": [
+				{
+					"identifier": "parent",
+					"doc": null,
+					"__type": "EntityRef",
+					"uid": 66,
+					"type": "F_EntityRef",
+					"isArray": false,
+					"canBeNull": false,
+					"arrayMinLength": null,
+					"arrayMaxLength": null,
+					"editorDisplayMode": "RefLinkBetweenCenters",
+					"editorDisplayScale": 1,
+					"editorDisplayPos": "Above",
+					"editorLinkStyle": "CurvedArrow",
+					"editorDisplayColor": null,
+					"editorAlwaysShow": false,
+					"editorShowInWorld": true,
+					"editorCutLongValues": true,
+					"editorTextSuffix": null,
+					"editorTextPrefix": null,
+					"useForSmartColor": false,
+					"exportToToc": false,
+					"searchable": false,
+					"min": null,
+					"max": null,
+					"regex": null,
+					"acceptFileTypes": null,
+					"defaultOverride": null,
+					"textLanguageMode": null,
+					"symmetricalRef": false,
+					"autoChainRef": true,
+					"allowOutOfLevelRef": true,
+					"allowedRefs": "OnlySpecificEntity",
+					"allowedRefsEntityUid": 17,
+					"allowedRefTags": [],
+					"tilesetUid": null
+				}
+			]
+		},
+		{
+			"identifier": "BlockBreakable",
+			"uid": 14,
+			"tags": [],
+			"exportToToc": false,
+			"allowOutOfBounds": false,
+			"doc": null,
+			"width": 60,
+			"height": 60,
+			"resizableX": false,
+			"resizableY": false,
+			"minWidth": null,
+			"maxWidth": null,
+			"minHeight": null,
+			"maxHeight": null,
+			"keepAspectRatio": false,
+			"tileOpacity": 1,
+			"fillOpacity": 0.08,
+			"lineOpacity": 0,
+			"hollow": false,
+			"color": "#E4A672",
+			"renderMode": "Tile",
+			"showName": true,
+			"tilesetId": 11,
+			"tileRenderMode": "FitInside",
+			"tileRect": { "tilesetUid": 11, "x": 120, "y": 0, "w": 60, "h": 60 },
 			"uiTileRect": null,
 			"nineSliceBorders": [],
 			"maxCount": 0,
@@ -703,41 +817,6 @@
 			"tilesetId": 11,
 			"tileRenderMode": "FitInside",
 			"tileRect": { "tilesetUid": 11, "x": 300, "y": 60, "w": 60, "h": 60 },
-			"uiTileRect": null,
-			"nineSliceBorders": [],
-			"maxCount": 0,
-			"limitScope": "PerLevel",
-			"limitBehavior": "MoveLastOne",
-			"pivotX": 0,
-			"pivotY": 0,
-			"fieldDefs": []
-		},
-		{
-			"identifier": "DepositKeyA",
-			"uid": 17,
-			"tags": [],
-			"exportToToc": false,
-			"allowOutOfBounds": false,
-			"doc": null,
-			"width": 60,
-			"height": 60,
-			"resizableX": false,
-			"resizableY": false,
-			"minWidth": null,
-			"maxWidth": null,
-			"minHeight": null,
-			"maxHeight": null,
-			"keepAspectRatio": false,
-			"tileOpacity": 1,
-			"fillOpacity": 0.08,
-			"lineOpacity": 0,
-			"hollow": false,
-			"color": "#FEAE34",
-			"renderMode": "Tile",
-			"showName": true,
-			"tilesetId": 11,
-			"tileRenderMode": "FitInside",
-			"tileRect": { "tilesetUid": 11, "x": 240, "y": 0, "w": 60, "h": 60 },
 			"uiTileRect": null,
 			"nineSliceBorders": [],
 			"maxCount": 0,
@@ -881,41 +960,6 @@
 			"tilesetId": 11,
 			"tileRenderMode": "FitInside",
 			"tileRect": { "tilesetUid": 11, "x": 480, "y": 0, "w": 60, "h": 60 },
-			"uiTileRect": null,
-			"nineSliceBorders": [],
-			"maxCount": 0,
-			"limitScope": "PerLevel",
-			"limitBehavior": "MoveLastOne",
-			"pivotX": 0,
-			"pivotY": 0,
-			"fieldDefs": []
-		},
-		{
-			"identifier": "PlantKeyA",
-			"uid": 22,
-			"tags": [],
-			"exportToToc": false,
-			"allowOutOfBounds": false,
-			"doc": null,
-			"width": 60,
-			"height": 60,
-			"resizableX": false,
-			"resizableY": false,
-			"minWidth": null,
-			"maxWidth": null,
-			"minHeight": null,
-			"maxHeight": null,
-			"keepAspectRatio": false,
-			"tileOpacity": 1,
-			"fillOpacity": 0.08,
-			"lineOpacity": 0,
-			"hollow": false,
-			"color": "#0099DB",
-			"renderMode": "Tile",
-			"showName": true,
-			"tilesetId": 11,
-			"tileRenderMode": "FitInside",
-			"tileRect": { "tilesetUid": 11, "x": 60, "y": 60, "w": 60, "h": 60 },
 			"uiTileRect": null,
 			"nineSliceBorders": [],
 			"maxCount": 0,
@@ -2103,7 +2147,7 @@
 							"__worldY": 930
 						},
 						{
-							"__identifier": "PlantKeyA",
+							"__identifier": "PlantKey",
 							"__grid": [126,114],
 							"__pivot": [0,0],
 							"__tags": [],
@@ -2135,8 +2179,8 @@
 							"__worldY": 400
 						},
 						{
-							"__identifier": "DepositKeyA",
-							"__grid": [168,78],
+							"__identifier": "DepositKey",
+							"__grid": [168,84],
 							"__pivot": [0,0],
 							"__tags": [],
 							"__tile": { "tilesetUid": 11, "x": 240, "y": 0, "w": 60, "h": 60 },
@@ -2145,14 +2189,22 @@
 							"width": 60,
 							"height": 60,
 							"defUid": 17,
-							"px": [1680,780],
-							"fieldInstances": [],
+							"px": [1680,840],
+							"fieldInstances": [{ "__identifier": "key", "__type": "EntityRef", "__value": {
+								"entityIid": "ef8d5e10-5e50-11f0-84b3-69a9592e618a",
+								"layerIid": "28436991-5e50-11f0-84b3-a93210e77d6c",
+								"levelIid": "28434280-5e50-11f0-84b3-21bf48ddf692",
+								"worldIid": "4065d0c1-5e50-11f0-9519-01297b0d537f"
+							}, "__tile": null, "defUid": 67, "realEditorValues": [{
+								"id": "V_String",
+								"params": ["ef8d5e10-5e50-11f0-84b3-69a9592e618a"]
+							}] }],
 							"__worldX": 8940,
-							"__worldY": 900
+							"__worldY": 960
 						},
 						{
 							"__identifier": "FloatingPlatform",
-							"__grid": [132,84],
+							"__grid": [132,90],
 							"__pivot": [0,0],
 							"__tags": [],
 							"__tile": null,
@@ -2161,13 +2213,13 @@
 							"width": 120,
 							"height": 16,
 							"defUid": 30,
-							"px": [1320,840],
+							"px": [1320,900],
 							"fieldInstances": [
 								{ "__identifier": "endX", "__type": "Float", "__value": null, "__tile": null, "defUid": 61, "realEditorValues": [] },
 								{ "__identifier": "endY", "__type": "Float", "__value": 1180, "__tile": null, "defUid": 60, "realEditorValues": [{ "id": "V_Float", "params": [1180] }] }
 							],
 							"__worldX": 8580,
-							"__worldY": 960
+							"__worldY": 1020
 						},
 						{
 							"__identifier": "Mushroom",
@@ -2186,7 +2238,7 @@
 							"__worldY": 1020
 						},
 						{
-							"__identifier": "BlockKeyARev",
+							"__identifier": "BlockKeyRev",
 							"__grid": [192,96],
 							"__pivot": [0,0],
 							"__tags": [],
@@ -2197,12 +2249,20 @@
 							"height": 60,
 							"defUid": 50,
 							"px": [1920,960],
-							"fieldInstances": [],
+							"fieldInstances": [{ "__identifier": "parent", "__type": "EntityRef", "__value": {
+								"entityIid": "7df72d00-5e50-11f0-91a5-ff11b2666d6f",
+								"layerIid": "28436991-5e50-11f0-84b3-a93210e77d6c",
+								"levelIid": "28434280-5e50-11f0-84b3-21bf48ddf692",
+								"worldIid": "4065d0c1-5e50-11f0-9519-01297b0d537f"
+							}, "__tile": null, "defUid": 66, "realEditorValues": [{
+								"id": "V_String",
+								"params": ["7df72d00-5e50-11f0-91a5-ff11b2666d6f"]
+							}] }],
 							"__worldX": 9180,
 							"__worldY": 1080
 						},
 						{
-							"__identifier": "BlockKeyARev",
+							"__identifier": "BlockKeyRev",
 							"__grid": [198,96],
 							"__pivot": [0,0],
 							"__tags": [],
@@ -2213,12 +2273,20 @@
 							"height": 60,
 							"defUid": 50,
 							"px": [1980,960],
-							"fieldInstances": [],
+							"fieldInstances": [{ "__identifier": "parent", "__type": "EntityRef", "__value": {
+								"entityIid": "7df72d00-5e50-11f0-91a5-ff11b2666d6f",
+								"layerIid": "28436991-5e50-11f0-84b3-a93210e77d6c",
+								"levelIid": "28434280-5e50-11f0-84b3-21bf48ddf692",
+								"worldIid": "4065d0c1-5e50-11f0-9519-01297b0d537f"
+							}, "__tile": null, "defUid": 66, "realEditorValues": [{
+								"id": "V_String",
+								"params": ["7df72d00-5e50-11f0-91a5-ff11b2666d6f"]
+							}] }],
 							"__worldX": 9240,
 							"__worldY": 1080
 						},
 						{
-							"__identifier": "BlockKeyARev",
+							"__identifier": "BlockKeyRev",
 							"__grid": [204,96],
 							"__pivot": [0,0],
 							"__tags": [],
@@ -2229,12 +2297,20 @@
 							"height": 60,
 							"defUid": 50,
 							"px": [2040,960],
-							"fieldInstances": [],
+							"fieldInstances": [{ "__identifier": "parent", "__type": "EntityRef", "__value": {
+								"entityIid": "7df72d00-5e50-11f0-91a5-ff11b2666d6f",
+								"layerIid": "28436991-5e50-11f0-84b3-a93210e77d6c",
+								"levelIid": "28434280-5e50-11f0-84b3-21bf48ddf692",
+								"worldIid": "4065d0c1-5e50-11f0-9519-01297b0d537f"
+							}, "__tile": null, "defUid": 66, "realEditorValues": [{
+								"id": "V_String",
+								"params": ["7df72d00-5e50-11f0-91a5-ff11b2666d6f"]
+							}] }],
 							"__worldX": 9300,
 							"__worldY": 1080
 						},
 						{
-							"__identifier": "BlockKeyARev",
+							"__identifier": "BlockKeyRev",
 							"__grid": [210,96],
 							"__pivot": [0,0],
 							"__tags": [],
@@ -2245,12 +2321,20 @@
 							"height": 60,
 							"defUid": 50,
 							"px": [2100,960],
-							"fieldInstances": [],
+							"fieldInstances": [{ "__identifier": "parent", "__type": "EntityRef", "__value": {
+								"entityIid": "7df72d00-5e50-11f0-91a5-ff11b2666d6f",
+								"layerIid": "28436991-5e50-11f0-84b3-a93210e77d6c",
+								"levelIid": "28434280-5e50-11f0-84b3-21bf48ddf692",
+								"worldIid": "4065d0c1-5e50-11f0-9519-01297b0d537f"
+							}, "__tile": null, "defUid": 66, "realEditorValues": [{
+								"id": "V_String",
+								"params": ["7df72d00-5e50-11f0-91a5-ff11b2666d6f"]
+							}] }],
 							"__worldX": 9360,
 							"__worldY": 1080
 						},
 						{
-							"__identifier": "BlockKeyARev",
+							"__identifier": "BlockKeyRev",
 							"__grid": [216,96],
 							"__pivot": [0,0],
 							"__tags": [],
@@ -2261,12 +2345,20 @@
 							"height": 60,
 							"defUid": 50,
 							"px": [2160,960],
-							"fieldInstances": [],
+							"fieldInstances": [{ "__identifier": "parent", "__type": "EntityRef", "__value": {
+								"entityIid": "7df72d00-5e50-11f0-91a5-ff11b2666d6f",
+								"layerIid": "28436991-5e50-11f0-84b3-a93210e77d6c",
+								"levelIid": "28434280-5e50-11f0-84b3-21bf48ddf692",
+								"worldIid": "4065d0c1-5e50-11f0-9519-01297b0d537f"
+							}, "__tile": null, "defUid": 66, "realEditorValues": [{
+								"id": "V_String",
+								"params": ["7df72d00-5e50-11f0-91a5-ff11b2666d6f"]
+							}] }],
 							"__worldX": 9420,
 							"__worldY": 1080
 						},
 						{
-							"__identifier": "BlockKeyARev",
+							"__identifier": "BlockKeyRev",
 							"__grid": [222,96],
 							"__pivot": [0,0],
 							"__tags": [],
@@ -2277,12 +2369,20 @@
 							"height": 60,
 							"defUid": 50,
 							"px": [2220,960],
-							"fieldInstances": [],
+							"fieldInstances": [{ "__identifier": "parent", "__type": "EntityRef", "__value": {
+								"entityIid": "7df72d00-5e50-11f0-91a5-ff11b2666d6f",
+								"layerIid": "28436991-5e50-11f0-84b3-a93210e77d6c",
+								"levelIid": "28434280-5e50-11f0-84b3-21bf48ddf692",
+								"worldIid": "4065d0c1-5e50-11f0-9519-01297b0d537f"
+							}, "__tile": null, "defUid": 66, "realEditorValues": [{
+								"id": "V_String",
+								"params": ["7df72d00-5e50-11f0-91a5-ff11b2666d6f"]
+							}] }],
 							"__worldX": 9480,
 							"__worldY": 1080
 						},
 						{
-							"__identifier": "BlockKeyARev",
+							"__identifier": "BlockKeyRev",
 							"__grid": [228,96],
 							"__pivot": [0,0],
 							"__tags": [],
@@ -2293,12 +2393,20 @@
 							"height": 60,
 							"defUid": 50,
 							"px": [2280,960],
-							"fieldInstances": [],
+							"fieldInstances": [{ "__identifier": "parent", "__type": "EntityRef", "__value": {
+								"entityIid": "7df72d00-5e50-11f0-91a5-ff11b2666d6f",
+								"layerIid": "28436991-5e50-11f0-84b3-a93210e77d6c",
+								"levelIid": "28434280-5e50-11f0-84b3-21bf48ddf692",
+								"worldIid": "4065d0c1-5e50-11f0-9519-01297b0d537f"
+							}, "__tile": null, "defUid": 66, "realEditorValues": [{
+								"id": "V_String",
+								"params": ["7df72d00-5e50-11f0-91a5-ff11b2666d6f"]
+							}] }],
 							"__worldX": 9540,
 							"__worldY": 1080
 						},
 						{
-							"__identifier": "BlockKeyA",
+							"__identifier": "BlockKey",
 							"__grid": [42,120],
 							"__pivot": [0,0],
 							"__tags": [],
@@ -2309,12 +2417,20 @@
 							"height": 60,
 							"defUid": 49,
 							"px": [420,1200],
-							"fieldInstances": [],
+							"fieldInstances": [{ "__identifier": "parent", "__type": "EntityRef", "__value": {
+								"entityIid": "7df72d00-5e50-11f0-91a5-ff11b2666d6f",
+								"layerIid": "28436991-5e50-11f0-84b3-a93210e77d6c",
+								"levelIid": "28434280-5e50-11f0-84b3-21bf48ddf692",
+								"worldIid": "4065d0c1-5e50-11f0-9519-01297b0d537f"
+							}, "__tile": null, "defUid": 65, "realEditorValues": [{
+								"id": "V_String",
+								"params": ["7df72d00-5e50-11f0-91a5-ff11b2666d6f"]
+							}] }],
 							"__worldX": 7680,
 							"__worldY": 1320
 						},
 						{
-							"__identifier": "BlockKeyA",
+							"__identifier": "BlockKey",
 							"__grid": [48,120],
 							"__pivot": [0,0],
 							"__tags": [],
@@ -2325,12 +2441,20 @@
 							"height": 60,
 							"defUid": 49,
 							"px": [480,1200],
-							"fieldInstances": [],
+							"fieldInstances": [{ "__identifier": "parent", "__type": "EntityRef", "__value": {
+								"entityIid": "7df72d00-5e50-11f0-91a5-ff11b2666d6f",
+								"layerIid": "28436991-5e50-11f0-84b3-a93210e77d6c",
+								"levelIid": "28434280-5e50-11f0-84b3-21bf48ddf692",
+								"worldIid": "4065d0c1-5e50-11f0-9519-01297b0d537f"
+							}, "__tile": null, "defUid": 65, "realEditorValues": [{
+								"id": "V_String",
+								"params": ["7df72d00-5e50-11f0-91a5-ff11b2666d6f"]
+							}] }],
 							"__worldX": 7740,
 							"__worldY": 1320
 						},
 						{
-							"__identifier": "BlockKeyA",
+							"__identifier": "BlockKey",
 							"__grid": [54,120],
 							"__pivot": [0,0],
 							"__tags": [],
@@ -2341,12 +2465,20 @@
 							"height": 60,
 							"defUid": 49,
 							"px": [540,1200],
-							"fieldInstances": [],
+							"fieldInstances": [{ "__identifier": "parent", "__type": "EntityRef", "__value": {
+								"entityIid": "7df72d00-5e50-11f0-91a5-ff11b2666d6f",
+								"layerIid": "28436991-5e50-11f0-84b3-a93210e77d6c",
+								"levelIid": "28434280-5e50-11f0-84b3-21bf48ddf692",
+								"worldIid": "4065d0c1-5e50-11f0-9519-01297b0d537f"
+							}, "__tile": null, "defUid": 65, "realEditorValues": [{
+								"id": "V_String",
+								"params": ["7df72d00-5e50-11f0-91a5-ff11b2666d6f"]
+							}] }],
 							"__worldX": 7800,
 							"__worldY": 1320
 						},
 						{
-							"__identifier": "BlockKeyA",
+							"__identifier": "BlockKey",
 							"__grid": [60,120],
 							"__pivot": [0,0],
 							"__tags": [],
@@ -2357,12 +2489,20 @@
 							"height": 60,
 							"defUid": 49,
 							"px": [600,1200],
-							"fieldInstances": [],
+							"fieldInstances": [{ "__identifier": "parent", "__type": "EntityRef", "__value": {
+								"entityIid": "7df72d00-5e50-11f0-91a5-ff11b2666d6f",
+								"layerIid": "28436991-5e50-11f0-84b3-a93210e77d6c",
+								"levelIid": "28434280-5e50-11f0-84b3-21bf48ddf692",
+								"worldIid": "4065d0c1-5e50-11f0-9519-01297b0d537f"
+							}, "__tile": null, "defUid": 65, "realEditorValues": [{
+								"id": "V_String",
+								"params": ["7df72d00-5e50-11f0-91a5-ff11b2666d6f"]
+							}] }],
 							"__worldX": 7860,
 							"__worldY": 1320
 						},
 						{
-							"__identifier": "BlockKeyA",
+							"__identifier": "BlockKey",
 							"__grid": [66,120],
 							"__pivot": [0,0],
 							"__tags": [],
@@ -2373,12 +2513,20 @@
 							"height": 60,
 							"defUid": 49,
 							"px": [660,1200],
-							"fieldInstances": [],
+							"fieldInstances": [{ "__identifier": "parent", "__type": "EntityRef", "__value": {
+								"entityIid": "7df72d00-5e50-11f0-91a5-ff11b2666d6f",
+								"layerIid": "28436991-5e50-11f0-84b3-a93210e77d6c",
+								"levelIid": "28434280-5e50-11f0-84b3-21bf48ddf692",
+								"worldIid": "4065d0c1-5e50-11f0-9519-01297b0d537f"
+							}, "__tile": null, "defUid": 65, "realEditorValues": [{
+								"id": "V_String",
+								"params": ["7df72d00-5e50-11f0-91a5-ff11b2666d6f"]
+							}] }],
 							"__worldX": 7920,
 							"__worldY": 1320
 						},
 						{
-							"__identifier": "BlockKeyA",
+							"__identifier": "BlockKey",
 							"__grid": [72,120],
 							"__pivot": [0,0],
 							"__tags": [],
@@ -2389,12 +2537,20 @@
 							"height": 60,
 							"defUid": 49,
 							"px": [720,1200],
-							"fieldInstances": [],
+							"fieldInstances": [{ "__identifier": "parent", "__type": "EntityRef", "__value": {
+								"entityIid": "7df72d00-5e50-11f0-91a5-ff11b2666d6f",
+								"layerIid": "28436991-5e50-11f0-84b3-a93210e77d6c",
+								"levelIid": "28434280-5e50-11f0-84b3-21bf48ddf692",
+								"worldIid": "4065d0c1-5e50-11f0-9519-01297b0d537f"
+							}, "__tile": null, "defUid": 65, "realEditorValues": [{
+								"id": "V_String",
+								"params": ["7df72d00-5e50-11f0-91a5-ff11b2666d6f"]
+							}] }],
 							"__worldX": 7980,
 							"__worldY": 1320
 						},
 						{
-							"__identifier": "BlockKeyA",
+							"__identifier": "BlockKey",
 							"__grid": [78,120],
 							"__pivot": [0,0],
 							"__tags": [],
@@ -2405,41 +2561,17 @@
 							"height": 60,
 							"defUid": 49,
 							"px": [780,1200],
-							"fieldInstances": [],
+							"fieldInstances": [{ "__identifier": "parent", "__type": "EntityRef", "__value": {
+								"entityIid": "7df72d00-5e50-11f0-91a5-ff11b2666d6f",
+								"layerIid": "28436991-5e50-11f0-84b3-a93210e77d6c",
+								"levelIid": "28434280-5e50-11f0-84b3-21bf48ddf692",
+								"worldIid": "4065d0c1-5e50-11f0-9519-01297b0d537f"
+							}, "__tile": null, "defUid": 65, "realEditorValues": [{
+								"id": "V_String",
+								"params": ["7df72d00-5e50-11f0-91a5-ff11b2666d6f"]
+							}] }],
 							"__worldX": 8040,
 							"__worldY": 1320
-						},
-						{
-							"__identifier": "TeleporterA",
-							"__grid": [86,138],
-							"__pivot": [0,0],
-							"__tags": [],
-							"__tile": null,
-							"__smartColor": "#5A6988",
-							"iid": "c8153d70-5e50-11f0-8719-71956f3d3fb2",
-							"width": 60,
-							"height": 240,
-							"defUid": 27,
-							"px": [860,1380],
-							"fieldInstances": [],
-							"__worldX": 8120,
-							"__worldY": 1500
-						},
-						{
-							"__identifier": "TeleporterB",
-							"__grid": [212,12],
-							"__pivot": [0,0],
-							"__tags": [],
-							"__tile": null,
-							"__smartColor": "#97A1B5",
-							"iid": "fcab4e80-5e50-11f0-8719-638e47515fc0",
-							"width": 60,
-							"height": 240,
-							"defUid": 57,
-							"px": [2120,120],
-							"fieldInstances": [],
-							"__worldX": 9380,
-							"__worldY": 240
 						},
 						{
 							"__identifier": "ExitArea",
@@ -2581,14 +2713,6 @@
 						{ "px": [240,840], "src": [60,120], "f": 0, "t": 19, "d": [634], "a": 1 },
 						{ "px": [300,840], "src": [60,120], "f": 0, "t": 19, "d": [635], "a": 1 },
 						{ "px": [360,840], "src": [60,0], "f": 0, "t": 1, "d": [636], "a": 1 },
-						{ "px": [1440,840], "src": [60,0], "f": 0, "t": 1, "d": [654], "a": 1 },
-						{ "px": [1500,840], "src": [60,0], "f": 0, "t": 1, "d": [655], "a": 1 },
-						{ "px": [1560,840], "src": [60,0], "f": 0, "t": 1, "d": [656], "a": 1 },
-						{ "px": [1620,840], "src": [60,0], "f": 0, "t": 1, "d": [657], "a": 1 },
-						{ "px": [1680,840], "src": [60,0], "f": 0, "t": 1, "d": [658], "a": 1 },
-						{ "px": [1740,840], "src": [60,0], "f": 0, "t": 1, "d": [659], "a": 1 },
-						{ "px": [1800,840], "src": [60,0], "f": 0, "t": 1, "d": [660], "a": 1 },
-						{ "px": [1860,840], "src": [60,0], "f": 0, "t": 1, "d": [661], "a": 1 },
 						{ "px": [2580,840], "src": [60,0], "f": 0, "t": 1, "d": [673], "a": 1 },
 						{ "px": [2640,840], "src": [60,120], "f": 0, "t": 19, "d": [674], "a": 1 },
 						{ "px": [0,900], "src": [60,120], "f": 0, "t": 19, "d": [675], "a": 1 },
@@ -2599,12 +2723,12 @@
 						{ "px": [300,900], "src": [60,120], "f": 0, "t": 19, "d": [680], "a": 1 },
 						{ "px": [360,900], "src": [60,0], "f": 0, "t": 1, "d": [681], "a": 1 },
 						{ "px": [1440,900], "src": [60,0], "f": 0, "t": 1, "d": [699], "a": 1 },
-						{ "px": [1500,900], "src": [60,120], "f": 0, "t": 19, "d": [700], "a": 1 },
-						{ "px": [1560,900], "src": [60,120], "f": 0, "t": 19, "d": [701], "a": 1 },
-						{ "px": [1620,900], "src": [60,120], "f": 0, "t": 19, "d": [702], "a": 1 },
-						{ "px": [1680,900], "src": [60,120], "f": 0, "t": 19, "d": [703], "a": 1 },
-						{ "px": [1740,900], "src": [60,120], "f": 0, "t": 19, "d": [704], "a": 1 },
-						{ "px": [1800,900], "src": [60,120], "f": 0, "t": 19, "d": [705], "a": 1 },
+						{ "px": [1500,900], "src": [60,0], "f": 0, "t": 1, "d": [700], "a": 1 },
+						{ "px": [1560,900], "src": [60,0], "f": 0, "t": 1, "d": [701], "a": 1 },
+						{ "px": [1620,900], "src": [60,0], "f": 0, "t": 1, "d": [702], "a": 1 },
+						{ "px": [1680,900], "src": [60,0], "f": 0, "t": 1, "d": [703], "a": 1 },
+						{ "px": [1740,900], "src": [60,0], "f": 0, "t": 1, "d": [704], "a": 1 },
+						{ "px": [1800,900], "src": [60,0], "f": 0, "t": 1, "d": [705], "a": 1 },
 						{ "px": [1860,900], "src": [60,0], "f": 0, "t": 1, "d": [706], "a": 1 },
 						{ "px": [2580,900], "src": [60,0], "f": 0, "t": 1, "d": [718], "a": 1 },
 						{ "px": [2640,900], "src": [60,120], "f": 0, "t": 19, "d": [719], "a": 1 },
@@ -3087,22 +3211,6 @@
 					"gridTiles": [],
 					"entityInstances": [
 						{
-							"__identifier": "TeleporterA",
-							"__grid": [9,78],
-							"__pivot": [0,0],
-							"__tags": [],
-							"__tile": null,
-							"__smartColor": "#5A6988",
-							"iid": "ba13f410-5e50-11f0-91a5-6d3d88924c69",
-							"width": 60,
-							"height": 240,
-							"defUid": 27,
-							"px": [90,780],
-							"fieldInstances": [],
-							"__worldX": 10050,
-							"__worldY": 300
-						},
-						{
 							"__identifier": "PlayerSpawnPos",
 							"__grid": [20,82],
 							"__pivot": [0,0],
@@ -3119,7 +3227,7 @@
 							"__worldY": 340
 						},
 						{
-							"__identifier": "DepositKeyA",
+							"__identifier": "DepositKey",
 							"__grid": [144,36],
 							"__pivot": [0,0],
 							"__tags": [],
@@ -3130,7 +3238,7 @@
 							"height": 60,
 							"defUid": 17,
 							"px": [1440,360],
-							"fieldInstances": [],
+							"fieldInstances": [{ "__identifier": "key", "__type": "EntityRef", "__value": null, "__tile": null, "defUid": 67, "realEditorValues": [] }],
 							"__worldX": 11400,
 							"__worldY": -120
 						},
@@ -3154,7 +3262,7 @@
 							"__worldY": 480
 						},
 						{
-							"__identifier": "PlantKeyA",
+							"__identifier": "PlantKey",
 							"__grid": [33,96],
 							"__pivot": [0,0],
 							"__tags": [],
@@ -3218,7 +3326,7 @@
 							"__worldY": -60
 						},
 						{
-							"__identifier": "BlockKeyARev",
+							"__identifier": "BlockKeyRev",
 							"__grid": [54,102],
 							"__pivot": [0,0],
 							"__tags": [],
@@ -3229,12 +3337,12 @@
 							"height": 60,
 							"defUid": 50,
 							"px": [540,1020],
-							"fieldInstances": [],
+							"fieldInstances": [{ "__identifier": "parent", "__type": "EntityRef", "__value": null, "__tile": null, "defUid": 66, "realEditorValues": [] }],
 							"__worldX": 10500,
 							"__worldY": 540
 						},
 						{
-							"__identifier": "BlockKeyARev",
+							"__identifier": "BlockKeyRev",
 							"__grid": [60,102],
 							"__pivot": [0,0],
 							"__tags": [],
@@ -3245,12 +3353,12 @@
 							"height": 60,
 							"defUid": 50,
 							"px": [600,1020],
-							"fieldInstances": [],
+							"fieldInstances": [{ "__identifier": "parent", "__type": "EntityRef", "__value": null, "__tile": null, "defUid": 66, "realEditorValues": [] }],
 							"__worldX": 10560,
 							"__worldY": 540
 						},
 						{
-							"__identifier": "BlockKeyARev",
+							"__identifier": "BlockKeyRev",
 							"__grid": [66,102],
 							"__pivot": [0,0],
 							"__tags": [],
@@ -3261,12 +3369,12 @@
 							"height": 60,
 							"defUid": 50,
 							"px": [660,1020],
-							"fieldInstances": [],
+							"fieldInstances": [{ "__identifier": "parent", "__type": "EntityRef", "__value": null, "__tile": null, "defUid": 66, "realEditorValues": [] }],
 							"__worldX": 10620,
 							"__worldY": 540
 						},
 						{
-							"__identifier": "BlockKeyARev",
+							"__identifier": "BlockKeyRev",
 							"__grid": [72,102],
 							"__pivot": [0,0],
 							"__tags": [],
@@ -3277,12 +3385,12 @@
 							"height": 60,
 							"defUid": 50,
 							"px": [720,1020],
-							"fieldInstances": [],
+							"fieldInstances": [{ "__identifier": "parent", "__type": "EntityRef", "__value": null, "__tile": null, "defUid": 66, "realEditorValues": [] }],
 							"__worldX": 10680,
 							"__worldY": 540
 						},
 						{
-							"__identifier": "BlockKeyARev",
+							"__identifier": "BlockKeyRev",
 							"__grid": [78,102],
 							"__pivot": [0,0],
 							"__tags": [],
@@ -3293,12 +3401,12 @@
 							"height": 60,
 							"defUid": 50,
 							"px": [780,1020],
-							"fieldInstances": [],
+							"fieldInstances": [{ "__identifier": "parent", "__type": "EntityRef", "__value": null, "__tile": null, "defUid": 66, "realEditorValues": [] }],
 							"__worldX": 10740,
 							"__worldY": 540
 						},
 						{
-							"__identifier": "BlockKeyARev",
+							"__identifier": "BlockKeyRev",
 							"__grid": [84,102],
 							"__pivot": [0,0],
 							"__tags": [],
@@ -3309,12 +3417,12 @@
 							"height": 60,
 							"defUid": 50,
 							"px": [840,1020],
-							"fieldInstances": [],
+							"fieldInstances": [{ "__identifier": "parent", "__type": "EntityRef", "__value": null, "__tile": null, "defUid": 66, "realEditorValues": [] }],
 							"__worldX": 10800,
 							"__worldY": 540
 						},
 						{
-							"__identifier": "BlockKeyA",
+							"__identifier": "BlockKey",
 							"__grid": [54,54],
 							"__pivot": [0,0],
 							"__tags": [],
@@ -3325,12 +3433,12 @@
 							"height": 60,
 							"defUid": 49,
 							"px": [540,540],
-							"fieldInstances": [],
+							"fieldInstances": [{ "__identifier": "parent", "__type": "EntityRef", "__value": null, "__tile": null, "defUid": 65, "realEditorValues": [] }],
 							"__worldX": 10500,
 							"__worldY": 60
 						},
 						{
-							"__identifier": "BlockKeyA",
+							"__identifier": "BlockKey",
 							"__grid": [60,54],
 							"__pivot": [0,0],
 							"__tags": [],
@@ -3341,12 +3449,12 @@
 							"height": 60,
 							"defUid": 49,
 							"px": [600,540],
-							"fieldInstances": [],
+							"fieldInstances": [{ "__identifier": "parent", "__type": "EntityRef", "__value": null, "__tile": null, "defUid": 65, "realEditorValues": [] }],
 							"__worldX": 10560,
 							"__worldY": 60
 						},
 						{
-							"__identifier": "BlockKeyA",
+							"__identifier": "BlockKey",
 							"__grid": [66,54],
 							"__pivot": [0,0],
 							"__tags": [],
@@ -3357,12 +3465,12 @@
 							"height": 60,
 							"defUid": 49,
 							"px": [660,540],
-							"fieldInstances": [],
+							"fieldInstances": [{ "__identifier": "parent", "__type": "EntityRef", "__value": null, "__tile": null, "defUid": 65, "realEditorValues": [] }],
 							"__worldX": 10620,
 							"__worldY": 60
 						},
 						{
-							"__identifier": "BlockKeyA",
+							"__identifier": "BlockKey",
 							"__grid": [72,54],
 							"__pivot": [0,0],
 							"__tags": [],
@@ -3373,12 +3481,12 @@
 							"height": 60,
 							"defUid": 49,
 							"px": [720,540],
-							"fieldInstances": [],
+							"fieldInstances": [{ "__identifier": "parent", "__type": "EntityRef", "__value": null, "__tile": null, "defUid": 65, "realEditorValues": [] }],
 							"__worldX": 10680,
 							"__worldY": 60
 						},
 						{
-							"__identifier": "BlockKeyA",
+							"__identifier": "BlockKey",
 							"__grid": [78,54],
 							"__pivot": [0,0],
 							"__tags": [],
@@ -3389,12 +3497,12 @@
 							"height": 60,
 							"defUid": 49,
 							"px": [780,540],
-							"fieldInstances": [],
+							"fieldInstances": [{ "__identifier": "parent", "__type": "EntityRef", "__value": null, "__tile": null, "defUid": 65, "realEditorValues": [] }],
 							"__worldX": 10740,
 							"__worldY": 60
 						},
 						{
-							"__identifier": "BlockKeyA",
+							"__identifier": "BlockKey",
 							"__grid": [84,54],
 							"__pivot": [0,0],
 							"__tags": [],
@@ -3405,12 +3513,12 @@
 							"height": 60,
 							"defUid": 49,
 							"px": [840,540],
-							"fieldInstances": [],
+							"fieldInstances": [{ "__identifier": "parent", "__type": "EntityRef", "__value": null, "__tile": null, "defUid": 65, "realEditorValues": [] }],
 							"__worldX": 10800,
 							"__worldY": 60
 						},
 						{
-							"__identifier": "BlockKeyA",
+							"__identifier": "BlockKey",
 							"__grid": [18,36],
 							"__pivot": [0,0],
 							"__tags": [],
@@ -3421,7 +3529,7 @@
 							"height": 60,
 							"defUid": 49,
 							"px": [180,360],
-							"fieldInstances": [],
+							"fieldInstances": [{ "__identifier": "parent", "__type": "EntityRef", "__value": null, "__tile": null, "defUid": 65, "realEditorValues": [] }],
 							"__worldX": 10140,
 							"__worldY": -120
 						},
@@ -4036,7 +4144,7 @@
 							"__worldY": 250
 						},
 						{
-							"__identifier": "DepositKeyA",
+							"__identifier": "DepositKey",
 							"__grid": [54,96],
 							"__pivot": [0,0],
 							"__tags": [],
@@ -4047,12 +4155,12 @@
 							"height": 60,
 							"defUid": 17,
 							"px": [540,960],
-							"fieldInstances": [],
+							"fieldInstances": [{ "__identifier": "key", "__type": "EntityRef", "__value": null, "__tile": null, "defUid": 67, "realEditorValues": [] }],
 							"__worldX": 12900,
 							"__worldY": 540
 						},
 						{
-							"__identifier": "PlantKeyA",
+							"__identifier": "PlantKey",
 							"__grid": [54,66],
 							"__pivot": [0,0],
 							"__tags": [],
@@ -4116,7 +4224,7 @@
 							"__worldY": 190
 						},
 						{
-							"__identifier": "BlockKeyA",
+							"__identifier": "BlockKey",
 							"__grid": [54,84],
 							"__pivot": [0,0],
 							"__tags": [],
@@ -4127,12 +4235,12 @@
 							"height": 60,
 							"defUid": 49,
 							"px": [540,840],
-							"fieldInstances": [],
+							"fieldInstances": [{ "__identifier": "parent", "__type": "EntityRef", "__value": null, "__tile": null, "defUid": 65, "realEditorValues": [] }],
 							"__worldX": 12900,
 							"__worldY": 420
 						},
 						{
-							"__identifier": "BlockKeyA",
+							"__identifier": "BlockKey",
 							"__grid": [234,90],
 							"__pivot": [0,0],
 							"__tags": [],
@@ -4143,12 +4251,12 @@
 							"height": 60,
 							"defUid": 49,
 							"px": [2340,900],
-							"fieldInstances": [],
+							"fieldInstances": [{ "__identifier": "parent", "__type": "EntityRef", "__value": null, "__tile": null, "defUid": 65, "realEditorValues": [] }],
 							"__worldX": 14700,
 							"__worldY": 480
 						},
 						{
-							"__identifier": "BlockKeyA",
+							"__identifier": "BlockKey",
 							"__grid": [234,84],
 							"__pivot": [0,0],
 							"__tags": [],
@@ -4159,12 +4267,12 @@
 							"height": 60,
 							"defUid": 49,
 							"px": [2340,840],
-							"fieldInstances": [],
+							"fieldInstances": [{ "__identifier": "parent", "__type": "EntityRef", "__value": null, "__tile": null, "defUid": 65, "realEditorValues": [] }],
 							"__worldX": 14700,
 							"__worldY": 420
 						},
 						{
-							"__identifier": "BlockKeyA",
+							"__identifier": "BlockKey",
 							"__grid": [234,78],
 							"__pivot": [0,0],
 							"__tags": [],
@@ -4175,12 +4283,12 @@
 							"height": 60,
 							"defUid": 49,
 							"px": [2340,780],
-							"fieldInstances": [],
+							"fieldInstances": [{ "__identifier": "parent", "__type": "EntityRef", "__value": null, "__tile": null, "defUid": 65, "realEditorValues": [] }],
 							"__worldX": 14700,
 							"__worldY": 360
 						},
 						{
-							"__identifier": "BlockKeyA",
+							"__identifier": "BlockKey",
 							"__grid": [234,72],
 							"__pivot": [0,0],
 							"__tags": [],
@@ -4191,12 +4299,12 @@
 							"height": 60,
 							"defUid": 49,
 							"px": [2340,720],
-							"fieldInstances": [],
+							"fieldInstances": [{ "__identifier": "parent", "__type": "EntityRef", "__value": null, "__tile": null, "defUid": 65, "realEditorValues": [] }],
 							"__worldX": 14700,
 							"__worldY": 300
 						},
 						{
-							"__identifier": "BlockKeyA",
+							"__identifier": "BlockKey",
 							"__grid": [234,66],
 							"__pivot": [0,0],
 							"__tags": [],
@@ -4207,12 +4315,12 @@
 							"height": 60,
 							"defUid": 49,
 							"px": [2340,660],
-							"fieldInstances": [],
+							"fieldInstances": [{ "__identifier": "parent", "__type": "EntityRef", "__value": null, "__tile": null, "defUid": 65, "realEditorValues": [] }],
 							"__worldX": 14700,
 							"__worldY": 240
 						},
 						{
-							"__identifier": "BlockKeyA",
+							"__identifier": "BlockKey",
 							"__grid": [234,60],
 							"__pivot": [0,0],
 							"__tags": [],
@@ -4223,12 +4331,12 @@
 							"height": 60,
 							"defUid": 49,
 							"px": [2340,600],
-							"fieldInstances": [],
+							"fieldInstances": [{ "__identifier": "parent", "__type": "EntityRef", "__value": null, "__tile": null, "defUid": 65, "realEditorValues": [] }],
 							"__worldX": 14700,
 							"__worldY": 180
 						},
 						{
-							"__identifier": "BlockKeyA",
+							"__identifier": "BlockKey",
 							"__grid": [234,54],
 							"__pivot": [0,0],
 							"__tags": [],
@@ -4239,12 +4347,12 @@
 							"height": 60,
 							"defUid": 49,
 							"px": [2340,540],
-							"fieldInstances": [],
+							"fieldInstances": [{ "__identifier": "parent", "__type": "EntityRef", "__value": null, "__tile": null, "defUid": 65, "realEditorValues": [] }],
 							"__worldX": 14700,
 							"__worldY": 120
 						},
 						{
-							"__identifier": "BlockKeyA",
+							"__identifier": "BlockKey",
 							"__grid": [234,48],
 							"__pivot": [0,0],
 							"__tags": [],
@@ -4255,7 +4363,7 @@
 							"height": 60,
 							"defUid": 49,
 							"px": [2340,480],
-							"fieldInstances": [],
+							"fieldInstances": [{ "__identifier": "parent", "__type": "EntityRef", "__value": null, "__tile": null, "defUid": 65, "realEditorValues": [] }],
 							"__worldX": 14700,
 							"__worldY": 60
 						},
@@ -4420,7 +4528,7 @@
 							"__worldY": 0
 						},
 						{
-							"__identifier": "BlockKeyA",
+							"__identifier": "BlockKey",
 							"__grid": [234,42],
 							"__pivot": [0,0],
 							"__tags": [],
@@ -4431,7 +4539,7 @@
 							"height": 60,
 							"defUid": 49,
 							"px": [2340,420],
-							"fieldInstances": [],
+							"fieldInstances": [{ "__identifier": "parent", "__type": "EntityRef", "__value": null, "__tile": null, "defUid": 65, "realEditorValues": [] }],
 							"__worldX": 14700,
 							"__worldY": 0
 						},
@@ -4850,7 +4958,7 @@
 							"__worldY": -600
 						},
 						{
-							"__identifier": "DepositKeyA",
+							"__identifier": "DepositKey",
 							"__grid": [102,72],
 							"__pivot": [0,0],
 							"__tags": [],
@@ -4861,7 +4969,7 @@
 							"height": 60,
 							"defUid": 17,
 							"px": [1020,720],
-							"fieldInstances": [],
+							"fieldInstances": [{ "__identifier": "key", "__type": "EntityRef", "__value": null, "__tile": null, "defUid": 67, "realEditorValues": [] }],
 							"__worldX": 16440,
 							"__worldY": -420
 						},
@@ -4914,7 +5022,7 @@
 							"__worldY": -960
 						},
 						{
-							"__identifier": "PlantKeyA",
+							"__identifier": "PlantKey",
 							"__grid": [69,60],
 							"__pivot": [0,0],
 							"__tags": [],
@@ -4962,7 +5070,7 @@
 							"__worldY": -900
 						},
 						{
-							"__identifier": "BlockKeyA",
+							"__identifier": "BlockKey",
 							"__grid": [66,36],
 							"__pivot": [0,0],
 							"__tags": [],
@@ -4973,12 +5081,12 @@
 							"height": 60,
 							"defUid": 49,
 							"px": [660,360],
-							"fieldInstances": [],
+							"fieldInstances": [{ "__identifier": "parent", "__type": "EntityRef", "__value": null, "__tile": null, "defUid": 65, "realEditorValues": [] }],
 							"__worldX": 16080,
 							"__worldY": -780
 						},
 						{
-							"__identifier": "BlockKeyA",
+							"__identifier": "BlockKey",
 							"__grid": [72,36],
 							"__pivot": [0,0],
 							"__tags": [],
@@ -4989,7 +5097,7 @@
 							"height": 60,
 							"defUid": 49,
 							"px": [720,360],
-							"fieldInstances": [],
+							"fieldInstances": [{ "__identifier": "parent", "__type": "EntityRef", "__value": null, "__tile": null, "defUid": 65, "realEditorValues": [] }],
 							"__worldX": 16140,
 							"__worldY": -780
 						},
@@ -5314,7 +5422,7 @@
 							"__worldY": -660
 						},
 						{
-							"__identifier": "PlantKeyA",
+							"__identifier": "PlantKey",
 							"__grid": [210,132],
 							"__pivot": [0,0],
 							"__tags": [],
@@ -5349,23 +5457,7 @@
 							"__worldY": 80
 						},
 						{
-							"__identifier": "TeleporterA",
-							"__grid": [3,108],
-							"__pivot": [0,0],
-							"__tags": [],
-							"__tile": null,
-							"__smartColor": "#5A6988",
-							"iid": "a5aa6b10-5e50-11f0-b221-c3070cf9fc0d",
-							"width": 60,
-							"height": 240,
-							"defUid": 27,
-							"px": [30,1080],
-							"fieldInstances": [],
-							"__worldX": 17010,
-							"__worldY": -480
-						},
-						{
-							"__identifier": "DepositKeyA",
+							"__identifier": "DepositKey",
 							"__grid": [18,126],
 							"__pivot": [0,0],
 							"__tags": [],
@@ -5376,7 +5468,7 @@
 							"height": 60,
 							"defUid": 17,
 							"px": [180,1260],
-							"fieldInstances": [],
+							"fieldInstances": [{ "__identifier": "key", "__type": "EntityRef", "__value": null, "__tile": null, "defUid": 67, "realEditorValues": [] }],
 							"__worldX": 17160,
 							"__worldY": -300
 						},
@@ -5605,7 +5697,7 @@
 							"__worldY": -300
 						},
 						{
-							"__identifier": "BlockKeyARev",
+							"__identifier": "BlockKeyRev",
 							"__grid": [18,90],
 							"__pivot": [0,0],
 							"__tags": [],
@@ -5616,12 +5708,12 @@
 							"height": 60,
 							"defUid": 50,
 							"px": [180,900],
-							"fieldInstances": [],
+							"fieldInstances": [{ "__identifier": "parent", "__type": "EntityRef", "__value": null, "__tile": null, "defUid": 66, "realEditorValues": [] }],
 							"__worldX": 17160,
 							"__worldY": -660
 						},
 						{
-							"__identifier": "BlockKeyARev",
+							"__identifier": "BlockKeyRev",
 							"__grid": [24,90],
 							"__pivot": [0,0],
 							"__tags": [],
@@ -5632,12 +5724,12 @@
 							"height": 60,
 							"defUid": 50,
 							"px": [240,900],
-							"fieldInstances": [],
+							"fieldInstances": [{ "__identifier": "parent", "__type": "EntityRef", "__value": null, "__tile": null, "defUid": 66, "realEditorValues": [] }],
 							"__worldX": 17220,
 							"__worldY": -660
 						},
 						{
-							"__identifier": "BlockKeyARev",
+							"__identifier": "BlockKeyRev",
 							"__grid": [30,90],
 							"__pivot": [0,0],
 							"__tags": [],
@@ -5648,12 +5740,12 @@
 							"height": 60,
 							"defUid": 50,
 							"px": [300,900],
-							"fieldInstances": [],
+							"fieldInstances": [{ "__identifier": "parent", "__type": "EntityRef", "__value": null, "__tile": null, "defUid": 66, "realEditorValues": [] }],
 							"__worldX": 17280,
 							"__worldY": -660
 						},
 						{
-							"__identifier": "BlockKeyARev",
+							"__identifier": "BlockKeyRev",
 							"__grid": [36,90],
 							"__pivot": [0,0],
 							"__tags": [],
@@ -5664,12 +5756,12 @@
 							"height": 60,
 							"defUid": 50,
 							"px": [360,900],
-							"fieldInstances": [],
+							"fieldInstances": [{ "__identifier": "parent", "__type": "EntityRef", "__value": null, "__tile": null, "defUid": 66, "realEditorValues": [] }],
 							"__worldX": 17340,
 							"__worldY": -660
 						},
 						{
-							"__identifier": "BlockKeyARev",
+							"__identifier": "BlockKeyRev",
 							"__grid": [42,90],
 							"__pivot": [0,0],
 							"__tags": [],
@@ -5680,12 +5772,12 @@
 							"height": 60,
 							"defUid": 50,
 							"px": [420,900],
-							"fieldInstances": [],
+							"fieldInstances": [{ "__identifier": "parent", "__type": "EntityRef", "__value": null, "__tile": null, "defUid": 66, "realEditorValues": [] }],
 							"__worldX": 17400,
 							"__worldY": -660
 						},
 						{
-							"__identifier": "BlockKeyA",
+							"__identifier": "BlockKey",
 							"__grid": [66,84],
 							"__pivot": [0,0],
 							"__tags": [],
@@ -5696,12 +5788,12 @@
 							"height": 60,
 							"defUid": 49,
 							"px": [660,840],
-							"fieldInstances": [],
+							"fieldInstances": [{ "__identifier": "parent", "__type": "EntityRef", "__value": null, "__tile": null, "defUid": 65, "realEditorValues": [] }],
 							"__worldX": 17640,
 							"__worldY": -720
 						},
 						{
-							"__identifier": "BlockKeyA",
+							"__identifier": "BlockKey",
 							"__grid": [72,84],
 							"__pivot": [0,0],
 							"__tags": [],
@@ -5712,12 +5804,12 @@
 							"height": 60,
 							"defUid": 49,
 							"px": [720,840],
-							"fieldInstances": [],
+							"fieldInstances": [{ "__identifier": "parent", "__type": "EntityRef", "__value": null, "__tile": null, "defUid": 65, "realEditorValues": [] }],
 							"__worldX": 17700,
 							"__worldY": -720
 						},
 						{
-							"__identifier": "BlockKeyA",
+							"__identifier": "BlockKey",
 							"__grid": [66,108],
 							"__pivot": [0,0],
 							"__tags": [],
@@ -5728,12 +5820,12 @@
 							"height": 60,
 							"defUid": 49,
 							"px": [660,1080],
-							"fieldInstances": [],
+							"fieldInstances": [{ "__identifier": "parent", "__type": "EntityRef", "__value": null, "__tile": null, "defUid": 65, "realEditorValues": [] }],
 							"__worldX": 17640,
 							"__worldY": -480
 						},
 						{
-							"__identifier": "BlockKeyA",
+							"__identifier": "BlockKey",
 							"__grid": [72,108],
 							"__pivot": [0,0],
 							"__tags": [],
@@ -5744,25 +5836,9 @@
 							"height": 60,
 							"defUid": 49,
 							"px": [720,1080],
-							"fieldInstances": [],
+							"fieldInstances": [{ "__identifier": "parent", "__type": "EntityRef", "__value": null, "__tile": null, "defUid": 65, "realEditorValues": [] }],
 							"__worldX": 17700,
 							"__worldY": -480
-						},
-						{
-							"__identifier": "TeleporterB",
-							"__grid": [256,18],
-							"__pivot": [0,0],
-							"__tags": [],
-							"__tile": null,
-							"__smartColor": "#97A1B5",
-							"iid": "6f5411f0-5e50-11f0-8719-efda1896a9c5",
-							"width": 60,
-							"height": 240,
-							"defUid": 57,
-							"px": [2560,180],
-							"fieldInstances": [],
-							"__worldX": 19540,
-							"__worldY": -1380
 						},
 						{
 							"__identifier": "ExitArea",
@@ -6411,7 +6487,7 @@
 							"__worldY": -1080
 						},
 						{
-							"__identifier": "BlockKeyA",
+							"__identifier": "BlockKey",
 							"__grid": [90,126],
 							"__pivot": [0,0],
 							"__tags": [],
@@ -6422,7 +6498,7 @@
 							"height": 60,
 							"defUid": 49,
 							"px": [900,1260],
-							"fieldInstances": [],
+							"fieldInstances": [{ "__identifier": "parent", "__type": "EntityRef", "__value": null, "__tile": null, "defUid": 65, "realEditorValues": [] }],
 							"__worldX": 20880,
 							"__worldY": -660
 						},
@@ -6443,7 +6519,7 @@
 							"__worldY": -720
 						},
 						{
-							"__identifier": "DepositKeyA",
+							"__identifier": "DepositKey",
 							"__grid": [78,108],
 							"__pivot": [0,0],
 							"__tags": [],
@@ -6454,7 +6530,7 @@
 							"height": 60,
 							"defUid": 17,
 							"px": [780,1080],
-							"fieldInstances": [],
+							"fieldInstances": [{ "__identifier": "key", "__type": "EntityRef", "__value": null, "__tile": null, "defUid": 67, "realEditorValues": [] }],
 							"__worldX": 20760,
 							"__worldY": -840
 						},
@@ -6478,39 +6554,7 @@
 							"__worldY": -1080
 						},
 						{
-							"__identifier": "TeleporterA",
-							"__grid": [62,120],
-							"__pivot": [0,0],
-							"__tags": [],
-							"__tile": null,
-							"__smartColor": "#5A6988",
-							"iid": "7fbe3780-5e50-11f0-8719-53bec420011c",
-							"width": 60,
-							"height": 240,
-							"defUid": 27,
-							"px": [620,1200],
-							"fieldInstances": [],
-							"__worldX": 20600,
-							"__worldY": -720
-						},
-						{
-							"__identifier": "TeleporterB",
-							"__grid": [179,12],
-							"__pivot": [0,0],
-							"__tags": [],
-							"__tile": null,
-							"__smartColor": "#97A1B5",
-							"iid": "9757ef30-5e50-11f0-8719-d36493f9143e",
-							"width": 60,
-							"height": 240,
-							"defUid": 57,
-							"px": [1790,120],
-							"fieldInstances": [],
-							"__worldX": 21770,
-							"__worldY": -1800
-						},
-						{
-							"__identifier": "PlantKeyA",
+							"__identifier": "PlantKey",
 							"__grid": [204,78],
 							"__pivot": [0,0],
 							"__tags": [],
@@ -6876,23 +6920,7 @@
 							"__worldY": -1760
 						},
 						{
-							"__identifier": "TeleporterA",
-							"__grid": [3,234],
-							"__pivot": [0,0],
-							"__tags": [],
-							"__tile": null,
-							"__smartColor": "#5A6988",
-							"iid": "d8303160-5e50-11f0-b221-81739f643179",
-							"width": 60,
-							"height": 240,
-							"defUid": 27,
-							"px": [30,2340],
-							"fieldInstances": [],
-							"__worldX": 22230,
-							"__worldY": -1800
-						},
-						{
-							"__identifier": "BlockKeyA",
+							"__identifier": "BlockKey",
 							"__grid": [42,258],
 							"__pivot": [0,0],
 							"__tags": [],
@@ -6903,12 +6931,12 @@
 							"height": 60,
 							"defUid": 49,
 							"px": [420,2580],
-							"fieldInstances": [],
+							"fieldInstances": [{ "__identifier": "parent", "__type": "EntityRef", "__value": null, "__tile": null, "defUid": 65, "realEditorValues": [] }],
 							"__worldX": 22620,
 							"__worldY": -1560
 						},
 						{
-							"__identifier": "BlockKeyA",
+							"__identifier": "BlockKey",
 							"__grid": [48,258],
 							"__pivot": [0,0],
 							"__tags": [],
@@ -6919,12 +6947,12 @@
 							"height": 60,
 							"defUid": 49,
 							"px": [480,2580],
-							"fieldInstances": [],
+							"fieldInstances": [{ "__identifier": "parent", "__type": "EntityRef", "__value": null, "__tile": null, "defUid": 65, "realEditorValues": [] }],
 							"__worldX": 22680,
 							"__worldY": -1560
 						},
 						{
-							"__identifier": "BlockKeyA",
+							"__identifier": "BlockKey",
 							"__grid": [54,258],
 							"__pivot": [0,0],
 							"__tags": [],
@@ -6935,12 +6963,12 @@
 							"height": 60,
 							"defUid": 49,
 							"px": [540,2580],
-							"fieldInstances": [],
+							"fieldInstances": [{ "__identifier": "parent", "__type": "EntityRef", "__value": null, "__tile": null, "defUid": 65, "realEditorValues": [] }],
 							"__worldX": 22740,
 							"__worldY": -1560
 						},
 						{
-							"__identifier": "BlockKeyA",
+							"__identifier": "BlockKey",
 							"__grid": [60,258],
 							"__pivot": [0,0],
 							"__tags": [],
@@ -6951,12 +6979,12 @@
 							"height": 60,
 							"defUid": 49,
 							"px": [600,2580],
-							"fieldInstances": [],
+							"fieldInstances": [{ "__identifier": "parent", "__type": "EntityRef", "__value": null, "__tile": null, "defUid": 65, "realEditorValues": [] }],
 							"__worldX": 22800,
 							"__worldY": -1560
 						},
 						{
-							"__identifier": "BlockKeyA",
+							"__identifier": "BlockKey",
 							"__grid": [66,258],
 							"__pivot": [0,0],
 							"__tags": [],
@@ -6967,12 +6995,12 @@
 							"height": 60,
 							"defUid": 49,
 							"px": [660,2580],
-							"fieldInstances": [],
+							"fieldInstances": [{ "__identifier": "parent", "__type": "EntityRef", "__value": null, "__tile": null, "defUid": 65, "realEditorValues": [] }],
 							"__worldX": 22860,
 							"__worldY": -1560
 						},
 						{
-							"__identifier": "BlockKeyA",
+							"__identifier": "BlockKey",
 							"__grid": [72,258],
 							"__pivot": [0,0],
 							"__tags": [],
@@ -6983,12 +7011,12 @@
 							"height": 60,
 							"defUid": 49,
 							"px": [720,2580],
-							"fieldInstances": [],
+							"fieldInstances": [{ "__identifier": "parent", "__type": "EntityRef", "__value": null, "__tile": null, "defUid": 65, "realEditorValues": [] }],
 							"__worldX": 22920,
 							"__worldY": -1560
 						},
 						{
-							"__identifier": "BlockKeyA",
+							"__identifier": "BlockKey",
 							"__grid": [78,258],
 							"__pivot": [0,0],
 							"__tags": [],
@@ -6999,12 +7027,12 @@
 							"height": 60,
 							"defUid": 49,
 							"px": [780,2580],
-							"fieldInstances": [],
+							"fieldInstances": [{ "__identifier": "parent", "__type": "EntityRef", "__value": null, "__tile": null, "defUid": 65, "realEditorValues": [] }],
 							"__worldX": 22980,
 							"__worldY": -1560
 						},
 						{
-							"__identifier": "BlockKeyA",
+							"__identifier": "BlockKey",
 							"__grid": [84,258],
 							"__pivot": [0,0],
 							"__tags": [],
@@ -7015,12 +7043,12 @@
 							"height": 60,
 							"defUid": 49,
 							"px": [840,2580],
-							"fieldInstances": [],
+							"fieldInstances": [{ "__identifier": "parent", "__type": "EntityRef", "__value": null, "__tile": null, "defUid": 65, "realEditorValues": [] }],
 							"__worldX": 23040,
 							"__worldY": -1560
 						},
 						{
-							"__identifier": "BlockKeyA",
+							"__identifier": "BlockKey",
 							"__grid": [90,258],
 							"__pivot": [0,0],
 							"__tags": [],
@@ -7031,12 +7059,12 @@
 							"height": 60,
 							"defUid": 49,
 							"px": [900,2580],
-							"fieldInstances": [],
+							"fieldInstances": [{ "__identifier": "parent", "__type": "EntityRef", "__value": null, "__tile": null, "defUid": 65, "realEditorValues": [] }],
 							"__worldX": 23100,
 							"__worldY": -1560
 						},
 						{
-							"__identifier": "BlockKeyA",
+							"__identifier": "BlockKey",
 							"__grid": [96,258],
 							"__pivot": [0,0],
 							"__tags": [],
@@ -7047,12 +7075,12 @@
 							"height": 60,
 							"defUid": 49,
 							"px": [960,2580],
-							"fieldInstances": [],
+							"fieldInstances": [{ "__identifier": "parent", "__type": "EntityRef", "__value": null, "__tile": null, "defUid": 65, "realEditorValues": [] }],
 							"__worldX": 23160,
 							"__worldY": -1560
 						},
 						{
-							"__identifier": "BlockKeyA",
+							"__identifier": "BlockKey",
 							"__grid": [102,258],
 							"__pivot": [0,0],
 							"__tags": [],
@@ -7063,7 +7091,7 @@
 							"height": 60,
 							"defUid": 49,
 							"px": [1020,2580],
-							"fieldInstances": [],
+							"fieldInstances": [{ "__identifier": "parent", "__type": "EntityRef", "__value": null, "__tile": null, "defUid": 65, "realEditorValues": [] }],
 							"__worldX": 23220,
 							"__worldY": -1560
 						},
@@ -7116,7 +7144,7 @@
 							"__worldY": -1500
 						},
 						{
-							"__identifier": "BlockKeyA",
+							"__identifier": "BlockKey",
 							"__grid": [108,258],
 							"__pivot": [0,0],
 							"__tags": [],
@@ -7127,12 +7155,12 @@
 							"height": 60,
 							"defUid": 49,
 							"px": [1080,2580],
-							"fieldInstances": [],
+							"fieldInstances": [{ "__identifier": "parent", "__type": "EntityRef", "__value": null, "__tile": null, "defUid": 65, "realEditorValues": [] }],
 							"__worldX": 23280,
 							"__worldY": -1560
 						},
 						{
-							"__identifier": "DepositKeyA",
+							"__identifier": "DepositKey",
 							"__grid": [36,252],
 							"__pivot": [0,0],
 							"__tags": [],
@@ -7143,12 +7171,12 @@
 							"height": 60,
 							"defUid": 17,
 							"px": [360,2520],
-							"fieldInstances": [],
+							"fieldInstances": [{ "__identifier": "key", "__type": "EntityRef", "__value": null, "__tile": null, "defUid": 67, "realEditorValues": [] }],
 							"__worldX": 22560,
 							"__worldY": -1620
 						},
 						{
-							"__identifier": "PlantKeyA",
+							"__identifier": "PlantKey",
 							"__grid": [27,252],
 							"__pivot": [0,0],
 							"__tags": [],
