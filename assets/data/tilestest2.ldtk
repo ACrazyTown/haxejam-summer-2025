@@ -3419,7 +3419,7 @@
 						},
 						{
 							"__identifier": "FloatingPlatform",
-							"__grid": [41,96],
+							"__grid": [41,99],
 							"__pivot": [0,0],
 							"__tags": [],
 							"__tile": null,
@@ -3428,13 +3428,13 @@
 							"width": 120,
 							"height": 16,
 							"defUid": 30,
-							"px": [410,960],
+							"px": [410,990],
 							"fieldInstances": [
 								{ "__identifier": "endX", "__type": "Float", "__value": null, "__tile": null, "defUid": 61, "realEditorValues": [null] },
 								{ "__identifier": "endY", "__type": "Float", "__value": 544, "__tile": null, "defUid": 60, "realEditorValues": [{ "id": "V_Float", "params": [544] }] }
 							],
 							"__worldX": 10370,
-							"__worldY": 480
+							"__worldY": 510
 						},
 						{
 							"__identifier": "PlantKey",

@@ -16,10 +16,10 @@ class PlantSafeland extends Plant
     {
         super.onOverlap(object);
 
-        if (object is Player)
+        if (object is Entity)
         {
-            var player:Player = cast object;
-            player.ignoreFallDamage = true;
+            var entity:Entity = cast object;
+            entity.ignoreFallDamage = true;
         }
     }
 }
