@@ -167,6 +167,12 @@ class PlayState extends FlxState
 	{
 		super.update(elapsed);
 
+		if (FlxG.keys.justPressed.ESCAPE)
+		{
+			controlsText.text = "";
+			openSubState(new PauseMenuSubState());
+		}
+
 		FlxG.collide(player, walls);
 		FlxG.collide(entities, walls);
         
