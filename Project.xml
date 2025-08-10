@@ -38,6 +38,8 @@
     <source path="source" />
 
     <assets path="assets" />
+    <assets path="assets" exclude="*.ogg" if="web" />
+    <assets path="assets" exclude="*.mp3" unless="web" />
     <assets path="assets/preload" embed="true" />
     <assets path="assets/font" embed="true" />
 
