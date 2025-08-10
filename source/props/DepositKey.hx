@@ -14,8 +14,6 @@ class DepositKey extends LdtkEntity
     public var activated:Bool = false;
     var parent:PlantKey;
 
-    var resetTime:Float = FlxG.elapsed;
-
 	public function new(entity:LdtkProject_Entity, x:Float = 0, y:Float = 0, ldtkParent:EntityReferenceInfos)
     {
         super(entity, x, y);
@@ -27,15 +25,6 @@ class DepositKey extends LdtkEntity
     override function update(elapsed:Float):Void
     {
         super.update(elapsed);
-        resetTime -= elapsed;
-
-        if (resetTime <= 0)
-        {
-            activated = false;
-        }
-
-        FlxG.watch.addQuick("resetTime", resetTime);
-        FlxG.watch.addQuick("activated", activated);
     }
 
     override function onOverlap(object:FlxObject) 
@@ -44,8 +33,9 @@ class DepositKey extends LdtkEntity
 
         if (object == parent)
         {
-            resetTime = 0.1;
-            activated = true;
+			activated = true;
+            var plant:Plant = cast object;
+            plant.thrown = true;
         }
     }
 

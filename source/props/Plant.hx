@@ -55,7 +55,7 @@ class Plant extends LdtkEntity
 		}
 	}
     
-    function root():Void
+    public function root():Void
     {
 		rooted = true;
         velocity.set(0, 0);
