@@ -53,7 +53,10 @@ class PauseMenuSubState extends FlxSubState
 		resumeButton.camera = pauseCam;
 		resumeButton.x = 1280 / 4 - resumeButton.width / 2;
 
-		mainMenuButton = new FancyButton(0, 400, "assets/images/btn_main_menu.png", () -> {});
+		mainMenuButton = new FancyButton(0, 400, "assets/images/btn_main_menu.png", () ->
+		{
+			FlxG.switchState(MenuState.new);
+		});
 		mainMenuButton.camera = pauseCam;
 		mainMenuButton.x = 3 * 1280 / 4 - mainMenuButton.width / 2;
 
