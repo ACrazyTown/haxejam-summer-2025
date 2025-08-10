@@ -4,14 +4,15 @@ import util.Constants;
 import flixel.path.FlxPath;
 import flixel.math.FlxPoint;
 import flixel.util.FlxColor;
+import data.LdtkProject.LdtkProject_Entity;
 
-class FloatingPlatform extends Entity
+class FloatingPlatform extends LdtkEntity
 {
     var endPos:FlxPoint;
 
-    public function new(x:Float = 0, y:Float = 0, wide:Bool, endPos:FlxPoint)
+	public function new(entity:LdtkProject_Entity, x:Float = 0, y:Float = 0, wide:Bool, endPos:FlxPoint)
     {
-        super(x, y);
+        super(entity, x, y);
         trace(x);
 
 		this.endPos = endPos;

@@ -3,11 +3,13 @@ package props;
 import states.PlayState;
 import flixel.FlxG;
 
+import data.LdtkProject.LdtkProject_Entity;
+
 class Rose extends Plant
 {
-    public function new(x:Float = 0, y:Float = 0)
+	public function new(entity:LdtkProject_Entity, x:Float = 0, y:Float = 0)
     {
-        super(x, y);
+        super(entity, x, y);
         loadGraphic("assets/images/mainflower.png");
         throwable = false;
     }

@@ -1,13 +1,14 @@
 package props;
 
+import ldtk.Json.EntityInstanceJson;
 import data.LdtkProject.LdtkProject_Entity;
 
-class Pot extends Plant
+class PlantKey extends Plant
 {
 	public function new(entity:LdtkProject_Entity, x:Float = 0, y:Float = 0)
     {
         super(entity, x, y);
-        loadGraphic("assets/images/pot.png");
+        loadGraphic("assets/images/plantkey.png");
         throwable = true;
     }
 }

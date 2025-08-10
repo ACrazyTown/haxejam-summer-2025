@@ -5,8 +5,9 @@ import util.Constants;
 import flixel.FlxG;
 import flixel.FlxObject;
 import flixel.util.FlxColor;
+import data.LdtkProject.LdtkProject_Entity;
 
-class FloatingIsland extends Entity
+class FloatingIsland extends LdtkEntity
 {
     var fallTimer:Float = 0;
 
@@ -15,12 +16,13 @@ class FloatingIsland extends Entity
 
     var resetTime:Float = 1.5;
 
-    public function new(x:Float = 0, y:Float = 0)
+	public function new(entity:LdtkProject_Entity, x:Float = 0, y:Float = 0)
     {
-        super(x, y);
+        super(entity, x, y);
         initialPos.set(x, y);
 
-        makeGraphic(300, 300, FlxColor.PURPLE);
+		loadGraphic("assets/images/platform_fall.png");
+        height = 30;
         collidable = true;
         immovable = true;
 
@@ -38,7 +40,7 @@ class FloatingIsland extends Entity
             if (resetTime < 0)
             {
 				fallTimer = Math.max(fallTimer - (elapsed / 2), 0);
-				velocity.y = -Constants.FLOATINGISLAND_VELOCITY * 8;
+				velocity.y = -Constants.FLOATINGISLAND_VELOCITY * 16;
                 if (y <= initialPos.y)
                 {
                     velocity.y = 0;
