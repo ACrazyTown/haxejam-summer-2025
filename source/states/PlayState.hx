@@ -230,6 +230,7 @@ class PlayState extends FlxState
 		tilemap.loadMapFromArray(tileArray, tiles.cWid, tiles.cHei, "assets/images/tilestest2.png", tiles.gridSize, tiles.gridSize, null, 0, 0);
         tilemap.setTileProperties(16, NONE);
 
+		#if debug
         // air tiles are literally empty so no need to draw them
 		var airTilePos = tilemap.getAllTilePos(0);
         for (pos in airTilePos)
@@ -237,6 +238,7 @@ class PlayState extends FlxState
             var tile = tilemap.getTileData(pos);
             tile.ignoreDrawDebug = true;
         }
+        #end
 
 		entities = new FlxTypedGroup<Entity>();
 		add(entities);
