@@ -51,7 +51,7 @@ class PlayState extends FlxState
 	var level:LdtkProject_Level;
 
     var camGame:FlxCamera;
-    var camUI:FlxCamera;
+    public var camUI:FlxCamera;
 
     var uiGroup:FlxGroup;
 	var controlsText:FlxBitmapText;
@@ -74,7 +74,7 @@ class PlayState extends FlxState
 
 	var runningCutscene:Bool = false;
 
-	var overlay:FlxSprite;
+	public var overlay:FlxSprite;
 
 	var textboxIsOpen:Bool = false;
 
@@ -191,6 +191,14 @@ class PlayState extends FlxState
 			};
 			openSubState(pauseMenuSubState);
 		}
+
+        // if (FlxG.keys.justPressed.F5)
+        // {
+        //     controlsText.visible = false;
+        //     textboxIsOpen = true;
+        //     openSubState(new EndingCutscene());
+        // }
+
 		// if (FlxG.keys.justPressed.TAB && !textboxIsOpen && !cameraViewMode)
 		// {
 		// 	textboxIsOpen = true;
