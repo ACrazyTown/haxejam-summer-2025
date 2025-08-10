@@ -1,5 +1,8 @@
 package props;
 
+import states.PlayState;
+import ant.sound.SoundUtil;
+import flixel.FlxG;
 import flixel.tweens.FlxEase;
 import flixel.tweens.FlxTween;
 import flixel.math.FlxPoint;
@@ -37,9 +40,23 @@ class PlantPlatform extends Plant
         scale.x = 2;
 		scale.y = oldSize.y / height;
 
-        FlxTween.tween(this, {"scale.x": 1, "scale.y": wantedHeight / height}, 0.6, {ease: FlxEase.backOut, onComplete: (_) ->
+		var snd = SoundUtil.playSFXWithPitchRange("assets/sounds/tree", 0.7, 0.9, 1.1);
+		snd.proximity(x, y, PlayState.instance.player, FlxG.width);
+
+		FlxTween.tween(this, {"scale.x": 1, "scale.y": wantedHeight / height}, 1, {
+			ease: FlxEase.backOut,
+			onComplete: (_) ->
         {
-            // updateHitbox();
+				oldSize.set(width, height);
+				updateHitbox();
+
+				var offset = 40 * scale.y;
+				height -= offset;
+				this.offset.y += offset;
+
+				x -= (width - oldSize.x) / 2;
+				y -= height - oldSize.y;
+
             // height = frameHeight * scale.y - 10 * scale.y;
             // width = frameWidth * scale.x - 10 * scale.x;
 

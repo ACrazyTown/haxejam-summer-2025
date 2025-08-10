@@ -20,7 +20,7 @@ class Mushroom extends Plant
 		loadGraphic("assets/images/mushroom.png");
 		throwable = true;
 
-        sound = FlxG.sound.load("assets/sounds/boing-m.ogg");
+        sound = FlxG.sound.load("assets/sounds/boing.ogg");
     }
 
     override function update(elapsed:Float):Void

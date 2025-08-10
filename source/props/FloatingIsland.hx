@@ -37,7 +37,7 @@ class FloatingIsland extends Entity
             resetTime -= elapsed;
             if (resetTime < 0)
             {
-                fallTimer = Math.max(fallTimer - (elapsed / 4), 0);
+				fallTimer = Math.max(fallTimer - (elapsed / 2), 0);
 				velocity.y = -Constants.FLOATINGISLAND_VELOCITY * 8;
                 if (y <= initialPos.y)
                 {
@@ -56,7 +56,7 @@ class FloatingIsland extends Entity
         {
             isColliding = true;
             resetTime = 1.5;
-            fallTimer = Math.min(fallTimer + (FlxG.elapsed / 4), 1.5);
+			fallTimer = Math.min(fallTimer + (FlxG.elapsed / 2), 1.5);
             velocity.y += Constants.FLOATINGISLAND_VELOCITY * fallTimer;
         }
     }
