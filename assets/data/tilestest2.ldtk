@@ -4258,22 +4258,6 @@
 							"__worldY": 40
 						},
 						{
-							"__identifier": "PlantPlatform",
-							"__grid": [168,36],
-							"__pivot": [0,0],
-							"__tags": [],
-							"__tile": { "tilesetUid": 11, "x": 420, "y": 0, "w": 60, "h": 60 },
-							"__smartColor": "#C0CBDC",
-							"iid": "e6899ed0-5e50-11f0-91a5-ab17cccaf6c2",
-							"width": 60,
-							"height": 60,
-							"defUid": 25,
-							"px": [1680,360],
-							"fieldInstances": [{ "__identifier": "height", "__type": "Float", "__value": 0, "__tile": null, "defUid": 64, "realEditorValues": [] }],
-							"__worldX": 14040,
-							"__worldY": -60
-						},
-						{
 							"__identifier": "BlockBreakable",
 							"__grid": [54,72],
 							"__pivot": [0,0],
@@ -4973,6 +4957,22 @@
 							"px": [420,360],
 							"fieldInstances": [],
 							"__worldX": 12780,
+							"__worldY": -60
+						},
+						{
+							"__identifier": "Pot",
+							"__grid": [168,36],
+							"__pivot": [0,0],
+							"__tags": [],
+							"__tile": null,
+							"__smartColor": "#0099DB",
+							"iid": "dec83ec0-5e50-11f0-8d85-5d3539288b89",
+							"width": 60,
+							"height": 60,
+							"defUid": 68,
+							"px": [1680,360],
+							"fieldInstances": [],
+							"__worldX": 14040,
 							"__worldY": -60
 						}
 					]
