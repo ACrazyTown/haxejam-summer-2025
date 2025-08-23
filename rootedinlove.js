@@ -101113,7 +101113,7 @@ var lime_utils_AssetCache = function() {
 	this.audio = new haxe_ds_StringMap();
 	this.font = new haxe_ds_StringMap();
 	this.image = new haxe_ds_StringMap();
-	this.version = 937791;
+	this.version = 116237;
 };
 $hxClasses["lime.utils.AssetCache"] = lime_utils_AssetCache;
 lime_utils_AssetCache.__name__ = "lime.utils.AssetCache";
@@ -152804,7 +152804,7 @@ flixel_FlxCamera.renderRect = (function($this) {
 	$r = rect;
 	return $r;
 }(this));
-flixel_system_FlxVersion.sha = "7488a8e67c40020c2cdc89286cfac97f14a94092\n";
+flixel_system_FlxVersion.sha = "7ce2d1c2833d1d7f8a754fdd6a346da670f37c6c\n";
 flixel_system_frontEnds_BitmapFrontEnd._maxTextureSize = -1;
 flixel_math_FlxRandom._arrayFloatHelper = null;
 flixel_math_FlxRandom.MULTIPLIER = 48271.0;
